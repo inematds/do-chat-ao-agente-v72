@@ -162,6 +162,12 @@
     "ind_nota": "Prática = exercícios que você marcou como feitos. A comprovação vem na prova da certificação.",
     "estudo": {
       "titulo": "Seu estudo",
+      "continuar": "Continuar de onde parei",
+      "comecar": "Começar pela aula 1",
+      "cta_continuar": "Continuar a aula {n}",
+      "hoje": "hoje",
+      "ontem": "ontem",
+      "ha_dias": "há {n} dias",
       "desempenho": "Desempenho nos testes",
       "notas": "Minhas anotações",
       "dados": "Copiar meus dados",

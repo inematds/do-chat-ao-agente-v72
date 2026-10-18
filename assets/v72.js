@@ -340,7 +340,56 @@
     c.corpo.appendChild(total ? ul : el("p", "es-vazio", T.sem_notas));
     c.cont.textContent = total ? String(total) : "";
   }
-  pintaDesempenho(); pintaNotas();
+  /* ---------- minha jornada: onde parei + resumo ---------- */
+  function aulaDe(slug) { return D.aulas.filter(function (a) { return a.slug === slug; })[0]; }
+  function quando(ts) {
+    var d0 = new Date(); d0.setHours(0, 0, 0, 0);
+    var dias = Math.ceil((d0 - ts) / 864e5);
+    return dias <= 0 ? T.hoje : dias === 1 ? T.ontem : T.ha_dias.replace("{n}", dias);
+  }
+  if (AULA) {
+    var ultimoSec = null, jPedido = false;
+    var marcaOnde = function () {
+      jPedido = false;
+      var lim = innerHeight * 0.4, atual = null;
+      document.querySelectorAll(".secao[id]").forEach(function (s) { if (s.getBoundingClientRect().top < lim) atual = s; });
+      var id = atual ? atual.id : "";
+      if (id === ultimoSec) return;
+      ultimoSec = id;
+      var h = atual && atual.querySelector("h2"), tit = h ? h.textContent.replace(/^\s*\d+\s*·\s*/, "").trim() : "";
+      gravar("jornada", { aula: AULA, sec: id, t: tit, ts: Date.now() });
+    };
+    addEventListener("scroll", function () { if (!jPedido) { jPedido = true; setTimeout(marcaOnde, 800); } }, { passive: true });
+    marcaOnde();
+  }
+  function pintaJornada() {
+    var lado = document.querySelector(".lado");
+    if (!lado) return;
+    var box = lado.querySelector(".es-jornada");
+    if (!box) { box = el("div", "es-jornada"); lado.insertBefore(box, lado.querySelector(".ind")); }
+    box.textContent = "";
+    var j = ler("jornada", null), a = j && aulaDe(j.aula), lk = el("a", "es-cont-link");
+    if (a) {
+      lk.href = link(a.slug, j.sec);
+      lk.appendChild(el("small", null, T.continuar + " · " + quando(j.ts)));
+      lk.appendChild(el("b", null, a.num + ". " + a.t + (j.t ? " · " + j.t : "")));
+    } else {
+      lk.href = link(D.aulas[0].slug);
+      lk.appendChild(el("b", null, T.comecar));
+    }
+    box.appendChild(lk);
+    /* página inicial: o botão principal leva para onde parei */
+    var cta = document.querySelector("body.inicio .ini-acoes .comecar");
+    if (cta && a) {
+      cta.href = link(a.slug, j.sec);
+      if (cta.firstChild && cta.firstChild.nodeType === 3) cta.firstChild.textContent = T.cta_continuar.replace("{n}", a.num) + " ";
+    }
+  }
+  var pintaTudo = function () { pintaJornada(); pintaDesempenho(); pintaNotas(); };
+  pintaTudo();
+  /* a gaveta mostra o estado atual sempre que abre */
+  var mbtn = document.querySelector(".menu-btn");
+  if (mbtn) mbtn.addEventListener("click", function () { if (document.body.classList.contains("lado-aberto")) pintaTudo(); });
 
   /* ---------- copiar meus dados (.json) ---------- */
   var msg = document.querySelector(".es-msg"), bEx = document.querySelector(".es-exportar"), inp = document.querySelector(".es-importar input");
@@ -399,6 +448,9 @@
           if (!l[a] || (+r.ts || 0) > (+l[a].ts || 0)) { l[a] = r; n++; }
         });
         gravar("quiz", l);
+      } else if (k === "jornada") {
+        var jl = ler("jornada", null);
+        if (v && typeof v === "object" && typeof v.aula === "string" && (!jl || (+v.ts || 0) > (+jl.ts || 0))) { gravar("jornada", { aula: v.aula, sec: String(v.sec || ""), t: String(v.t || ""), ts: +v.ts || 0 }); n++; }
       } else if (ler(k, undefined) === undefined) { gravar(k, v); n++; }
     });
     return n;
