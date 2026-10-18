@@ -49,6 +49,10 @@ ICONES = {  # traço fino estilo Lucide (MIT)
     "sol": '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
     "lua": '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>',
     "megafone": '<path d="M3 11v2a1 1 0 0 0 1 1h3l6 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M17 8a5 5 0 0 1 0 8"/>',
+    "caneta": '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>',
+    "marca": '<path d="M9 11l-6 6v3h9l3-3"/><path d="M22 12l-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4"/>',
+    "baixar": '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>',
+    "carregar": '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>',
 }
 
 
@@ -328,6 +332,35 @@ def total_ex(aulas):
     return sum(len(x["exercicios"]) for a in aulas for x in a["secoes"] if x["tipo"] == "pratica")
 
 
+def sem_tags(t):
+    return html.unescape(re.sub("<[^>]+>", "", t or "")).strip()
+
+
+def estudo(aulas, ui):
+    """v7.2: gaveta com desempenho nos testes, anotações e cópia dos dados (tudo no navegador).
+    Embute os testes de todas as aulas para a gaveta mostrar o que errou em qualquer página."""
+    T = ui["estudo"]
+    dados = []
+    for a in aulas:
+        num, quiz = 0, None
+        for s in a["secoes"]:
+            if s["tipo"] == "links": continue
+            num += 1
+            if s["tipo"] == "quiz" and not quiz:
+                quiz = {"sec": f"s{num}", "perguntas": [{"p": sem_tags(q["p"]), "certa": sem_tags(q["opcoes"][q["certa"]])} for q in s["perguntas"]]}
+        dados.append({"slug": a["slug"], "num": a["num"], "t": sem_tags(a["titulo_curto"]), "quiz": quiz})
+    js = json.dumps({"txt": T, "aulas": dados}, ensure_ascii=False).replace("</", "<\\/")
+    def bloco(chave, icone, corpo=""):
+        return (f'<details class="es-bloco" data-es="{chave}"><summary>{ic(icone)}<span>{T[chave]}</span><span class="es-cont" data-es-cont="{chave}"></span></summary>'
+                f'<div class="es-corpo" data-es-corpo="{chave}">{corpo}</div></details>')
+    dados_html = (f'<p class="es-exp">{T["dados_exp"]}</p><div class="es-acoes">'
+                  f'<button type="button" class="es-btn es-exportar">{ic("baixar")}{T["exportar"]}</button>'
+                  f'<label class="es-btn es-importar">{ic("carregar")}{T["importar"]}<input type="file" class="sr" accept=".json,application/json"/></label></div>'
+                  f'<p class="es-msg" aria-live="polite"></p>')
+    return (f'<div class="estudo"><p class="es-tit">{T["titulo"]}</p>{bloco("desempenho", "grafico")}{bloco("notas", "caneta")}{bloco("dados", "memoria", dados_html)}</div>'
+            f'<script type="application/json" id="estudo-dados">{js}</script>')
+
+
 def lado(curso, aulas, ui, prefixo, atual):
     itens = []
     for a in aulas:
@@ -342,7 +375,7 @@ def lado(curso, aulas, ui, prefixo, atual):
             f'<div class="prog" aria-hidden="true"><i></i></div>'
             f'<div class="ind"><span class="ind-rot">{ui["ind_pratica"]}</span><span class="prog-txt"><span data-prat>0</span>/{total_ex(aulas)}</span></div>'
             f'<div class="prog pratica" aria-hidden="true"><i></i></div><p class="ind-nota">{ui["ind_nota"]}</p>'
-            f'<ol class="lista-aulas">{"".join(itens)}</ol>'
+            f'<ol class="lista-aulas">{"".join(itens)}</ol>{estudo(aulas, ui)}'
             f'<div class="lado-card">{card["rot"]}<b>{card["t"]}</b>{card["texto"]}<br/><a href="{card["href"]}" target="_blank" rel="noopener">{card["link"]} →</a></div></aside>')
 
 
@@ -387,7 +420,7 @@ def pagina_aula(curso, aulas, a, idx, ui, lang):
     ant = aulas[idx - 1] if idx > 0 else None
     btn_prox = (f'<a class="btn" href="{prefixo}aulas/{prox["slug"]}/index.html">{ui["proxima_aula"]} {ic("seta")}</a>' if prox
                 else f'<a class="btn" href="{prefixo}index.html">{ui["voltar_inicio"]} {ic("seta")}</a>')
-    aprende = "".join(f'<li><b class="dn">{i + 1}</b>{x["t"]}</li>' for i, x in enumerate(a["aprende"]))
+    aprende = "".join(f'<li><b class="dn">{i + 1}</b><span>{x["t"]}</span></li>' for i, x in enumerate(a["aprende"]))
     pontos = "".join(f'<a href="{prefixo}aulas/{x["slug"]}/index.html" class="pt{" on" if x["slug"] == a["slug"] else ""}" data-slug="{x["slug"]}" title="{attr(x["titulo"])}"><span class="sr">{x["titulo"]}</span></a>' for x in aulas)
     hero_img = f'assets/img/hero/{a["slug"]}.jpg'
     fig = (f'<figure class="ah-img"><img src="{prefixo}{hero_img}" alt="{attr(a.get("hero_alt", ""))}" width="1536" height="1024"/></figure>'
