@@ -14,6 +14,10 @@
       var l = document.querySelector('.lista-aulas a[data-slug="' + p.getAttribute("data-slug") + '"]');
       p.classList.toggle("feita", !!(l && l.classList.contains("feita")));
     });
+    document.querySelectorAll(".ini-aula").forEach(function (p) {
+      var l = document.querySelector('.lista-aulas a[data-slug="' + p.getAttribute("data-slug") + '"]');
+      p.classList.toggle("feita", !!(l && l.classList.contains("feita")));
+    });
   }
   pontos();
   var lista = document.querySelector(".lista-aulas");

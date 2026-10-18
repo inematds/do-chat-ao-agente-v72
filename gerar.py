@@ -414,20 +414,26 @@ def pagina_aula(curso, aulas, a, idx, ui, lang):
 def pagina_inicio(curso, aulas, ui, lang):
     p = curso["inicio"]
     prefixo = ""
-    cards = "".join(f'<a class="card-aula" href="aulas/{a["slug"]}/index.html"><span class="k">{ui["aula"]} {a["num"]}</span><h3>{a["titulo"]}</h3>'
-                    f'<p>{a["lead"]}</p><span class="m">{a["minutos"]} min</span></a>' for a in aulas)
-    numeros = "".join(f'<div><b>{n["v"]}</b>{n["t"]}</div>' for n in p["numeros"])
-    duas = "".join(f'<div class="painel"><h3>{b["t"]}</h3><ul>{"".join(f"<li>{i}</li>" for i in b["itens"])}</ul></div>' for b in p["blocos"])
+    # v7.2: mesma direção das aulas — abertura com foto que funde no fundo, aulas como lista editorial com foto
+    lista = "".join(f'<li><a class="ini-aula" data-slug="{a["slug"]}" href="aulas/{a["slug"]}/index.html">'
+                    f'<span class="ia-img"><img src="assets/img/hero/{a["slug"]}.jpg" alt="" loading="lazy" width="1536" height="1024"/></span>'
+                    f'<span class="ia-txt"><span class="kicker">{ui["aula"]} {a["num"]} · {a["minutos"]} min<span class="ia-ok" aria-hidden="true">{ic("check")}</span></span>'
+                    f'<span class="ia-t">{a["titulo"]}</span><span class="ia-l">{a["lead"]}</span></span></a></li>' for a in aulas)
+    numeros = "".join(f'<li><b>{n["v"]}</b><span>{n["t"]}</span></li>' for n in p["numeros"])
+    duas = "".join(f'<div><h2>{b["t"]}</h2><ol>{"".join(f"<li><span class=dn>{i + 1}</span><span>{x}</span></li>" for i, x in enumerate(b["itens"]))}</ol></div>' for b in p["blocos"])
+    pontos = "".join(f'<a href="aulas/{x["slug"]}/index.html" class="pt" data-slug="{x["slug"]}" title="{attr(x["titulo"])}"><span class="sr">{x["titulo"]}</span></a>' for x in aulas)
     return (cabeca(f'{curso["nome"]} · INEMA', p["lead"], prefixo, lang, curso["url"], curso["id"])
-            + f'<body data-curso="{curso["id"]}" data-total="{len(aulas)}" data-total-ex="{total_ex(aulas)}">' + topo(curso, aulas, ui, prefixo)
+            + f'<body class="inicio" data-curso="{curso["id"]}" data-total="{len(aulas)}" data-total-ex="{total_ex(aulas)}">' + topo(curso, aulas, ui, prefixo)
             + '<div class="casca">' + lado(curso, aulas, ui, prefixo, "")
             + '<main class="principal" id="conteudo"><div class="miolo">'
-            + f'<div class="hero"><div><p class="kicker">{p["kicker"]}</p><h1>{p["titulo"]}</h1><p class="lead">{p["lead"]}</p>'
-            + f'<div class="acoes-topo" style="margin-top:22px"><a class="btn cheio" href="aulas/{aulas[0]["slug"]}/index.html">{p["cta"]} {ic("seta")}</a>'
-            + f'<a class="btn neutro" href="{p["cta2"]["href"]}">{p["cta2"]["t"]}</a></div><div class="numeros">{numeros}</div></div>'
-            + f'<figure class="banner" style="margin:0"><img src="assets/img/capa.jpg" alt="{attr(p["capa_alt"])}" width="1400" height="788"/></figure></div>'
-            + f'<section class="secao"><div class="sec-cab"><span class="num" aria-hidden="true">{ic("camadas")}</span><div><h2>{p["aulas_titulo"]}</h2><p>{p["aulas_sub"]}</p></div></div><div class="grade-aulas">{cards}</div></section>'
-            + f'<section class="secao"><div class="duas">{duas}</div></section>'
+            + f'<div class="aula-hero com-img ini-hero"><div class="ah-txt"><nav class="pontos" aria-label="{attr(ui["aulas"])}">{pontos}</nav>'
+            + f'<p class="kicker">{p["kicker"]}</p><h1>{p["titulo"]}</h1><p class="lead">{p["lead"]}</p>'
+            + f'<div class="ini-acoes"><a class="comecar" href="aulas/{aulas[0]["slug"]}/index.html">{p["cta"]} {ic("seta")}</a>'
+            + f'<a class="ini-link" href="{p["cta2"]["href"]}">{p["cta2"]["t"]}</a></div></div>'
+            + f'<figure class="ah-img"><img src="assets/img/hero/inicio.jpg" alt="{attr(p["capa_alt"])}" width="1536" height="1024"/></figure></div>'
+            + f'<ul class="ini-num">{numeros}</ul>'
+            + f'<section class="secao" id="aulas"><div class="sec-cab"><div><h2>{p["aulas_titulo"]}</h2><p>{p["aulas_sub"]}</p></div></div><ol class="ini-aulas">{lista}</ol></section>'
+            + f'<section class="secao"><div class="ini-duas">{duas}</div></section>'
             + rodape(curso) + '</div></main></div><script src="assets/v71.js"></script><script src="assets/v72.js"></script></body></html>\n')
 
 

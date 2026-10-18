@@ -62,9 +62,9 @@ html[data-tema="papel"] .nesta2 .objetivo b{background:none}
 
 /* seções: "01 · Título" em serifa grande, sem círculo */
 .secao{margin-top:72px}
-body[data-aula] .sec-cab{margin-bottom:26px;padding-top:30px;border-top:1px solid var(--line)}
-body[data-aula] .sec-cab h2{margin:0;font:600 clamp(30px,3.6vw,48px)/1.08 var(--serif);letter-spacing:-.02em}
-body[data-aula] .sec-cab p{margin-top:8px;font-size:17px}
+body[data-aula] .sec-cab,body.inicio .sec-cab{margin-bottom:26px;padding-top:30px;border-top:1px solid var(--line)}
+body[data-aula] .sec-cab h2,body.inicio .sec-cab h2{margin:0;font:600 clamp(30px,3.6vw,48px)/1.08 var(--serif);letter-spacing:-.02em}
+body[data-aula] .sec-cab p,body.inicio .sec-cab p{margin-top:8px;font-size:17px}
 .sn{font-variant-numeric:lining-nums}
 .sp{color:var(--mut2)}
 
@@ -162,3 +162,36 @@ html[data-tema="papel"] .dg-seta{color:#a0700a}
 @media (prefers-reduced-motion:reduce){.scrolly.fixo .sc-tit{transition:none}}
 .sc-tit .sc-t{flex:none}
 .sc-tit .sc-sub{min-width:0;overflow:hidden;text-overflow:ellipsis;font:400 15px var(--inter);color:var(--mut);margin-left:6px}
+
+/* ===== página inicial v7.2: mesma direção das aulas ===== */
+.ini-hero h1{font-size:clamp(38px,4.6vw,62px)}
+.ini-hero .lead{max-width:40ch}
+.ini-acoes{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:baseline;margin-top:26px}
+.ini-acoes .comecar{margin-top:0}
+.ini-link{color:var(--txt2);font-weight:600;font-size:16px;text-decoration:none;border-bottom:1px solid var(--line2);padding-bottom:3px}
+.ini-link:hover{color:var(--txt);border-color:var(--txt2)}
+.ini-num{list-style:none;margin:30px 0 0;padding:26px 0 0;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.ini-num li{display:flex;flex-direction:column;gap:4px}
+.ini-num b{font:600 clamp(36px,4vw,52px)/1 var(--serif);color:var(--amb-t);font-variant-numeric:lining-nums}
+.ini-num span{color:var(--mut);font-size:15px}
+.ini-aulas{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 32px}
+.ini-aula{display:flex;flex-direction:column;gap:16px;text-decoration:none;color:inherit}
+.ia-img{display:block;aspect-ratio:3/2;border-radius:12px;overflow:hidden;background:var(--sf2)}
+.ia-img img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.ini-aula:hover .ia-img img{transform:scale(1.035)}
+.ia-txt{display:flex;flex-direction:column;gap:8px}
+.ia-txt .kicker{display:flex;align-items:center;gap:8px;font:600 12px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--txt2);margin:0}
+.ia-ok{display:none;color:var(--ok)}
+.ia-ok .ico{width:15px;height:15px}
+.ini-aula.feita .ia-ok{display:inline-flex}
+.ia-t{font:600 clamp(23px,2.1vw,28px)/1.15 var(--serif);letter-spacing:-.015em;color:var(--txt)}
+.ini-aula:hover .ia-t{color:var(--amb-t)}
+.ia-l{color:var(--mut);font-size:15.5px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.ini-duas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 56px;padding-top:30px;border-top:1px solid var(--line)}
+.ini-duas h2{margin:0 0 22px;font:600 clamp(28px,3vw,40px)/1.1 var(--serif);letter-spacing:-.02em}
+.ini-duas ol{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+.ini-duas li{display:flex;gap:16px;align-items:flex-start;font-size:17px;color:var(--txt2);line-height:1.45}
+.ini-duas .dn{width:34px;height:34px;font-size:16px}
+@media (max-width:1100px){.ini-aulas{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){.ini-num{grid-template-columns:repeat(2,minmax(0,1fr))}.ini-duas{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.ini-aulas{grid-template-columns:minmax(0,1fr)}.ia-img{aspect-ratio:16/9}}
