@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""INEMA Learning v7.1 — gera o curso a partir de conteudo/.
+"""INEMA Learning v7.2 — gera o curso a partir de conteudo/.
 
     python3 gerar.py            # PT (raiz)
     python3 gerar.py --lang en  # quando existir conteudo/en/

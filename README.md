@@ -1,10 +1,10 @@
-# Do chat ao agente — curso (INEMA Learning v7.1)
+# Do chat ao agente — curso (INEMA Learning v7.2)
 
 Visão geral da formação [Do chat ao agente](https://eventos.inema.pro/do-chat-ao-agente/) em 6 aulas curtas: terminal (OSWork), o seu Jarvis (INTELECTO), filas (inemaccbot) e redes no automático (r7e, promoavatar, xviral), com plano de execução e vídeo explicativo no fim.
 
-**Abrir o curso:** https://inematds.github.io/do-chat-ao-agente-v71/
+**Abrir o curso:** https://inematds.github.io/do-chat-ao-agente-v72/
 
-Primeiro curso no formato **INEMA Learning v7.1**: layout de plataforma (barra lateral com capítulos e progresso, área central larga) com a didática v7 (objetivo em uma linha, diagrama clicável primeiro, texto curto, simulação onde ensina, modelos com botão copiar, prática com "pronto quando" e teste com resposta comentada).
+Primeiro curso no formato **INEMA Learning v7.2**: layout de plataforma (barra lateral com capítulos e progresso, área central larga) com a didática v7 (objetivo em uma linha, diagrama clicável primeiro, texto curto, simulação onde ensina, modelos com botão copiar, prática com "pronto quando" e teste com resposta comentada).
 
 ## Como funciona
 

@@ -1,6 +1,6 @@
-# CLAUDE.md — do-chat-ao-agente-v71
+# CLAUDE.md — do-chat-ao-agente-v72
 
-Curso no formato INEMA Learning v7.1. Conteúdo em `conteudo/<lang>/`, nunca editar o HTML gerado à mão: editar o JSON e rodar `python3 gerar.py && python3 validar.py --links`. Conferir celular (390 px) sem transbordo, por HTTP local, nunca `file://`.
+Curso no formato INEMA Learning v7.2. Conteúdo em `conteudo/<lang>/`, nunca editar o HTML gerado à mão: editar o JSON e rodar `python3 gerar.py && python3 validar.py --links`. Conferir celular (390 px) sem transbordo, por HTTP local, nunca `file://`.
 Autor dos commits: `inematds <inematds@gmail.com>`. Publicação = commit + push (GitHub Pages, raiz da main).
 
 ## Self-learning

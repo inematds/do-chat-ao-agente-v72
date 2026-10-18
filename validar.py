@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Portão de qualidade do curso v7.1.
+"""Portão de qualidade do curso v7.2.
 
     python3 validar.py            # estrutura de cada aula
     python3 validar.py --links    # também confere os links externos (HTTP 200)
@@ -38,7 +38,7 @@ if args.links:
     urls = set()
     for p in [base / "index.html", *aulas]:
         urls |= set(re.findall(r'(?:href|src)="(https://[^"]+)"', p.read_text()))
-    urls = {u for u in urls if "fonts.g" not in u and not u.startswith("https://inematds.github.io/do-chat-ao-agente-v71")}
+    urls = {u for u in urls if "fonts.g" not in u and not u.startswith("https://inematds.github.io/do-chat-ao-agente-v72")}
     for u in sorted(urls):
         try:
             req = urllib.request.Request(u, method="HEAD" if u.endswith(".mp4") else "GET", headers={"User-Agent": "Mozilla/5.0"})

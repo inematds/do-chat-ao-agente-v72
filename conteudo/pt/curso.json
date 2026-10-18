@@ -1,7 +1,7 @@
 {
-  "id": "do-chat-ao-agente-v71",
+  "id": "do-chat-ao-agente-v72",
   "lang": "pt-BR",
-  "url": "https://inematds.github.io/do-chat-ao-agente-v71/",
+  "url": "https://inematds.github.io/do-chat-ao-agente-v72/",
   "nome": "Do chat ao agente",
   "sub": "Visão geral da formação",
   "volta": {
@@ -15,7 +15,7 @@
     "link": "Abrir os exercícios",
     "href": "https://inematds.github.io/jornada-agentes/guia/"
   },
-  "rodape": "INEMA.CLUB · conteúdo aberto e gratuito · formato INEMA Learning v7.1 · <a href=\"https://eventos.inema.pro/do-chat-ao-agente/\">eventos.inema.pro/do-chat-ao-agente</a> · <a href=\"https://inema.club/\">inema.club</a>",
+  "rodape": "INEMA.CLUB · conteúdo aberto e gratuito · formato INEMA Learning v7.2 · <a href=\"https://eventos.inema.pro/do-chat-ao-agente/\">eventos.inema.pro/do-chat-ao-agente</a> · <a href=\"https://inema.club/\">inema.club</a>",
   "videos": {
     "jornada-ia": {
       "titulo": "Do chat ao agente: a visão geral",
