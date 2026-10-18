@@ -18,4 +18,16 @@
   pontos();
   var lista = document.querySelector(".lista-aulas");
   if (lista && window.MutationObserver) new MutationObserver(pontos).observe(lista, { subtree: true, attributes: true, attributeFilter: ["class"] });
+
+  /* título preso do diagrama: aparece quando o título da seção sai pelo alto */
+  document.querySelectorAll(".scrolly").forEach(function (sc) {
+    var sec = sc.closest(".secao"), h = sec && sec.querySelector(".sec-cab h2");
+    if (!h || !sc.querySelector(".sc-tit")) return;
+    var topo = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--top"), 10) || 60;
+    function confere() { sc.classList.toggle("tit-on", h.getBoundingClientRect().bottom < topo + 4); }
+    var pedido = false;
+    addEventListener("scroll", function () { if (!pedido) { pedido = true; requestAnimationFrame(function () { pedido = false; confere(); }); } }, { passive: true });
+    addEventListener("resize", confere);
+    confere();
+  });
 })();

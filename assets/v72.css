@@ -151,3 +151,14 @@ html[data-tema="papel"] .dg-seta{color:#a0700a}
   .nesta2 li{font-size:16.5px}
   .dn{width:34px;height:34px;font-size:16px}
 }
+
+/* título da seção preso junto com o diagrama: some o original, aparece este */
+.sc-tit{display:none}
+.scrolly.fixo .sc-tit{display:flex;align-items:baseline;gap:10px;margin:0 0 8px;padding:2px 2px 0;font:600 19px/1.25 var(--serif);color:var(--txt);opacity:0;transform:translateY(-4px);transition:opacity .25s,transform .25s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.scrolly.fixo.tit-on .sc-tit{opacity:1;transform:none}
+.sc-tit .sc-aula{font:700 11.5px var(--inter);letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.sc-tit .sn{color:var(--amb-t)}
+.sc-tit .sp{color:var(--mut);margin:0 -4px}
+@media (prefers-reduced-motion:reduce){.scrolly.fixo .sc-tit{transition:none}}
+.sc-tit .sc-t{flex:none}
+.sc-tit .sc-sub{min-width:0;overflow:hidden;text-overflow:ellipsis;font:400 15px var(--inter);color:var(--mut);margin-left:6px}

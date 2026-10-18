@@ -380,6 +380,8 @@ def pagina_aula(curso, aulas, a, idx, ui, lang):
         elif t == "links": corpo = sec_links(s, ui)
         else: raise SystemExit(f"tipo de seção desconhecido: {t} ({a['slug']})")
         sub = f'<p>{s["sub"]}</p>' if s.get("sub") else ""
+        # diagrama preso no topo leva o título da seção junto (aparece quando o título original sobe)
+        corpo = corpo.replace('<div class="sc-fig">', f'<div class="sc-fig"><p class="sc-tit" aria-hidden="true"><span class="sc-aula">{ui.get("aula", "Aula")} {idx + 1}</span><span class="sn">{num:02d}</span><span class="sp"> · </span><span class="sc-t">{s["titulo"]}</span>' + (f'<span class="sc-sub">{s["sub"]}</span>' if s.get("sub") else '') + '</p>', 1)
         secs.append(f'<section class="secao" id="s{num}"><div class="sec-cab"><div><h2><span class="sn">{num:02d}</span><span class="sp" aria-hidden="true"> · </span>{s["titulo"]}</h2>{sub}</div></div>{corpo}</section>')
     prox = aulas[idx + 1] if idx + 1 < len(aulas) else None
     ant = aulas[idx - 1] if idx > 0 else None
