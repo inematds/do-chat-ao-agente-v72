@@ -1,0 +1,153 @@
+/* INEMA Learning v7.2 — direção "cinematográfico editorial" (maquete H), camada sobre o v71.css.
+   Proposta livre para teste: cores e fontes ainda serão validadas contra o inema-design. */
+:root{
+  --bg:#1c1c1f;--bg2:#222226;--card:#26262b;--card2:#2a2a30;--line:#33333a;--line2:#3f3f47;--line3:#55555f;
+  --txt:#f3efe7;--txt2:#d9d4ca;--mut:#a7a196;--mut2:#7f7a72;
+  --amb:#E9B949;--amb2:#F2CF79;--amb-ink:#1b1408;--amb-a:rgba(233,185,73,.12);--amb-b:rgba(233,185,73,.45);
+  --amb-t:#E9B949;--amb-t-h:#F2CF79;
+  --sf1:#222226;--sf2:#2c2c32;--pn1:transparent;--pn2:transparent;--topo-bg:rgba(28,28,31,.94);
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;--max:1160px}
+html[data-tema="papel"]{
+  --bg:#F6F1E7;--bg2:#EFE8DA;--card:#FFFDF8;--card2:#FBF7EE;--line:#E3DACA;--line2:#D2C6B1;--line3:#B7A98F;
+  --txt:#1d1a16;--txt2:#38322a;--mut:#62594b;--mut2:#7d7362;
+  --amb:#E2B13C;--amb-ink:#1b1408;--amb-a:rgba(226,177,60,.16);--amb-b:rgba(160,112,10,.45);
+  --amb-t:#7a5a12;--amb-t-h:#5f450b;--amb2:#7a5a12;
+  --sf1:#FBF7EE;--sf2:#EFE6D4;--topo-bg:rgba(246,241,231,.95)}
+body{font-size:17px}
+
+/* sem barra lateral fixa: a lista de aulas e os indicadores viram gaveta (botão ☰), em qualquer largura */
+.casca{grid-template-columns:1fr}
+.lado{position:fixed;inset:var(--top) auto 0 0;width:min(340px,88vw);z-index:70;transform:translateX(-105%);transition:transform .25s;box-shadow:20px 0 60px rgba(0,0,0,.45)}
+body.lado-aberto .lado{transform:none}
+.menu-btn{display:inline-flex;background:none;border-color:var(--line2)}
+.principal{padding:28px clamp(18px,4vw,56px) 90px}
+
+/* sol/lua ao lado do Aa */
+.tema-btn{display:inline-grid;place-items:center;width:36px;height:36px;margin-left:6px;border-radius:50%;border:1px solid var(--line2);background:none;color:var(--amb-t);cursor:pointer}
+.tema-btn .ico{width:18px;height:18px}
+.tema-btn .sol{display:none}
+html[data-tema="papel"] .tema-btn .sol{display:block}
+html[data-tema="papel"] .tema-btn .lua{display:none}
+html[data-tema="papel"] .tema-btn{color:#7a5a12}
+
+/* abertura da aula: texto à esquerda, foto de cinema à direita fundindo no fundo */
+.aula-hero{position:relative;display:grid;grid-template-columns:minmax(0,1fr);gap:24px;align-items:center;min-height:0}
+.aula-hero.com-img{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)}
+.ah-txt{position:relative;z-index:2;padding:8px 0 24px}
+.pontos{display:flex;gap:12px;margin:0 0 34px}
+.pontos .pt{width:12px;height:12px;border-radius:50%;border:1.5px solid var(--mut)}
+.pontos .pt.feita{background:var(--mut)}
+.pontos .pt.on{background:var(--amb);border-color:var(--amb)}
+.aula-hero .kicker{font:600 12.5px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--txt2);margin:0 0 18px}
+.aula-hero h1{font:600 clamp(40px,5.4vw,70px)/1.02 var(--serif);letter-spacing:-.025em;font-variation-settings:"opsz" 144}
+.aula-hero .lead{margin-top:22px;font-size:clamp(17px,1.5vw,19.5px);line-height:1.55;color:var(--txt2);max-width:34ch}
+.comecar{display:inline-flex;gap:8px;align-items:center;margin-top:26px;color:var(--amb-t);font-weight:600;font-size:17px;text-decoration:none;border-bottom:2px solid var(--amb);padding-bottom:3px}
+.comecar .ico{width:18px;height:18px;transition:transform .2s}
+.comecar:hover .ico{transform:translateX(4px)}
+.ah-img{margin:0 calc(-1 * clamp(18px,4vw,56px)) 0 -12%;position:relative;z-index:1;align-self:stretch}
+.ah-img img{display:block;width:100%;height:100%;min-height:420px;max-height:560px;object-fit:cover;
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 34%),linear-gradient(to top,transparent 0,#000 22%);
+  -webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 34%),linear-gradient(to top,transparent 0,#000 22%);mask-composite:intersect}
+
+/* nesta aula: lista numerada sem caixas */
+.nesta2{margin:34px 0 0;padding-top:30px;border-top:1px solid var(--line)}
+.nesta2 h2{margin:0 0 22px;font:600 clamp(30px,3.4vw,44px)/1.1 var(--serif);letter-spacing:-.02em}
+.nesta2 ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 40px}
+.nesta2 li{display:flex;gap:16px;align-items:center;font-size:18px;color:var(--txt2);line-height:1.35}
+.dn{flex:none;display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--amb);color:var(--amb-ink);font:600 18px/1 var(--serif)}
+.nesta2 .objetivo{margin:24px 0 0;padding:0 0 0 16px;border-left:2px solid var(--amb);background:none;border-radius:0;font-size:16px;color:var(--mut)}
+.nesta2 .objetivo b{color:var(--txt);background:none}
+html[data-tema="papel"] .nesta2 .objetivo{background:none;border-left-color:var(--amb)}
+html[data-tema="papel"] .nesta2 .objetivo b{background:none}
+
+/* seções: "01 · Título" em serifa grande, sem círculo */
+.secao{margin-top:72px}
+body[data-aula] .sec-cab{margin-bottom:26px;padding-top:30px;border-top:1px solid var(--line)}
+body[data-aula] .sec-cab h2{margin:0;font:600 clamp(30px,3.6vw,48px)/1.08 var(--serif);letter-spacing:-.02em}
+body[data-aula] .sec-cab p{margin-top:8px;font-size:17px}
+.sn{font-variant-numeric:lining-nums}
+.sp{color:var(--mut2)}
+
+/* painéis sem caixa: separação por espaço e linhas finas */
+.painel{border:0;background:none;padding:0;box-shadow:none}
+.sc-fig .painel{box-shadow:none}
+.sc-fig{padding:14px 0 10px;border-bottom:1px solid var(--line)}
+
+/* diagrama: número + nome + linha de explicação, ícone grande embaixo; só o bloco principal tem moldura */
+.dg-no{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"dn nome" "dn sub" "ic ic" "ul ul";column-gap:12px;row-gap:2px;align-content:start;
+  border:1.5px solid transparent;background:none;padding:14px 12px;border-radius:16px}
+.dg-no:hover{transform:none;border-color:var(--line2)}
+.dg-no .cab{display:contents}
+.dg-no .dn{grid-area:dn;align-self:start;width:36px;height:36px;font-size:16px}
+.dg-no .nome{grid-area:nome;font:600 21px/1.15 var(--serif);letter-spacing:-.01em;color:var(--txt);align-self:center}
+.dg-no .sub{grid-area:sub;font-size:14px;color:var(--mut)}
+.dg-no .cab .ic{grid-area:ic;justify-self:center;margin-top:16px;width:104px;height:104px;border-radius:50%;background:var(--sf2);color:var(--txt);display:grid;place-items:center}
+.dg-no .cab .ic .ico{width:42px;height:42px;stroke-width:1.4}
+.dg-no .cab .ic.foto{background:none;overflow:hidden;width:120px;height:120px;box-shadow:0 14px 40px -18px rgba(0,0,0,.6)}
+.dg-no .cab .ic.foto img{width:100%;height:100%;object-fit:cover;display:block}
+.dg-no ul{grid-area:ul;margin-top:14px}
+.dg-no li{border:0;border-top:1px solid var(--line);border-radius:0;background:none;padding:9px 2px;font-size:14px}
+.dg-no li .ico{width:20px;height:20px;color:var(--amb-t)}
+.dg-no li small{font-size:12.5px}
+.dg-no.forte{border-color:var(--amb);background:none;box-shadow:none}
+.dg-no.forte .cab .ic{width:64px;height:64px;background:var(--amb-a);color:var(--amb-t)}
+.dg-no.forte .cab .ic .ico{width:30px;height:30px}
+.dg-no.forte li{border-color:var(--line);background:none;padding:10px 2px}
+.dg-no[aria-pressed="true"],.scrolly .dg-no.foco{border-color:var(--amb);box-shadow:none}
+.dg-no:not(.forte)[aria-pressed="true"],.scrolly .dg-no:not(.forte).foco{border-color:var(--line2)}
+.scrolly.focando .dg-no:not(.foco){opacity:.42;filter:saturate(.6)}
+.dg-seta{color:var(--amb-t);align-self:center;margin-top:60px}
+.dg-volta{border-color:var(--amb);border-style:solid;border-width:0 1.5px 1.5px;border-radius:0 0 18px 18px}
+.dg-volta span{background:var(--bg);color:var(--amb-t);font-family:var(--serif);font-size:15px}
+.dg-detalhe{background:none;border:0;border-left:2px solid var(--amb);border-radius:0;padding:4px 0 4px 16px}
+html[data-tema="papel"] .dg-no.forte{background:none}
+html[data-tema="papel"] .dg-no .cab .ic,html[data-tema="papel"] .dg-no.forte .cab .ic{border:0}
+html[data-tema="papel"] .dg-no .cab .ic{background:var(--sf2);color:var(--txt)}
+html[data-tema="papel"] .dg-no.forte .cab .ic{background:var(--amb-a);color:#7a5a12}
+html[data-tema="papel"] .dg-seta{color:#a0700a}
+/* escada (aula 1): títulos já trazem o número */
+.dg.escada .dg-no{grid-template-areas:"nome nome" "sub sub" "ic ic" "ul ul"}
+
+/* modo fixo (rolagem guiada) precisa caber em 1366×768 */
+.scrolly.fixo .dg-no{padding:8px 10px;row-gap:0}
+.scrolly.fixo .dg-no .cab .ic{width:58px;height:58px;margin-top:8px}
+.scrolly.fixo .dg-no .cab .ic .ico{width:26px;height:26px}
+.scrolly.fixo .dg-no .cab .ic.foto{width:64px;height:64px}
+.scrolly.fixo .dg-no.forte .cab .ic{width:44px;height:44px}
+.scrolly.fixo .dg-no.forte .cab .ic .ico{width:22px;height:22px}
+.scrolly.fixo .dg-no .nome{font-size:18px}
+.scrolly.fixo .dg-no .dn{width:30px;height:30px;font-size:14px}
+.scrolly.fixo .dg-no ul{margin-top:6px}
+.scrolly.fixo .dg-no li{padding:5px 2px}
+.scrolly.fixo .dg-seta{margin-top:34px}
+.scrolly.fixo .sc-cap h3{font-family:var(--serif);font-weight:600}
+
+/* passos, código, prática, teste: cartões mais leves */
+.sc-passo h3,.sc-cap h3,.pcorpo h3,.q-p,.exc h3{font-family:var(--serif);font-weight:600;letter-spacing:-.01em}
+.ptab,.exc,.q-op,.q-fb,.resumo div,.ex,.saida,.links a{background:none}
+.extra-t{font-family:var(--serif);font-weight:600;font-size:24px}
+.btn.cheio{background:var(--amb);border-color:var(--amb)}
+.btn.cheio:hover{background:var(--amb2)}
+
+/* celular */
+@media (max-width:900px){
+  .aula-hero.com-img{grid-template-columns:1fr}
+  .ah-img{order:-1;margin:0 calc(-1 * clamp(18px,4vw,56px));}
+  .ah-img img{min-height:0;max-height:300px;-webkit-mask-image:linear-gradient(to top,transparent 0,#000 30%);mask-image:linear-gradient(to top,transparent 0,#000 30%)}
+  .pontos{margin-bottom:22px}
+  .nesta2 ol{grid-template-columns:1fr}
+  .dg-seta{margin-top:0}
+  .dg-no{grid-template-columns:auto auto minmax(0,1fr);grid-template-areas:"dn ic nome" "dn ic sub" "ul ul ul";column-gap:14px}
+  .dg-no .cab .ic{margin-top:0;width:64px;height:64px}
+  .dg-no .cab .ic .ico{width:28px;height:28px}
+  .dg-no .cab .ic.foto{width:64px;height:64px}
+  .dg.escada .dg-no{grid-template-areas:"ic nome" "ic sub" "ul ul";grid-template-columns:auto minmax(0,1fr)}
+  .tema-btn{width:32px;height:32px}
+}
+@media (max-width:560px){
+  .principal{padding:18px 16px 60px}
+  .ah-img{margin:0 -16px}
+  .aula-hero h1{font-size:38px}
+  .nesta2 li{font-size:16.5px}
+  .dn{width:34px;height:34px;font-size:16px}
+}
