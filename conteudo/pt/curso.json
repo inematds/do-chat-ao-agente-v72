@@ -86,6 +86,45 @@
         "t": "vídeos"
       }
     ],
+    "cursos": {
+      "titulo": "Os 4 cursos completos",
+      "sub": "Cada degrau tem um curso inteiro, com prática e teste. Faça na ordem ou vá direto ao que você precisa agora.",
+      "abrir": "Abrir o curso",
+      "itens": [
+        {
+          "rot": "Degrau 1 · 8 aulas",
+          "t": "Do chat para o terminal",
+          "l": "Abrir o terminal sem medo, instalar o agente, montar a pasta com regras, guardar cada versão com o Git e pôr a sua página no ar.",
+          "href": "https://inematds.github.io/do-chat-ao-agente-terminal-v72/",
+          "href_idioma": true,
+          "img": "assets/img/cursos/terminal.jpg"
+        },
+        {
+          "rot": "Degrau 2 · 8 aulas",
+          "t": "O seu Jarvis",
+          "l": "Um assistente com a memória e a personalidade que você definir: quatro arquivos de texto, núcleo construído com testes e conversa pelo Telegram.",
+          "href": "https://inematds.github.io/do-chat-ao-agente-jarvis-v72/",
+          "href_idioma": true,
+          "img": "assets/img/cursos/jarvis.jpg"
+        },
+        {
+          "rot": "Degrau 3 · 7 aulas",
+          "t": "Filas: dez tarefas e vá dormir",
+          "l": "Mande dez tarefas, vá dormir e confira de manhã: o que entra na fila, o inemaccbot e os portões antes do que importa.",
+          "href": "https://inematds.github.io/do-chat-ao-agente-filas-v72/",
+          "href_idioma": true,
+          "img": "assets/img/cursos/filas.jpg"
+        },
+        {
+          "rot": "Degrau 4 · 8 aulas",
+          "t": "Redes no automático",
+          "l": "Reel em 7 etapas, vídeos por público e o canal do seu nicho que confere cada número e só publica o que você aprovou.",
+          "href": "https://inematds.github.io/do-chat-ao-agente-redes-v72/",
+          "href_idioma": true,
+          "img": "assets/img/cursos/redes.jpg"
+        }
+      ]
+    },
     "aulas_titulo": "As aulas",
     "aulas_sub": "Uma visão geral por degrau. Cada degrau tem um curso completo, linkado no fim da aula dele.",
     "blocos": [

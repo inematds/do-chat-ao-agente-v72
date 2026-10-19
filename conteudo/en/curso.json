@@ -86,6 +86,45 @@
         "t": "videos"
       }
     ],
+    "cursos": {
+      "titulo": "The 4 complete courses",
+      "sub": "Each step has a full course, with practice and a quiz. Go in order or jump straight to what you need right now.",
+      "abrir": "Open the course",
+      "itens": [
+        {
+          "rot": "Step 1 · 8 lessons",
+          "t": "From chat to the terminal",
+          "l": "Open the terminal without fear, install the agent, set up the folder with rules, save every version with Git and put your page online.",
+          "href": "https://inematds.github.io/do-chat-ao-agente-terminal-v72/",
+          "href_idioma": true,
+          "img": "assets/img/cursos/terminal.jpg"
+        },
+        {
+          "rot": "Step 2 · 8 lessons",
+          "t": "Your Jarvis",
+          "l": "An assistant with the memory and personality you define: four text files, a core built with tests and a chat over Telegram.",
+          "href": "https://inematds.github.io/do-chat-ao-agente-jarvis-v72/",
+          "href_idioma": true,
+          "img": "assets/img/cursos/jarvis.jpg"
+        },
+        {
+          "rot": "Step 3 · 7 lessons",
+          "t": "Queues: ten tasks and go to sleep",
+          "l": "Send ten tasks, go to sleep and check in the morning: what goes into the queue, the inemaccbot and the gates before what matters.",
+          "href": "https://inematds.github.io/do-chat-ao-agente-filas-v72/",
+          "href_idioma": true,
+          "img": "assets/img/cursos/filas.jpg"
+        },
+        {
+          "rot": "Step 4 · 8 lessons",
+          "t": "Social media on autopilot",
+          "l": "A reel in 7 stages, videos for each audience and the channel for your niche that checks every number and only publishes what you approved.",
+          "href": "https://inematds.github.io/do-chat-ao-agente-redes-v72/",
+          "href_idioma": true,
+          "img": "assets/img/cursos/redes.jpg"
+        }
+      ]
+    },
     "aulas_titulo": "The lessons",
     "aulas_sub": "An overview of each step. Each step has a full course, linked at the end of its lesson.",
     "blocos": [
@@ -201,7 +240,18 @@
     },
     "comecar": "Start lesson",
     "nesta_vai": "In this lesson, you will",
-    "trocar_tema": "Switch light/dark theme"
+    "trocar_tema": "Switch light/dark theme",
+    "conv_dica": "Choose your answer. The comment shows up right after, and the conversation continues based on your choice.",
+    "conv_voce": "You",
+    "conv_escolha": "Your answer",
+    "conv_boa": "Good choice",
+    "conv_meio": "Could be better",
+    "conv_ruim": "Weak choice",
+    "conv_fim": "End of the conversation",
+    "conv_placar": "You scored {p} out of {m} possible points.",
+    "conv_licao": "Lesson:",
+    "conv_recomecar": "Start the conversation over",
+    "conv_feita": "Your best score: {p} of {m} points."
   },
   "icone": "camadas"
 }

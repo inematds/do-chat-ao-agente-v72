@@ -86,6 +86,45 @@
         "t": "videos"
       }
     ],
+    "cursos": {
+      "titulo": "Los 4 cursos completos",
+      "sub": "Cada nivel tiene un curso entero, con práctica y prueba. Hazlos en orden o ve directo a lo que necesitas ahora.",
+      "abrir": "Abrir el curso",
+      "itens": [
+        {
+          "rot": "Nivel 1 · 8 clases",
+          "t": "Del chat a la terminal",
+          "l": "Abrir la terminal sin miedo, instalar el agente, armar la carpeta con reglas, guardar cada versión con Git y poner tu página en línea.",
+          "href": "https://inematds.github.io/do-chat-ao-agente-terminal-v72/",
+          "href_idioma": true,
+          "img": "assets/img/cursos/terminal.jpg"
+        },
+        {
+          "rot": "Nivel 2 · 8 clases",
+          "t": "Tu Jarvis",
+          "l": "Un asistente con la memoria y la personalidad que tú definas: cuatro archivos de texto, un núcleo construido con pruebas y conversación por Telegram.",
+          "href": "https://inematds.github.io/do-chat-ao-agente-jarvis-v72/",
+          "href_idioma": true,
+          "img": "assets/img/cursos/jarvis.jpg"
+        },
+        {
+          "rot": "Nivel 3 · 7 clases",
+          "t": "Colas: diez tareas y vete a dormir",
+          "l": "Manda diez tareas, vete a dormir y revisa en la mañana: lo que entra en la cola, el inemaccbot y las compuertas antes de lo que importa.",
+          "href": "https://inematds.github.io/do-chat-ao-agente-filas-v72/",
+          "href_idioma": true,
+          "img": "assets/img/cursos/filas.jpg"
+        },
+        {
+          "rot": "Nivel 4 · 8 clases",
+          "t": "Redes en automático",
+          "l": "Reel en 7 etapas, videos por público y el canal de tu nicho que revisa cada número y solo publica lo que tú aprobaste.",
+          "href": "https://inematds.github.io/do-chat-ao-agente-redes-v72/",
+          "href_idioma": true,
+          "img": "assets/img/cursos/redes.jpg"
+        }
+      ]
+    },
     "aulas_titulo": "Las clases",
     "aulas_sub": "Un resumen por nivel. Cada nivel tiene un curso completo, enlazado al final de su clase.",
     "blocos": [
@@ -201,7 +240,18 @@
     },
     "comecar": "Comenzar la lección",
     "nesta_vai": "En esta lección vas a",
-    "trocar_tema": "Cambiar entre tema claro/oscuro"
+    "trocar_tema": "Cambiar entre tema claro/oscuro",
+    "conv_dica": "Elige tu respuesta. El comentario aparece enseguida y la conversación sigue según tu elección.",
+    "conv_voce": "Tú",
+    "conv_escolha": "Tu respuesta",
+    "conv_boa": "Buena elección",
+    "conv_meio": "Se puede mejorar",
+    "conv_ruim": "Elección débil",
+    "conv_fim": "Fin de la conversación",
+    "conv_placar": "Hiciste {p} de {m} puntos posibles.",
+    "conv_licao": "Lección:",
+    "conv_recomecar": "Reiniciar la conversación",
+    "conv_feita": "Tu mejor puntaje: {p} de {m} puntos."
   },
   "icone": "camadas"
 }
