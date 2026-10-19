@@ -144,10 +144,10 @@
         },
         {
           "titulo": "Instalar",
-          "sub": "./start.sh",
+          "sub": "briefing + agente",
           "texto": [
-            "Clone o repositório e rode <code>./start.sh</code>. A configuração guiada pede o token, o modelo e a personalidade.",
-            "Use as respostas do seu meu-jarvis.md."
+            "Clone o INTELECTO, exporte o seu briefing na página de comparação e peça ao Claude Code ou ao Codex que construa a partir dele e do <code>doc/intelecto.md</code>, com testes.",
+            "Use as respostas do seu meu-jarvis.md. O passo a passo completo está na aula 4 do curso do degrau 2."
           ],
           "exemplo": {
             "rot": "Pronto quando",
@@ -179,17 +179,17 @@
           "conteudo": "# Meu Jarvis\n\n## Nome e jeito de falar\nNome:\nComo fala (formal, direto, bem-humorado):\n\n## Deve fazer toda semana\n1.\n2.\n3.\n\n## Nunca deve fazer\n1.\n2.\n3.\n\n## O que precisa lembrar de mim\n- Profissão:\n- Rotina:\n- Preferências:"
         },
         {
-          "rot": "Terminal · instalação",
+          "rot": "Terminal · baixar e provar o exemplo",
           "icone": "terminal",
-          "conteudo": "git clone https://github.com/inematds/intelecto.git\ncd intelecto\n./start.sh"
+          "conteudo": "git clone https://github.com/inematds/intelecto.git\ncd intelecto/exemplo-jarvis\npython3 -m unittest discover -s . -p 'test_*.py' -v\npython3 smoke.py"
         }
       ],
       "saida": {
         "selo": "real",
         "abas": [
           {
-            "rot": "O que a instalação pergunta",
-            "html": "<ol><li>O <b>token do Telegram</b> (do @BotFather).</li><li>O <b>modelo</b>: na nuvem (OpenRouter) ou local (Ollama).</li><li>A <b>personalidade</b>: use o seu meu-jarvis.md.</li></ol>"
+            "rot": "O que a construção precisa",
+            "html": "<ol><li>O <b>token do Telegram</b> (do @BotFather), só no .env.</li><li>O <b>modelo</b>: na nuvem (OpenRouter) ou local (Ollama).</li><li>A <b>personalidade</b>: o seu meu-jarvis.md.</li></ol>"
           },
           {
             "rot": "Nuvem ou local",
@@ -221,7 +221,7 @@
           "id": "e3",
           "titulo": "E3 · Instalar",
           "min": "30 min",
-          "texto": "Clone o INTELECTO, rode ./start.sh e responda com o seu desenho.",
+          "texto": "Clone o INTELECTO, exporte o briefing e peça ao agente que construa o seu Jarvis com testes (aula 4 do curso do degrau 2).",
           "pronto": "você manda \"oi\" e ele responde com o nome e o jeito que você definiu."
         },
         {
@@ -304,6 +304,11 @@
       "tipo": "links",
       "titulo": "Para aprofundar o degrau 2",
       "links": [
+        {
+          "t": "Curso completo do degrau 2: O seu Jarvis (8 aulas)",
+          "href": "https://inematds.github.io/do-chat-ao-agente-jarvis-v72/",
+          "icone": "robo"
+        },
         {
           "t": "INTELECTO: o assistente pessoal",
           "href": "https://inematds.github.io/intelecto/",

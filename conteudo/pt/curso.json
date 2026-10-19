@@ -87,7 +87,7 @@
       }
     ],
     "aulas_titulo": "As aulas",
-    "aulas_sub": "Uma visão geral por degrau. A prática completa de cada degrau fica nos exercícios e nos cursos de cada sequência.",
+    "aulas_sub": "Uma visão geral por degrau. Cada degrau tem um curso completo, linkado no fim da aula dele.",
     "blocos": [
       {
         "t": "Para quem é",

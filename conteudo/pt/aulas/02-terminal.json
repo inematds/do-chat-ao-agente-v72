@@ -317,6 +317,11 @@
       "titulo": "Para aprofundar o degrau 1",
       "links": [
         {
+          "t": "Curso completo do degrau 1: Terminal (8 aulas)",
+          "href": "https://inematds.github.io/do-chat-ao-agente-terminal-v72/",
+          "icone": "terminal"
+        },
+        {
           "t": "OSWork Quick: o caminho curto em 7 aulas",
           "href": "https://inematds.github.io/oswork-quick/",
           "icone": "terminal"

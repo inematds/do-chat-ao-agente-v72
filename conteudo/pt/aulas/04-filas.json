@@ -272,6 +272,11 @@
       "titulo": "Para aprofundar o degrau 3",
       "links": [
         {
+          "t": "Curso completo do degrau 3: Filas (7 aulas)",
+          "href": "https://inematds.github.io/do-chat-ao-agente-filas-v72/",
+          "icone": "fila"
+        },
+        {
           "t": "inemaccbot: guia de instalação e arquitetura",
           "href": "https://inematds.github.io/inemaccbot/guia/",
           "icone": "fila"

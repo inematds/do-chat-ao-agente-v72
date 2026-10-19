@@ -354,6 +354,11 @@
       "titulo": "Para aprofundar o degrau 4",
       "links": [
         {
+          "t": "Curso completo do degrau 4: Redes no automático (8 aulas)",
+          "href": "https://inematds.github.io/do-chat-ao-agente-redes-v72/",
+          "icone": "megafone"
+        },
+        {
           "t": "r7e (reel7etapas)",
           "href": "https://inematds.github.io/reel7etapas/guia/",
           "icone": "video"
