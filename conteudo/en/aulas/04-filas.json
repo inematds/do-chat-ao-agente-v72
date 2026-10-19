@@ -1,0 +1,298 @@
+{
+  "slug": "filas",
+  "num": 4,
+  "titulo": "Step 3: queues — ten tasks, then go to sleep",
+  "titulo_curto": "Queues (inemaccbot)",
+  "minutos": 12,
+  "lead": "An agent working alone does one thing at a time, and only while you’re watching. With a durable queue, each request becomes a saved task that can resume if something goes down, and workflows stop at a gate before anything important happens.",
+  "objetivo": "decide what goes into the queue, where the gates go, and how to check the result the next day.",
+  "competencias": [
+    "draw-queue",
+    "set-human-gate",
+    "resume-task",
+    "evaluate-batch-result"
+  ],
+  "aprende": [
+    {
+      "icone": "fila",
+      "t": "How a durable queue works"
+    },
+    {
+      "icone": "relogio",
+      "t": "Resume where it left off"
+    },
+    {
+      "icone": "portao",
+      "t": "Where to put the human gate"
+    },
+    {
+      "icone": "grafico",
+      "t": "Measure how many came out right"
+    }
+  ],
+  "secoes": [
+    {
+      "tipo": "diagrama",
+      "titulo": "A task’s journey",
+      "sub": "From request to result, with resuming and a gate.",
+      "nos": [
+        {
+          "icone": "enviar",
+          "titulo": "Requests",
+          "sub": "Telegram or folder",
+          "itens": [
+            {
+              "icone": "arquivo",
+              "t": "Transcribe a meeting"
+            },
+            {
+              "icone": "arquivo",
+              "t": "Post of the week"
+            },
+            {
+              "icone": "arquivo",
+              "t": "Explainer video"
+            }
+          ],
+          "detalhe": "Each request becomes a task: in inemaccbot, a Telegram message; in a homemade queue, a .md file in the entrada/ folder."
+        },
+        {
+          "icone": "fila",
+          "titulo": "Durable queue",
+          "sub": "Saved, not in memory",
+          "itens": [
+            {
+              "icone": "memoria",
+              "t": "Survives outages",
+              "sub": "task saved to disk"
+            },
+            {
+              "icone": "relogio",
+              "t": "Pick up where you left off",
+              "sub": "rodando/ goes back to entrada/"
+            }
+          ],
+          "detalhe": "The task is saved. If your computer shuts down or you stop, the next run picks up what’s left without redoing what’s already done.",
+          "forte": true
+        },
+        {
+          "icone": "robo",
+          "titulo": "Agent",
+          "sub": "One task at a time",
+          "itens": [
+            {
+              "icone": "check",
+              "t": "feito/"
+            },
+            {
+              "icone": "x",
+              "t": "falhou/"
+            }
+          ],
+          "detalhe": "The agent runs one task at a time. If it works, the response goes to feito; if there’s an error, it goes to falhou with the reason for you to check."
+        },
+        {
+          "icone": "portao",
+          "titulo": "Gate",
+          "sub": "Your approval",
+          "itens": [
+            {
+              "icone": "usuario",
+              "t": "Read, edit, approve"
+            }
+          ],
+          "detalhe": "For workflows that matter, the bot writes and stops. You read it, make edits if needed, and only then approve it. That’s when you manage instead of doing the work yourself."
+        }
+      ],
+      "volta": "Run it again to pick up only what’s left",
+      "legenda": "Examples of workflows that become tasks in inemaccbot: transcribe, dub, explainer video, course, and reel.",
+      "rolagem": true,
+      "rolagem_fim": {
+        "titulo": "A night in the queue",
+        "texto": "You send the tasks and go to sleep. The queue saves them, the agent runs one at a time, and it stops at the gate for anything that matters. In the morning, you check feito/ and falhou/."
+      }
+    },
+    {
+      "tipo": "simfila",
+      "titulo": "See the queue in action",
+      "sub": "Run it, interrupt it halfway through, and run it again. That’s what the homegrown queue does.",
+      "tarefas": [
+        "Transcribe Monday’s meeting",
+        "Summarize the client’s 3 PDFs",
+        "Draft this week’s post",
+        "2-minute product explainer",
+        "FAQ list"
+      ],
+      "falha": 3,
+      "rot": {
+        "entrada": "entrada/",
+        "rodando": "rodando/",
+        "feito": "feito/",
+        "falhou": "falhou/",
+        "rodar": "Run the queue",
+        "parar": "Interrupt (Ctrl+C)",
+        "zerar": "Start again"
+      },
+      "msg": {
+        "inicio": "5 tasks in entrada/. Click “Run the queue.”",
+        "rodando": "Running: one task at a time, from entrada/ to rodando/ and then feito/ or falhou/.",
+        "parou": "Interrupted. The task in progress stayed in rodando/. Run it again to see how it picks up where it left off.",
+        "retoma": "Resumed: what was in rodando/ went back to entrada/. Anything already in feito/ won’t be done again.",
+        "fim": "Queue empty: everything is in feito/.",
+        "fimfalha": "Queue empty. One task went to falhou/ with the reason: that’s the one you check in the morning."
+      },
+      "legenda": "Illustrative browser simulation: the tasks don’t actually run. The failure is intentional, to show the falhou/ folder."
+    },
+    {
+      "tipo": "codigo",
+      "titulo": "The homegrown queue and the queue on paper",
+      "sub": "Understand the idea in 30 lines before installing the bot.",
+      "blocos": [
+        {
+          "rot": "Terminal · homegrown queue (in the jornada-agentes repository)",
+          "icone": "terminal",
+          "conteudo": "mkdir -p fila/entrada\necho \"Summarize in 5 lines what a task queue is.\" > fila/entrada/01.md\necho \"List 3 risks of leaving an agent running on its own.\" > fila/entrada/02.md\n./ferramentas/fila-caseira.sh fila          # default engine: claude\n./ferramentas/fila-caseira.sh fila codex    # or codex"
+        },
+        {
+          "rot": "fila-no-papel.md",
+          "icone": "arquivo",
+          "conteudo": "| Task | Runs on its own? | Needs a gate? | Where is the gate? |\n|---|---|---|---|\n| Transcribe the meeting | yes | no | — |\n| This week’s post | yes | yes | before publishing |\n|  |  |  |  |\n|  |  |  |  |\n|  |  |  |  |\n|  |  |  |  |\n|  |  |  |  |\n|  |  |  |  |\n|  |  |  |  |\n|  |  |  |  |"
+        }
+      ],
+      "saida": {
+        "selo": "real",
+        "abas": [
+          {
+            "rot": "Bot commands",
+            "html": "<ul><li><code>/ping</code>: checks whether the bot responds (at the end of installation).</li><li><code>/ajuda</code>: lists the commands.</li><li><code>/fila</code>: shows the queues.</li><li><code>/promoavatar</code>: example of a workflow with a gate — the bot writes the text and stops for you to approve it.</li></ul>"
+          },
+          {
+            "rot": "How the homegrown queue decides",
+            "html": "<ol><li>Anything left in <code>rodando/</code> (after a crash or Ctrl+C) goes back to <code>entrada/</code>.</li><li>It picks up one task at a time from <code>entrada/</code>.</li><li>An empty response or an error goes to <code>falhou/</code> with the reason.</li><li>At the end, it shows how many tasks are in entrada, feito, and falhou.</li></ol>"
+          }
+        ]
+      }
+    },
+    {
+      "tipo": "pratica",
+      "titulo": "Practice: the 5 exercises in sequence 3",
+      "sub": "Prerequisite: sequences 1 and 2.",
+      "exercicios": [
+        {
+          "id": "e1",
+          "titulo": "E1 · The queue on paper",
+          "min": "15 min",
+          "texto": "List 10 repetitive tasks and mark whether they run on their own, need a gate, and where they run.",
+          "pronto": "all 10 lines are filled in, and at least two have a gate."
+        },
+        {
+          "id": "e2",
+          "titulo": "E2 · A homemade queue in 30 lines",
+          "min": "30 min",
+          "texto": "Create two tasks in queue/entrada and run fila-caseira.sh. Interrupt a run with Ctrl+C.",
+          "pronto": "both are in queue/feito, and you saw the queue pick up where it left off."
+        },
+        {
+          "id": "e3",
+          "titulo": "E3 · Install inemaccbot",
+          "min": "1 hr",
+          "texto": "Follow the guide until the bot responds in Telegram. Then test /ajuda and /fila.",
+          "pronto": "/ping responds in your Telegram."
+        },
+        {
+          "id": "e4",
+          "titulo": "E4 · Ten tasks, then go to sleep",
+          "min": "1 night",
+          "texto": "Send 5 to 10 tasks from your list and go do something else.",
+          "pronto": "the next day, you checked each result and noted how many were right on the first try.",
+          "dias": 1
+        },
+        {
+          "id": "e5",
+          "titulo": "E5 · The gate",
+          "min": "30 min",
+          "texto": "Use a workflow with a gate, such as /promoavatar: read it, make corrections, and only then approve it.",
+          "pronto": "you rejected or corrected at least one text before approving it."
+        }
+      ],
+      "fonte": "Complete exercises and the extra challenge (a new rule for the task that failed most often): <a href=\"https://github.com/inematds/jornada-agentes/blob/main/exercicios/03-filas.md\" target=\"_blank\" rel=\"noopener\">jornada-agentes/exercicios/03-filas.md</a>."
+    },
+    {
+      "tipo": "video",
+      "titulo": "Sequence 3 on video",
+      "sub": "inemaccbot's durable queue and approval gate.",
+      "chave": "seq3-filas"
+    },
+    {
+      "tipo": "quiz",
+      "titulo": "Test what you learned",
+      "sub": "The explanation appears after your answer.",
+      "perguntas": [
+        {
+          "p": "You interrupted the queue in the middle of a task. What happens when you run it again?",
+          "opcoes": [
+            "Everything starts over from the beginning.",
+            "The interrupted task goes back to entrada and the queue continues with what's left.",
+            "The interrupted task is lost.",
+            "The queue only starts working again the next day."
+          ],
+          "certa": 1,
+          "explica": "That's what makes the queue durable: anything left in rodando/ goes back to entrada/, and anything already in feito/ isn't repeated.",
+          "ref": "simfila"
+        },
+        {
+          "p": "For which task is a human gate most important?",
+          "opcoes": [
+            "Transcribing an internal meeting.",
+            "Summarizing PDFs for you to read yourself.",
+            "Publishing a post on behalf of the company.",
+            "Listing files in a folder."
+          ],
+          "certa": 2,
+          "explica": "Put the gate before anything with consequences outside the system: publishing, sending, spending. Transcribing for internal use can run on its own.",
+          "cert": true,
+          "ref": "diagrama"
+        },
+        {
+          "p": "What's the sign that you're managing, not just using?",
+          "opcoes": [
+            "Sending more tasks each night.",
+            "Rejecting or correcting a result before approving it, and turning the failure into a rule.",
+            "Switching models every week.",
+            "Turning off all the gates."
+          ],
+          "certa": 1,
+          "explica": "E5 and the extra challenge show you how: you read, correct, and approve, then add a new rule to AGENTS.md or the prompt for the task that failed most often.",
+          "ref": "pratica"
+        }
+      ]
+    },
+    {
+      "tipo": "links",
+      "titulo": "Go deeper on step 3",
+      "links": [
+        {
+          "t": "Complete step 3 course: Queues (7 lessons)",
+          "href": "https://inematds.github.io/do-chat-ao-agente-filas-v72/",
+          "icone": "fila"
+        },
+        {
+          "t": "inemaccbot: installation and architecture guide",
+          "href": "https://inematds.github.io/inemaccbot/guia/",
+          "icone": "fila"
+        },
+        {
+          "t": "INEMACCBOT course with Promoavatar",
+          "href": "https://eventos.inema.pro/inemaccbot.html",
+          "icone": "lista"
+        },
+        {
+          "t": "jornada-agentes repository (homemade queue)",
+          "href": "https://github.com/inematds/jornada-agentes",
+          "icone": "git"
+        }
+      ]
+    }
+  ],
+  "menu": "Queues"
+}

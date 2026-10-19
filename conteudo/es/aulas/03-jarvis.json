@@ -1,0 +1,336 @@
+{
+  "slug": "jarvis",
+  "num": 3,
+  "titulo": "Nivel 2: tu Jarvis con INTELECTO",
+  "titulo_curto": "Tu Jarvis (INTELECTO)",
+  "minutos": 10,
+  "lead": "Un asistente personal escrito desde cero en Python, pequeño a propósito: habla contigo por Telegram, recuerda las conversaciones y usa un modelo en la nube o local. Dejas de abrir un sitio para conversar: el asistente es tuyo.",
+  "objetivo": "diseñar, instalar y poner a trabajar un asistente con memoria y personalidad definidas por ti.",
+  "competencias": [
+    "disenar-asistente",
+    "configurar-bot-telegram",
+    "elegir-modelo-nube-local",
+    "crear-rutina"
+  ],
+  "aprende": [
+    {
+      "icone": "arquivo",
+      "t": "Diseñar el asistente antes de instalarlo"
+    },
+    {
+      "icone": "enviar",
+      "t": "Crear el bot en Telegram"
+    },
+    {
+      "icone": "memoria",
+      "t": "Probar la memoria"
+    },
+    {
+      "icone": "chip",
+      "t": "Elegir entre la nube y local"
+    }
+  ],
+  "secoes": [
+    {
+      "tipo": "diagrama",
+      "titulo": "La arquitectura de tu asistente",
+      "sub": "Del Telegram al modelo y de vuelta.",
+      "nos": [
+        {
+          "icone": "usuario",
+          "titulo": "Tú",
+          "sub": "En Telegram",
+          "itens": [
+            {
+              "icone": "chat",
+              "t": "\"día\""
+            },
+            {
+              "icone": "chat",
+              "t": "\"¿qué hago todos los lunes?\""
+            }
+          ],
+          "detalhe": "Conversas por Telegram, en el celular o en la computadora, como con cualquier contacto."
+        },
+        {
+          "icone": "enviar",
+          "titulo": "Bot de Telegram",
+          "sub": "Creado en @BotFather",
+          "itens": [
+            {
+              "icone": "cadeado",
+              "t": "Token solo en .env"
+            }
+          ],
+          "detalhe": "El bot es la puerta de entrada. Lo creas en @BotFather con /newbot y guardas el token solo en .env, como aprendiste en el nivel 1."
+        },
+        {
+          "icone": "cerebro",
+          "titulo": "INTELECTO",
+          "sub": "El asistente en Python",
+          "itens": [
+            {
+              "icone": "usuario",
+              "t": "Personalidad",
+              "sub": "de tu meu-jarvis.md"
+            },
+            {
+              "icone": "memoria",
+              "t": "Memoria de las conversaciones",
+              "sub": "lo que le contaste"
+            },
+            {
+              "icone": "lista",
+              "t": "Rutinas y pedidos fijos",
+              "sub": "\"día\" → 3 prioridades"
+            }
+          ],
+          "detalhe": "INTELECTO recibe el mensaje, combina la personalidad con lo que recuerda de ti y prepara la solicitud para el modelo. Es pequeño a propósito, para que puedas entenderlo y modificarlo.",
+          "forte": true
+        },
+        {
+          "icone": "chip",
+          "titulo": "Modelo",
+          "sub": "Nube o local",
+          "itens": [
+            {
+              "icone": "nuvem",
+              "t": "Nube: OpenRouter"
+            },
+            {
+              "icone": "chip",
+              "t": "Local: Ollama"
+            }
+          ],
+          "detalhe": "El modelo genera la respuesta. En la nube (OpenRouter) es más potente y tiene un costo por uso; en local (Ollama) funciona en tu computadora, si puede soportarlo."
+        }
+      ],
+      "volta": "La respuesta vuelve al mismo chat de Telegram",
+      "legenda": "¿Quieres conocer otros sistemas de asistente listos para instalar? En la sección JARVIS de Eventos encontrarás varios.",
+      "rolagem": true,
+      "rolagem_fim": {
+        "titulo": "La conversación completa",
+        "texto": "Escribes en Telegram, INTELECTO combina personalidad y memoria, el modelo responde y la respuesta vuelve al mismo chat. Todo es tuyo, con el token guardado en .env."
+      }
+    },
+    {
+      "tipo": "passos",
+      "titulo": "Del diseño a la rutina",
+      "sub": "Haz clic en cada etapa.",
+      "passos": [
+        {
+          "titulo": "Diseñar",
+          "sub": "meu-jarvis.md",
+          "texto": [
+            "Antes de instalar, escribe quién es el asistente: nombre, forma de hablar, tres cosas que debe hacer cada semana, tres que nunca debe hacer y qué necesita recordar sobre ti.",
+            "Este archivo responde las preguntas de la instalación."
+          ],
+          "exemplo": {
+            "rot": "Prueba",
+            "texto": "Otra persona lee el archivo y entiende quién es tu asistente."
+          }
+        },
+        {
+          "titulo": "Crear el bot",
+          "sub": "@BotFather",
+          "texto": [
+            "En Telegram, abre @BotFather, envía /newbot y elige un nombre y un @usuario.",
+            "Guarda el token solo en .env."
+          ],
+          "exemplo": {
+            "rot": "Regla del nivel 1",
+            "texto": "El token no aparece en ningún archivo aparte de .env."
+          }
+        },
+        {
+          "titulo": "Instalar",
+          "sub": "briefing + agente",
+          "texto": [
+            "Clona INTELECTO, exporta tu briefing desde la página de comparación y pídele a Claude Code o a Codex que lo construya a partir de ese briefing y de <code>doc/intelecto.md</code>, con pruebas.",
+            "Usa las respuestas de tu meu-jarvis.md. El paso a paso completo está en la lección 4 del curso del nivel 2."
+          ],
+          "exemplo": {
+            "rot": "Listo cuando",
+            "texto": "Envías \"oi\" y responde con el nombre y el estilo que definiste."
+          }
+        },
+        {
+          "titulo": "Memoria y rutina",
+          "sub": "Uso real",
+          "texto": [
+            "Cuéntale tres datos sobre ti un día y pregúntale por ellos al día siguiente, en una conversación nueva.",
+            "Después convierte una tarea de la semana en una solicitud fija y úsala cinco días seguidos."
+          ],
+          "exemplo": {
+            "rot": "Solicitud fija",
+            "texto": "Cada mañana, cuando envíe \"dia\", enumera mis tres prioridades a partir de lo que te conté ayer."
+          }
+        }
+      ]
+    },
+    {
+      "tipo": "codigo",
+      "titulo": "Modelo del diseño e instalación",
+      "sub": "Copia el modelo, complétalo y solo después instala.",
+      "blocos": [
+        {
+          "rot": "meu-jarvis.md",
+          "icone": "arquivo",
+          "conteudo": "# Mi Jarvis\n\n## Nombre y forma de hablar\nNombre:\nCómo habla (formal, directo, con humor):\n\n## Debe hacer cada semana\n1.\n2.\n3.\n\n## Nunca debe hacer\n1.\n2.\n3.\n\n## Lo que debe recordar sobre mí\n- Profesión:\n- Rutina:\n- Preferencias:"
+        },
+        {
+          "rot": "Terminal · descargar y probar el ejemplo",
+          "icone": "terminal",
+          "conteudo": "git clone https://github.com/inematds/intelecto.git\ncd intelecto/exemplo-jarvis\npython3 -m unittest discover -s . -p 'test_*.py' -v\npython3 smoke.py"
+        }
+      ],
+      "saida": {
+        "selo": "real",
+        "abas": [
+          {
+            "rot": "Qué necesita la construcción",
+            "html": "<ol><li>El <b>token de Telegram</b> (de @BotFather), solo en .env.</li><li>El <b>modelo</b>: en la nube (OpenRouter) o local (Ollama).</li><li>La <b>personalidad</b>: tu meu-jarvis.md.</li></ol>"
+          },
+          {
+            "rot": "Nube o local",
+            "html": "<p>Haz la misma pregunta a los dos y anota los resultados en una tabla:</p><ul><li><b>Tiempo de respuesta</b></li><li><b>Calidad</b> de la respuesta</li><li><b>Costo</b> por uso</li></ul><p>El objetivo es saber, con tus propios números, qué modelo usar para cada cosa.</p>"
+          }
+        ]
+      }
+    },
+    {
+      "tipo": "pratica",
+      "titulo": "Práctica: los 6 ejercicios de la secuencia 2",
+      "sub": "Requisito previo: haber completado la secuencia 1 (terminal, carpetas, .env).",
+      "exercicios": [
+        {
+          "id": "e1",
+          "titulo": "E1 · Diseña tu Jarvis",
+          "min": "15 min",
+          "texto": "Escribe el meu-jarvis.md: nombre, estilo, qué debe hacer, qué nunca debe hacer y qué debe recordar.",
+          "pronto": "el archivo cabe en una pantalla y otra persona entendería quién es tu asistente."
+        },
+        {
+          "id": "e2",
+          "titulo": "E2 · El bot en Telegram",
+          "min": "10 min",
+          "texto": "Crea el bot en @BotFather con /newbot y guarda el token en .env.",
+          "pronto": "tienes el token y no aparece en ningún archivo aparte de .env."
+        },
+        {
+          "id": "e3",
+          "titulo": "E3 · Instalar",
+          "min": "30 min",
+          "texto": "Clona INTELECTO, exporta el briefing y pídele al agente que construya tu Jarvis con pruebas (lección 4 del curso del nivel 2).",
+          "pronto": "envías \"oi\" y responde con el nombre y el estilo que definiste."
+        },
+        {
+          "id": "e4",
+          "titulo": "E4 · Prueba de memoria",
+          "min": "2 días",
+          "texto": "Día 1: cuéntale tres datos sobre ti. Día 2, en una conversación nueva: pregúntale por ellos.",
+          "pronto": "los recuerda sin que tengas que repetirlos.",
+          "dias": 2
+        },
+        {
+          "id": "e5",
+          "titulo": "E5 · Nube o local",
+          "min": "20 min",
+          "texto": "Haz la misma pregunta a un modelo en la nube (OpenRouter) y a uno local (Ollama). Anota el tiempo, la calidad y el costo.",
+          "pronto": "sabes decir qué modelo usar para cada cosa, con tus propios números."
+        },
+        {
+          "id": "e6",
+          "titulo": "E6 · Una rutina de verdad",
+          "min": "20 min",
+          "texto": "Convierte una de las tareas del E1 en una solicitud fija y úsala durante una semana.",
+          "pronto": "la usaste 5 días seguidos y anotaste qué mejorar.",
+          "dias": 5
+        }
+      ],
+      "fonte": "Ejercicios completos: <a href=\"https://github.com/inematds/jornada-agentes/blob/main/exercicios/02-jarvis.md\" target=\"_blank\" rel=\"noopener\">jornada-agentes/exercicios/02-jarvis.md</a>. El desafío extra (la lista de tareas para enviar y luego irte a dormir) es la entrada del nivel 3."
+    },
+    {
+      "tipo": "video",
+      "titulo": "La secuencia 2 en video",
+      "sub": "INTELECTO en Telegram, con memoria y personalidad.",
+      "chave": "seq2-jarvis"
+    },
+    {
+      "tipo": "quiz",
+      "titulo": "Pon a prueba lo que aprendiste",
+      "sub": "La explicación aparece después de tu respuesta.",
+      "perguntas": [
+        {
+          "p": "¿Por qué escribir el meu-jarvis.md antes de instalar?",
+          "opcoes": [
+            "Porque la instalación no funciona sin él.",
+            "Porque define el nombre, el estilo, los límites y qué debe recordar, y responde a las preguntas de la instalación.",
+            "Porque Telegram exige una descripción.",
+            "Para ahorrar tokens del modelo."
+          ],
+          "certa": 1,
+          "explica": "El diseño va primero: con el nombre, la personalidad, lo que debe hacer y lo que nunca debe hacer por escrito, respondes la configuración guiada sin improvisar y puedes evaluar si el asistente está bien configurado.",
+          "cert": true,
+          "ref": "passos"
+        },
+        {
+          "p": "El asistente no recordó lo que le contaste ayer. ¿Cuál es el primer paso?",
+          "opcoes": [
+            "Cambiar de modelo.",
+            "Desinstalar e instalar de nuevo.",
+            "Revisar en el curso cómo se guarda la memoria y ajustar.",
+            "Repetir los datos todos los días."
+          ],
+          "certa": 2,
+          "explica": "El ejercicio E4 dice exactamente eso: si no lo recuerda, revisa en el curso de INTELECTO cómo se guarda la memoria y ajusta.",
+          "ref": "passos"
+        },
+        {
+          "p": "¿Cuándo tiene sentido un modelo local (Ollama)?",
+          "opcoes": [
+            "Siempre, porque es más inteligente.",
+            "Cuando tu computadora puede con él y tus datos de tiempo, calidad y costo muestran que vale la pena.",
+            "Nunca, Telegram no lo acepta.",
+            "Solo para rutinas de madrugada."
+          ],
+          "certa": 1,
+          "explica": "La elección se basa en mediciones: haz la misma pregunta en ambos, crea una tabla con tiempo, calidad y costo, y decide con tus datos.",
+          "ref": "codigo"
+        }
+      ]
+    },
+    {
+      "tipo": "links",
+      "titulo": "Para profundizar en el nivel 2",
+      "links": [
+        {
+          "t": "Curso completo del nivel 2: Tu Jarvis (8 clases)",
+          "href": "https://inematds.github.io/do-chat-ao-agente-jarvis-v72/",
+          "icone": "robo"
+        },
+        {
+          "t": "INTELECTO: el asistente personal",
+          "href": "https://inematds.github.io/intelecto/",
+          "icone": "cerebro"
+        },
+        {
+          "t": "Curso INTELECTO",
+          "href": "https://inematds.github.io/intelecto-curso/",
+          "icone": "lista"
+        },
+        {
+          "t": "Área JARVIS en Eventos",
+          "href": "https://eventos.inema.pro/jarvis/",
+          "icone": "camadas"
+        },
+        {
+          "t": "Video: instala tu Jarvis",
+          "href": "https://inematds.github.io/intelecto-instalacao/videos/",
+          "icone": "video"
+        }
+      ]
+    }
+  ],
+  "menu": "Jarvis"
+}

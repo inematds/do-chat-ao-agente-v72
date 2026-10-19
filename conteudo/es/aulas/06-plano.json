@@ -1,0 +1,232 @@
+{
+  "slug": "plano",
+  "num": 6,
+  "titulo": "Tu plan: un nivel a la vez",
+  "titulo_curto": "Tu plan y el video final",
+  "minutos": 10,
+  "lead": "Ya conoces los cuatro niveles. Ahora toca armar el plan con fechas, hacer los ejercicios en orden y avanzar solo cuando el «listo cuando» se cumpla.",
+  "objetivo": "salir con un plan de ejecución con fechas y saber medir si cada nivel quedó firme.",
+  "competencias": [
+    "planificar-jornada",
+    "medir-listo-cuando",
+    "sequenciar-adocao"
+  ],
+  "aprende": [
+    {
+      "icone": "calendario",
+      "t": "Armar el plan con fechas"
+    },
+    {
+      "icone": "check",
+      "t": "Medir con el «listo cuando»"
+    },
+    {
+      "icone": "video",
+      "t": "Repasar toda la jornada en video"
+    },
+    {
+      "icone": "alvo",
+      "t": "Validar lo que aprendiste"
+    }
+  ],
+  "secoes": [
+    {
+      "tipo": "mapa",
+      "titulo": "El mapa de la formación",
+      "sub": "Los cuatro niveles, los 23 ejercicios y lo que aporta cada nivel. Haz clic en un ejercicio para ver el «listo cuando».",
+      "degraus": [
+        {
+          "aula": "terminal",
+          "icone": "terminal",
+          "quando": "Semana 1",
+          "titulo": "Terminal",
+          "sub": "Carpeta, AGENTS.md, Git y .env",
+          "saida": "Agente trabajando en tu carpeta, con una red de seguridad.",
+          "passo": "La base de todo. Seis ejercicios te llevan desde el primer mkdir hasta que el agente lee tus archivos y cita la fuente. Sin una base firme en este nivel, los otros tres se estancan."
+        },
+        {
+          "aula": "jarvis",
+          "icone": "robo",
+          "quando": "Semana 2",
+          "titulo": "Tu Jarvis",
+          "sub": "INTELECTO en Telegram",
+          "saida": "Tu asistente, con memoria y una rutina en uso.",
+          "passo": "Requiere el nivel 1 (terminal, carpetas y .env). Desde el diseño en meu-jarvis.md hasta usar la rutina durante cinco días seguidos; la prueba de memoria lleva dos días."
+        },
+        {
+          "aula": "filas",
+          "icone": "fila",
+          "quando": "Semana 3",
+          "titulo": "Colas",
+          "sub": "inemaccbot y compuerta",
+          "saida": "Tareas ejecutándose de noche, con compuerta en lo que importa.",
+          "passo": "Requiere los niveles 1 y 2. La cola en papel y la cola casera van antes que el bot; la noche de tareas muestra cuántas salen bien a la primera."
+        },
+        {
+          "aula": "redes",
+          "icone": "megafone",
+          "quando": "Semana 4 en adelante",
+          "titulo": "Redes",
+          "sub": "r7e, promoavatar, xviral",
+          "saida": "Canal de nicho con la fuente en pantalla y agenda con compuerta.",
+          "passo": "Requiere los tres anteriores: sin cola ni compuerta, automatizar las redes sociales hace que publiques algo incorrecto más rápido. Termina con una semana de aprobación manual."
+        }
+      ],
+      "resultado": {
+        "titulo": "Al final de la formación",
+        "texto": "Agente en tu carpeta, tu asistente, cola con compuertas y canal con la fuente en pantalla.",
+        "total": "23 ejercicios"
+      },
+      "rolagem_fim": {
+        "titulo": "Toda la formación",
+        "texto": "Cuatro niveles en secuencia, cada uno con su lista de ejercicios y un criterio verificable. Avanza solo cuando se cumpla el «listo cuando» del nivel anterior."
+      },
+      "legenda": "Orden obligatorio: cada nivel usa lo que preparaste en el anterior."
+    },
+    {
+      "tipo": "gerador",
+      "titulo": "Genera tu plan con fechas",
+      "sub": "Elige la fecha de inicio y cuánto tiempo tienes por semana. El plan respeta los ejercicios que requieren varios días de uso real.",
+      "curso": "Del chat al agente",
+      "horas_padrao": 5,
+      "degraus": [
+        {
+          "titulo": "Nivel 1 · Terminal",
+          "aula": "terminal"
+        },
+        {
+          "titulo": "Nivel 2 · Tu Jarvis",
+          "aula": "jarvis"
+        },
+        {
+          "titulo": "Nivel 3 · Colas",
+          "aula": "filas"
+        },
+        {
+          "titulo": "Nivel 4 · Redes",
+          "aula": "redes"
+        }
+      ],
+      "txt": {
+        "titulo": "Plan — Del chat al agente",
+        "inicio": "Inicio",
+        "ritmo": "Ritmo",
+        "termino": "Finalización prevista",
+        "ate": "hasta",
+        "pronto": "listo cuando",
+        "semanas": "semanas",
+        "travou": "## Qué se bloqueó y la regla que creé",
+        "h": "h por semana",
+        "exs": "ejercicios"
+      }
+    },
+    {
+      "tipo": "resumo",
+      "titulo": "La formación en tres frases",
+      "itens": [
+        {
+          "t": "Cambia de lugar",
+          "texto": "La mejora no viene de un modelo nuevo: viene de sacar el trabajo del chat y ponerlo en una carpeta con reglas, Git y secretos fuera del texto."
+        },
+        {
+          "t": "Un nivel a la vez",
+          "texto": "Terminal, asistente, cola y redes. Cada uno usa el anterior, y el «listo cuando» indica cuándo avanzar."
+        },
+        {
+          "t": "Tú sigues decidiendo",
+          "texto": "Una compuerta antes de lo importante, un rechazo que se convierte en regla y la fuente en pantalla. Automatizar no es desentenderse."
+        }
+      ]
+    },
+    {
+      "tipo": "video",
+      "titulo": "Video explicativo: toda la formación",
+      "sub": "Dos minutos y medio para repasar los cuatro niveles antes de empezar.",
+      "chave": "jornada-ia"
+    },
+    {
+      "tipo": "quiz",
+      "titulo": "Prueba final",
+      "sub": "Cuatro preguntas sobre toda la formación.",
+      "perguntas": [
+        {
+          "p": "¿Cuál es el orden de los niveles?",
+          "opcoes": [
+            "Redes, colas, asistente, terminal.",
+            "Terminal, asistente, colas, redes.",
+            "Asistente, terminal, redes, colas.",
+            "Cualquier orden, son independientes."
+          ],
+          "certa": 1,
+          "explica": "Terminal, asistente (Jarvis), colas y redes. Cada nivel usa el anterior.",
+          "cert": true,
+          "ref": "mapa"
+        },
+        {
+          "p": "¿Qué garantiza el «listo cuando»?",
+          "opcoes": [
+            "Que el ejercicio tomó el tiempo indicado.",
+            "Un criterio verificable para saber si puedes avanzar.",
+            "Que el agente no se equivocará.",
+            "Que se emitió el certificado."
+          ],
+          "certa": 1,
+          "explica": "Es el criterio que verificas: pasa al siguiente ejercicio solo cuando se cumpla.",
+          "ref": "pratica"
+        },
+        {
+          "p": "¿Cuál de estos elementos nunca debe ir en un archivo de texto del proyecto?",
+          "opcoes": [
+            "Las reglas del agente.",
+            "La lista de tareas de la cola.",
+            "El token del bot de Telegram.",
+            "Las reglas del nicho."
+          ],
+          "certa": 2,
+          "explica": "Los tokens y las claves van solo en .env, que está en .gitignore. Esto aplica del nivel 1 al 4.",
+          "ref": "mapa"
+        },
+        {
+          "p": "Un flujo publicará en nombre de la empresa cada madrugada. ¿Qué no puede faltar al principio?",
+          "opcoes": [
+            "Una compuerta humana antes de publicar.",
+            "Un modelo local.",
+            "Un reel de más de 60 segundos.",
+            "Desactivar los avisos de error."
+          ],
+          "certa": 0,
+          "explica": "Sin cola y sin compuerta, automatizar las redes sociales es publicar mal más rápido. La compuerta solo se quita después de varios días seguidos sin rechazos.",
+          "cert": true,
+          "ref": "mapa"
+        }
+      ]
+    },
+    {
+      "tipo": "links",
+      "titulo": "Continúa por aquí",
+      "links": [
+        {
+          "t": "Área Del chat al agente",
+          "href": "https://eventos.inema.pro/do-chat-ao-agente/",
+          "icone": "camadas"
+        },
+        {
+          "t": "Los 23 ejercicios (guía del recorrido)",
+          "href": "https://inematds.github.io/jornada-agentes/guia/",
+          "icone": "lista"
+        },
+        {
+          "t": "Serie de videos con guiones",
+          "href": "https://inematds.github.io/jornada-agentes/serie/jornada-ia/",
+          "icone": "video"
+        },
+        {
+          "t": "Cursos abiertos en INEMA.CLUB",
+          "href": "https://inema.club/",
+          "icone": "seta"
+        }
+      ]
+    }
+  ],
+  "menu": "Plan"
+}

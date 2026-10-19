@@ -34,11 +34,17 @@ for p in aulas:
         if not (p.parent / src).resolve().exists(): erros.append(f"{nome}: arquivo local ausente {src}")
 if not (base / "index.html").exists(): erros.append("index.html ausente")
 
+# a capa da página inicial e a foto de cada aula são obrigatórias (o gerador usa sem conferir)
+for img in ["assets/img/hero/inicio.jpg", *[f"assets/img/hero/{p.parent.name}.jpg" for p in aulas]]:
+    if not (RAIZ / img).exists(): erros.append(f"imagem ausente: {img}")
+if not (RAIZ / "assets/img/capa.jpg").exists(): erros.append("imagem ausente: assets/img/capa.jpg (og:image)")
+
 if args.links:
+    PROPRIO = json.loads((RAIZ / "conteudo" / "pt" / "curso.json").read_text())["url"]  # raiz: vale para PT, en/ e es/
     urls = set()
     for p in [base / "index.html", *aulas]:
         urls |= set(re.findall(r'(?:href|src)="(https://[^"]+)"', p.read_text()))
-    urls = {u for u in urls if "fonts.g" not in u and not u.startswith("https://inematds.github.io/do-chat-ao-agente-v72")}
+    urls = {u for u in urls if "fonts.g" not in u and not u.startswith(PROPRIO)}
     for u in sorted(urls):
         try:
             req = urllib.request.Request(u, method="HEAD" if u.endswith(".mp4") else "GET", headers={"User-Agent": "Mozilla/5.0"})

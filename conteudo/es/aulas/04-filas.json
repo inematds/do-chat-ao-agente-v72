@@ -1,0 +1,298 @@
+{
+  "slug": "filas",
+  "num": 4,
+  "titulo": "Nivel 3: colas — diez tareas y a dormir",
+  "titulo_curto": "Colas (inemaccbot)",
+  "minutos": 12,
+  "lead": "Un agente solo hace una cosa a la vez y solo mientras lo observas. Con una cola duradera, cada solicitud se convierte en una tarea guardada, que se retoma si algo falla, y los flujos se detienen en una compuerta antes de lo importante.",
+  "objetivo": "decidir qué va a la cola, dónde van las compuertas y cómo revisar el resultado al día siguiente.",
+  "competencias": [
+    "diseñar-cola",
+    "definir-compuerta-humana",
+    "retomar-tarea",
+    "evaluar-resultado-lote"
+  ],
+  "aprende": [
+    {
+      "icone": "fila",
+      "t": "Cómo funciona una cola duradera"
+    },
+    {
+      "icone": "relogio",
+      "t": "Retomar desde donde se quedó"
+    },
+    {
+      "icone": "portao",
+      "t": "Dónde poner la compuerta humana"
+    },
+    {
+      "icone": "grafico",
+      "t": "Medir cuántas salieron bien"
+    }
+  ],
+  "secoes": [
+    {
+      "tipo": "diagrama",
+      "titulo": "El recorrido de una tarea",
+      "sub": "De la solicitud al resultado, con reanudación y compuerta.",
+      "nos": [
+        {
+          "icone": "enviar",
+          "titulo": "Solicitudes",
+          "sub": "Telegram o carpeta",
+          "itens": [
+            {
+              "icone": "arquivo",
+              "t": "Transcribir una reunión"
+            },
+            {
+              "icone": "arquivo",
+              "t": "Publicación de la semana"
+            },
+            {
+              "icone": "arquivo",
+              "t": "Video explicativo"
+            }
+          ],
+          "detalhe": "Cada solicitud se convierte en una tarea: en inemaccbot, un mensaje en Telegram; en la cola casera, un archivo .md en la carpeta entrada/."
+        },
+        {
+          "icone": "fila",
+          "titulo": "Cola duradera",
+          "sub": "Guardada, no en la memoria",
+          "itens": [
+            {
+              "icone": "memoria",
+              "t": "Sobrevive a las caídas",
+              "sub": "tarea guardada en disco"
+            },
+            {
+              "icone": "relogio",
+              "t": "Retoma desde donde te quedaste",
+              "sub": "rodando/ vuelve a entrada"
+            }
+          ],
+          "detalhe": "La tarea queda guardada. Si la computadora se apaga o interrumpes, la siguiente ejecución retoma lo que quedó, sin repetir lo que ya se hizo.",
+          "forte": true
+        },
+        {
+          "icone": "robo",
+          "titulo": "Agente",
+          "sub": "Una tarea a la vez",
+          "itens": [
+            {
+              "icone": "check",
+              "t": "feito/"
+            },
+            {
+              "icone": "x",
+              "t": "falhou/"
+            }
+          ],
+          "detalhe": "El agente ejecuta una tarea a la vez. Si sale bien, la respuesta va a feito; si hay un error, va a falhou, con el motivo para que lo revises."
+        },
+        {
+          "icone": "portao",
+          "titulo": "Compuerta",
+          "sub": "Tu aprobación",
+          "itens": [
+            {
+              "icone": "usuario",
+              "t": "Leer, corregir, aprobar"
+            }
+          ],
+          "detalhe": "En los flujos importantes, el bot escribe y se detiene. Tú lees, corriges si hace falta y solo entonces apruebas. Es el momento en que gestionas en vez de hacerlo todo."
+        }
+      ],
+      "volta": "Volver a ejecutar solo retoma lo que quedó",
+      "legenda": "Ejemplos de flujos que se convierten en tareas en inemaccbot: transcribir, doblar, video explicativo, curso y reel.",
+      "rolagem": true,
+      "rolagem_fim": {
+        "titulo": "Una noche de cola",
+        "texto": "Envías las tareas y te vas a dormir. La cola las guarda, el agente ejecuta una a la vez y se detiene en la compuerta de lo importante. Por la mañana, revisas feito/ y falhou/."
+      }
+    },
+    {
+      "tipo": "simfila",
+      "titulo": "Mira cómo funciona la cola",
+      "sub": "Ejecútala, interrúmpela a la mitad y vuelve a ejecutarla. Eso es lo que hace la cola casera.",
+      "tarefas": [
+        "Transcribir la reunión del lunes",
+        "Resumir los 3 PDF del cliente",
+        "Borrador de la publicación de la semana",
+        "Video explicativo de 2 min sobre el producto",
+        "Lista de preguntas frecuentes"
+      ],
+      "falha": 3,
+      "rot": {
+        "entrada": "entrada/",
+        "rodando": "rodando/",
+        "feito": "feito/",
+        "falhou": "falhou/",
+        "rodar": "Ejecutar la cola",
+        "parar": "Interrumpir (Ctrl+C)",
+        "zerar": "Reiniciar"
+      },
+      "msg": {
+        "inicio": "5 tareas en entrada/. Haz clic en \"Ejecutar la cola\".",
+        "rodando": "En ejecución: una tarea a la vez, de entrada/ a rodando/ y luego a feito/ o falhou/.",
+        "parou": "Interrumpido. La tarea que estaba en curso quedó en rodando/. Vuelve a ejecutar para ver cómo se retoma.",
+        "retoma": "Retomada: lo que estaba en rodando/ volvió a entrada/. Lo que ya estaba en feito/ no se repite.",
+        "fim": "Cola vacía: todo está en feito/.",
+        "fimfalha": "Cola vacía. Una tarea fue a falhou/ con el motivo: es la que revisas por la mañana."
+      },
+      "legenda": "Simulación ilustrativa en el navegador: las tareas no se ejecutan de verdad. El fallo es intencional para mostrar la carpeta falhou/."
+    },
+    {
+      "tipo": "codigo",
+      "titulo": "La cola casera y la cola en papel",
+      "sub": "Entiende la idea con 30 líneas antes de instalar el bot.",
+      "blocos": [
+        {
+          "rot": "Terminal · cola casera (en el repositorio jornada-agentes)",
+          "icone": "terminal",
+          "conteudo": "mkdir -p fila/entrada\necho \"Resume en 5 líneas qué es una cola de tareas.\" > fila/entrada/01.md\necho \"Enumera 3 riesgos de dejar un agente funcionando sin supervisión.\" > fila/entrada/02.md\n./ferramentas/fila-caseira.sh fila          # motor padrão: claude\n./ferramentas/fila-caseira.sh fila codex    # ou o codex"
+        },
+        {
+          "rot": "fila-no-papel.md",
+          "icone": "arquivo",
+          "conteudo": "| Tarea | ¿Se ejecuta sola? | ¿Necesita compuerta? | ¿Dónde está la compuerta? |\n|---|---|---|---|\n| Transcribir la reunión | sí | no | — |\n| Publicación de la semana | sí | sí | antes de publicar |\n|  |  |  |  |\n|  |  |  |  |\n|  |  |  |  |\n|  |  |  |  |\n|  |  |  |  |\n|  |  |  |  |\n|  |  |  |  |\n|  |  |  |  |"
+        }
+      ],
+      "saida": {
+        "selo": "real",
+        "abas": [
+          {
+            "rot": "Comandos del bot",
+            "html": "<ul><li><code>/ping</code>: comprueba si el bot responde (al final de la instalación).</li><li><code>/ajuda</code>: muestra la lista de comandos.</li><li><code>/fila</code>: muestra las colas.</li><li><code>/promoavatar</code>: ejemplo de un flujo con compuerta: el bot escribe los textos y se detiene para que los apruebes.</li></ul>"
+          },
+          {
+            "rot": "Cómo decide la cola casera",
+            "html": "<ol><li>Lo que quedó en <code>rodando/</code> (por una caída o Ctrl+C) vuelve a <code>entrada/</code>.</li><li>Toma una tarea a la vez de <code>entrada/</code>.</li><li>Si la respuesta está vacía o hay un error, va a <code>falhou/</code> con el motivo.</li><li>Al final, muestra cuántas tareas hay en entrada, feito y falhou.</li></ol>"
+          }
+        ]
+      }
+    },
+    {
+      "tipo": "pratica",
+      "titulo": "Práctica: los 5 ejercicios de la secuencia 3",
+      "sub": "Requisito previo: secuencias 1 y 2.",
+      "exercicios": [
+        {
+          "id": "e1",
+          "titulo": "E1 · La cola en papel",
+          "min": "15 min",
+          "texto": "Anota 10 tareas repetitivas e indica si se ejecutan solas, si necesitan una compuerta y dónde.",
+          "pronto": "las 10 líneas están completas y al menos dos tienen compuerta."
+        },
+        {
+          "id": "e2",
+          "titulo": "E2 · Cola casera en 30 líneas",
+          "min": "30 min",
+          "texto": "Crea dos tareas en cola/entrada y ejecuta fila-caseira.sh. Interrumpe una ronda con Ctrl+C.",
+          "pronto": "las dos están en fila/feito y viste que la cola continuó desde donde se detuvo."
+        },
+        {
+          "id": "e3",
+          "titulo": "E3 · Instalar el inemaccbot",
+          "min": "1 h",
+          "texto": "Sigue la guía hasta que el bot responda en Telegram. Después prueba /ajuda y /fila.",
+          "pronto": "/ping responde en tu Telegram."
+        },
+        {
+          "id": "e4",
+          "titulo": "E4 · Diez tareas y a dormir",
+          "min": "1 noche",
+          "texto": "Envía de 5 a 10 tareas de tu lista y ve a hacer otra cosa.",
+          "pronto": "al día siguiente revisaste cada resultado y anotaste cuántos salieron bien a la primera.",
+          "dias": 1
+        },
+        {
+          "id": "e5",
+          "titulo": "E5 · La compuerta",
+          "min": "30 min",
+          "texto": "Usa un flujo con compuerta, como /promoavatar: lee, corrige y solo entonces aprueba.",
+          "pronto": "rechazaste o corregiste al menos un texto antes de aprobarlo."
+        }
+      ],
+      "fonte": "Ejercicios completos y el desafío extra (una regla nueva para la tarea que más falló): <a href=\"https://github.com/inematds/jornada-agentes/blob/main/exercicios/03-filas.md\" target=\"_blank\" rel=\"noopener\">jornada-agentes/exercicios/03-filas.md</a>."
+    },
+    {
+      "tipo": "video",
+      "titulo": "La secuencia 3 en video",
+      "sub": "La cola duradera del inemaccbot y la compuerta de aprobación.",
+      "chave": "seq3-filas"
+    },
+    {
+      "tipo": "quiz",
+      "titulo": "Pon a prueba lo que aprendiste",
+      "sub": "La explicación aparece después de tu respuesta.",
+      "perguntas": [
+        {
+          "p": "Interrumpiste la cola a mitad de una tarea. ¿Qué pasa cuando la ejecutas de nuevo?",
+          "opcoes": [
+            "Todo se vuelve a hacer desde el principio.",
+            "La tarea interrumpida vuelve a entrada/ y la cola sigue con lo que queda.",
+            "La tarea interrumpida se pierde.",
+            "La cola solo vuelve a funcionar al día siguiente."
+          ],
+          "certa": 1,
+          "explica": "Eso es lo que hace duradera a la cola: lo que quedó en rodando/ vuelve a entrada/, y lo que ya está en feito/ no se vuelve a hacer.",
+          "ref": "simfila"
+        },
+        {
+          "p": "¿En qué tarea es más importante la compuerta humana?",
+          "opcoes": [
+            "Transcribir una reunión interna.",
+            "Resumir PDFs para leerlos tú mismo.",
+            "Publicar una entrada en nombre de la empresa.",
+            "Listar archivos de una carpeta."
+          ],
+          "certa": 2,
+          "explica": "La compuerta va antes de lo que tiene consecuencias externas: publicar, enviar, gastar. La transcripción para uso interno puede ejecutarse sola.",
+          "cert": true,
+          "ref": "diagrama"
+        },
+        {
+          "p": "¿Cuál es la señal de que estás gestionando y no solo usando?",
+          "opcoes": [
+            "Enviar más tareas por noche.",
+            "Rechazar o corregir un resultado antes de aprobarlo y convertir el fallo en una regla.",
+            "Cambiar de modelo cada semana.",
+            "Desactivar todas las compuertas."
+          ],
+          "certa": 1,
+          "explica": "El E5 y el desafío extra lo muestran: lees, corriges, apruebas y la tarea que más falló recibe una regla nueva en AGENTS.md o en el prompt.",
+          "ref": "pratica"
+        }
+      ]
+    },
+    {
+      "tipo": "links",
+      "titulo": "Para profundizar en el nivel 3",
+      "links": [
+        {
+          "t": "Curso completo del nivel 3: Colas (7 clases)",
+          "href": "https://inematds.github.io/do-chat-ao-agente-filas-v72/",
+          "icone": "fila"
+        },
+        {
+          "t": "inemaccbot: guía de instalación y arquitectura",
+          "href": "https://inematds.github.io/inemaccbot/guia/",
+          "icone": "fila"
+        },
+        {
+          "t": "Curso INEMACCBOT con Promoavatar",
+          "href": "https://eventos.inema.pro/inemaccbot.html",
+          "icone": "lista"
+        },
+        {
+          "t": "Repositorio jornada-agentes (cola casera)",
+          "href": "https://github.com/inematds/jornada-agentes",
+          "icone": "git"
+        }
+      ]
+    }
+  ],
+  "menu": "Colas"
+}

@@ -1,0 +1,348 @@
+{
+  "slug": "terminal",
+  "num": 2,
+  "titulo": "Step 1: from chat to the terminal (OSWork)",
+  "titulo_curto": "Terminal (OSWork)",
+  "minutos": 12,
+  "lead": "The terminal is just another window. With six commands, you can move through your folders; with an AGENTS.md, the agent knows who you are and what it can do; with Git, you can undo any mistake.",
+  "objetivo": "set up the agent’s work folder with rules, a safety net, and secrets kept out of the text.",
+  "competencias": [
+    "structure-agent-folder",
+    "write-agents-md",
+    "track-changes-with-git",
+    "protect-secrets"
+  ],
+  "aprende": [
+    {
+      "icone": "terminal",
+      "t": "Move through folders in the terminal"
+    },
+    {
+      "icone": "arquivo",
+      "t": "Write the agent manual (AGENTS.md)"
+    },
+    {
+      "icone": "git",
+      "t": "Undo any change with Git"
+    },
+    {
+      "icone": "cadeado",
+      "t": "Keep keys out of the text"
+    }
+  ],
+  "secoes": [
+    {
+      "tipo": "diagrama",
+      "titulo": "How the pieces fit together",
+      "sub": "You give the task, the agent works inside the folder, and you review it.",
+      "nos": [
+        {
+          "icone": "usuario",
+          "titulo": "You",
+          "sub": "Give the task",
+          "itens": [
+            {
+              "icone": "chat",
+              "t": "\"Create an index.html about me\""
+            }
+          ],
+          "detalhe": "You’re still the one who decides: you ask, review the result, and accept or undo it. Giving the task, reviewing, and deciding is management."
+        },
+        {
+          "icone": "terminal",
+          "titulo": "Terminal",
+          "sub": "cmd, Mac Terminal, or Linux terminal",
+          "itens": [
+            {
+              "icone": "pasta",
+              "t": "cd, mkdir, dir / ls"
+            },
+            {
+              "icone": "robo",
+              "t": "claude or codex"
+            }
+          ],
+          "detalhe": "This is how you get to the folder and call the agent. On Windows, use cmd; on Mac and Linux, use the Terminal."
+        },
+        {
+          "icone": "pasta",
+          "titulo": "Project folder",
+          "sub": "projetos/meu-primeiro-agente",
+          "itens": [
+            {
+              "icone": "arquivo",
+              "t": "AGENTS.md",
+              "sub": "rules and who you are"
+            },
+            {
+              "icone": "arquivo",
+              "t": "index.html",
+              "sub": "the work"
+            },
+            {
+              "icone": "cadeado",
+              "t": ".env (outside Git)",
+              "sub": "keys and passwords"
+            },
+            {
+              "icone": "git",
+              "t": ".git",
+              "sub": "history for undoing changes"
+            }
+          ],
+          "detalhe": "Everything the agent needs to know goes here: the rules in AGENTS.md, the work in the files, the keys in .env (which Git ignores), and the history in .git.",
+          "forte": true
+        },
+        {
+          "icone": "robo",
+          "titulo": "Agent",
+          "sub": "Claude Code or Codex",
+          "itens": [
+            {
+              "icone": "lupa",
+              "t": "Reads AGENTS.md"
+            },
+            {
+              "icone": "arquivo",
+              "t": "Creates and edits files"
+            },
+            {
+              "icone": "check",
+              "t": "Says what changed"
+            }
+          ],
+          "detalhe": "The agent reads AGENTS.md before starting, works on the files in the folder, and, if the rules require it, says what changed and how you can review it."
+        }
+      ],
+      "volta": "Not happy with it? git restore returns the file to the last saved version",
+      "legenda": "The same files work for Claude Code and Codex: both read AGENTS.md.",
+      "rolagem": true,
+      "rolagem_fim": {
+        "titulo": "The full cycle",
+        "texto": "You ask, the agent works inside the folder following AGENTS.md, and says what changed. You review it. If you like it, commit; if not, use git restore."
+      }
+    },
+    {
+      "tipo": "passos",
+      "titulo": "The work cycle with the agent",
+      "sub": "Click each step.",
+      "passos": [
+        {
+          "titulo": "Ask",
+          "sub": "One clear task",
+          "texto": [
+            "Inside the folder, run <code>claude</code> or <code>codex</code> and ask for one thing, with the result you expect.",
+            "Start by asking it to read AGENTS.md so it follows your rules."
+          ],
+          "exemplo": {
+            "rot": "Request",
+            "texto": "Read AGENTS.md. Create an index.html with a simple page about me, using the information there."
+          }
+        },
+        {
+          "titulo": "Run",
+          "sub": "The agent works",
+          "texto": [
+            "The agent creates and edits files in the folder. It may ask permission before running commands.",
+            "Your role here is to read what it proposes, not type for it."
+          ],
+          "exemplo": {
+            "rot": "What appears",
+            "texto": "The agent creates index.html and explains what it did."
+          }
+        },
+        {
+          "titulo": "Review",
+          "sub": "Open and look",
+          "texto": [
+            "Open the result (the page in your browser, the summary, or the file) and compare it with what you asked for.",
+            "Ask for at least one correction: that’s the habit that separates using from managing."
+          ],
+          "exemplo": {
+            "rot": "Correction",
+            "texto": "Change the title to \"HR Consulting\" and add a contact section."
+          }
+        },
+        {
+          "titulo": "Save or undo",
+          "sub": "Git",
+          "texto": [
+            "Like it? <code>git add .</code> and <code>git commit -m \"...\"</code> save the version.",
+            "Don’t like it? <code>git restore index.html</code> restores the saved version. No panic."
+          ],
+          "exemplo": {
+            "rot": "Golden rule",
+            "texto": "Make a commit before asking for a big change."
+          }
+        }
+      ]
+    },
+    {
+      "tipo": "codigo",
+      "titulo": "The files and commands in this sequence",
+      "sub": "Copy and use them. Replace the text between the < > signs with your own.",
+      "blocos": [
+        {
+          "rot": "Terminal · first folder",
+          "icone": "terminal",
+          "conteudo": "mkdir projetos\ncd projetos\nmkdir meu-primeiro-agente\ncd meu-primeiro-agente\ndir      # Windows (on Mac and Linux: ls)"
+        },
+        {
+          "rot": "AGENTS.md",
+          "icone": "arquivo",
+          "conteudo": "# Who I am\n<your name, your profession, who you work for>\n\n# Rules for this project\n- Write in Portuguese, using short sentences.\n- Don’t delete files without asking.\n- Before finishing, say what changed and how I can check it.\n- Never write keys or passwords in a text file; they belong in .env.\n\n# What’s here\n- index.html: my page"
+        },
+        {
+          "rot": "Terminal · Git and keeping secrets out of text",
+          "icone": "git",
+          "conteudo": "git init\necho .env> .gitignore\ngit add .\ngit commit -m \"primeira versão\"\n\n# undo an agent's change:\ngit restore index.html\n\n# .env must NOT appear here:\ngit status"
+        }
+      ],
+      "saida": {
+        "selo": "real",
+        "abas": [
+          {
+            "rot": "How to check",
+            "html": "<ol><li>You can reach the folder using only the terminal and say which folder you’re in.</li><li>AGENTS.md has at least three rules you wrote.</li><li>The page opens in your browser, and you asked for at least one correction.</li><li><code>git status</code> does not show <code>.env</code>.</li></ol>"
+          },
+          {
+            "rot": "Common mistakes",
+            "html": "<ul><li><b>Skipping Git</b>: the agent’s first bad change means manual rework.</li><li><b>Key in AGENTS.md</b>: anything in plain text could end up on GitHub. Keep keys only in .env.</li><li><b>Vague request</b>: \"improve the page\" leads to changes you don’t know how to check. Ask for a result you can see.</li></ul>"
+          }
+        ]
+      }
+    },
+    {
+      "tipo": "pratica",
+      "titulo": "Practice: the 6 exercises in sequence 1",
+      "sub": "Do them in order. Move on only when the \"done when\" condition is true.",
+      "exercicios": [
+        {
+          "id": "e1",
+          "titulo": "E1 · First folder using the terminal",
+          "min": "10 min",
+          "texto": "Create projetos/meu-primeiro-agente, go into it, and list its contents. Open the same folder in File Explorer (or Finder) and compare.",
+          "pronto": "you can reach the folder using only the terminal, without the mouse, and say which folder you’re in."
+        },
+        {
+          "id": "e2",
+          "titulo": "E2 · The employee handbook",
+          "min": "15 min",
+          "texto": "Create AGENTS.md with who you are, the project rules, and what’s in the folder.",
+          "pronto": "the file exists and has at least three rules that you wrote yourself."
+        },
+        {
+          "id": "e3",
+          "titulo": "E3 · The first task",
+          "min": "15 min",
+          "texto": "Call the agent and ask it to create index.html based on AGENTS.md. Open it in your browser and ask for a change.",
+          "pronto": "the page opens, and you asked the agent for at least one correction."
+        },
+        {
+          "id": "e4",
+          "titulo": "E4 · The safety net",
+          "min": "20 min",
+          "texto": "Run git init, add, and commit. Ask for a big change, and if you don’t like it, revert it with git restore.",
+          "pronto": "you undid an agent’s change with one command, no panic."
+        },
+        {
+          "id": "e5",
+          "titulo": "E5 · Keep secrets out of the text",
+          "min": "10 min",
+          "texto": "Create a .env file with a fake key and a .gitignore file with the line .env. Add the rule to AGENTS.md.",
+          "pronto": "git status does not show .env."
+        },
+        {
+          "id": "e6",
+          "titulo": "E6 · The agent reads your files",
+          "min": "20 min",
+          "texto": "Put three of your own texts in the folder and ask for a resumo.md with 5 decisions and 5 open items, citing the source of each one.",
+          "pronto": "you found at least two of the quoted sentences in the original."
+        }
+      ],
+      "fonte": "Complete exercises, including the extra challenge (repeat with the other agent): <a href=\"https://github.com/inematds/jornada-agentes/blob/main/exercicios/01-oswork.md\" target=\"_blank\" rel=\"noopener\">jornada-agentes/exercicios/01-oswork.md</a>."
+    },
+    {
+      "tipo": "video",
+      "titulo": "Sequence 1 in video",
+      "sub": "Six commands, one AGENTS.md, and the first task.",
+      "chave": "seq1-oswork"
+    },
+    {
+      "tipo": "quiz",
+      "titulo": "Test what you learned",
+      "sub": "The explanation appears after your answer.",
+      "perguntas": [
+        {
+          "p": "Where does an API key go in a project?",
+          "opcoes": [
+            "In AGENTS.md, so the agent knows how to use it.",
+            "In .env, which is listed in .gitignore.",
+            "In index.html, as a comment.",
+            "In an email to yourself."
+          ],
+          "certa": 1,
+          "explica": "Keep the key only in .env, and put .env in .gitignore. That way, git status won’t show the file, and it won’t go to GitHub.",
+          "cert": true,
+          "ref": "codigo"
+        },
+        {
+          "p": "The agent made a big change you didn’t approve. What should you do?",
+          "opcoes": [
+            "Delete the folder and start over.",
+            "Ask the agent to try to remember how it was.",
+            "Run git restore on the file to return it to the last saved version.",
+            "Copy the old file from a manual backup."
+          ],
+          "certa": 2,
+          "explica": "With a commit made before the change, git restore returns the file to its previous state in one command. That’s why the rule is: commit before asking for a big change.",
+          "ref": "passos"
+        },
+        {
+          "p": "What is AGENTS.md for?",
+          "opcoes": [
+            "To list terminal commands.",
+            "To store passwords securely.",
+            "It’s the manual the agent reads before working: who you are, the rules, and what’s in the folder.",
+            "It’s required only in Codex."
+          ],
+          "certa": 2,
+          "explica": "AGENTS.md is the employee handbook. Claude Code and Codex read the same file, so the rules apply to both.",
+          "ref": "codigo"
+        }
+      ]
+    },
+    {
+      "tipo": "links",
+      "titulo": "Go deeper on step 1",
+      "links": [
+        {
+          "t": "Complete step 1 course: Terminal (8 lessons)",
+          "href": "https://inematds.github.io/do-chat-ao-agente-terminal-v72/",
+          "icone": "terminal"
+        },
+        {
+          "t": "OSWork Quick: the short route in 7 lessons",
+          "href": "https://inematds.github.io/oswork-quick/",
+          "icone": "terminal"
+        },
+        {
+          "t": "OSWork v6.2: a step-by-step guide for beginners",
+          "href": "https://inematds.github.io/oswork-v62/",
+          "icone": "lista"
+        },
+        {
+          "t": "OSWork area in Events",
+          "href": "https://eventos.inema.pro/oswork/",
+          "icone": "camadas"
+        },
+        {
+          "t": "Video: OSWork in practice, command by command",
+          "href": "https://inematds.github.io/oswork-terminal/videos/",
+          "icone": "video"
+        }
+      ]
+    }
+  ],
+  "menu": "Terminal"
+}

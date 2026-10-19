@@ -1,0 +1,395 @@
+{
+  "slug": "redes",
+  "num": 5,
+  "titulo": "Nivel 4: redes en automático, con fuentes en pantalla",
+  "titulo_curto": "Redes en automático",
+  "minutos": 14,
+  "lead": "r7e arma el reel en siete etapas activadas por disparadores. promoavatar hace videos con avatar para cada público. Los xviral revisan lo que publicaron los más grandes del nicho, verifican cada número y publican con la fuente en pantalla. El motor es el mismo: solo cambia el tema.",
+  "objetivo": "diseñar el canal de tu nicho con reglas, base con fuentes, guion verificado, agenda y compuerta antes de publicar.",
+  "competencias": [
+    "roteiro-r7e",
+    "base-com-fonte",
+    "regras-de-nicho",
+    "agenda-com-portao"
+  ],
+  "aprende": [
+    {
+      "icone": "video",
+      "t": "El reel en 7 etapas (r7e)"
+    },
+    {
+      "icone": "lupa",
+      "t": "La base con fuente literal"
+    },
+    {
+      "icone": "escudo",
+      "t": "Las reglas de tu nicho"
+    },
+    {
+      "icone": "calendario",
+      "t": "Agenda con compuerta"
+    }
+  ],
+  "secoes": [
+    {
+      "tipo": "diagrama",
+      "titulo": "La cadena de un canal con fuentes",
+      "sub": "Es lo que finviral, saudeviral y advviral hacen por su cuenta.",
+      "nos": [
+        {
+          "icone": "lupa",
+          "titulo": "Referencias",
+          "sub": "5 canales del nicho",
+          "itens": [
+            {
+              "icone": "arquivo",
+              "t": "canais.md"
+            },
+            {
+              "icone": "escudo",
+              "t": "regras.md"
+            }
+          ],
+          "detalhe": "Los canales más grandes de tu nicho y las reglas: qué cuenta como hecho, el aviso obligatorio y lo que nunca publicas."
+        },
+        {
+          "icone": "arquivo",
+          "titulo": "Base con fuentes",
+          "sub": "base.md",
+          "itens": [
+            {
+              "icone": "lista",
+              "t": "Número o hecho",
+              "sub": "lo que aparece en pantalla"
+            },
+            {
+              "icone": "usuario",
+              "t": "Quién lo dijo",
+              "sub": "canal y video"
+            },
+            {
+              "icone": "chat",
+              "t": "Fragmento literal",
+              "sub": "encontrado en la transcripción"
+            }
+          ],
+          "detalhe": "A partir de la transcripción, cada número incluye quién lo dijo, el video y el fragmento literal. Tú verificas cada fragmento en la transcripción.",
+          "forte": true
+        },
+        {
+          "icone": "video",
+          "titulo": "Guion",
+          "sub": "60 s con fuente en pantalla",
+          "itens": [
+            {
+              "icone": "grafico",
+              "t": "Empieza con el número más contundente"
+            },
+            {
+              "icone": "escudo",
+              "t": "Aviso del nicho"
+            }
+          ],
+          "detalhe": "El agente escribe el guion solo con lo que está en la base. ¿Hay un número fuera de la base? El guion vuelve."
+        },
+        {
+          "icone": "portao",
+          "titulo": "Compuerta",
+          "sub": "Tú apruebas",
+          "itens": [
+            {
+              "icone": "x",
+              "t": "Un rechazo se convierte en regla"
+            }
+          ],
+          "detalhe": "Antes de publicar, tú apruebas. Cada rechazo se convierte en una regla nueva en regras.md."
+        },
+        {
+          "icone": "calendario",
+          "titulo": "Agenda",
+          "sub": "cron o timer",
+          "itens": [
+            {
+              "icone": "relogio",
+              "t": "Un día flojo no se convierte en video"
+            },
+            {
+              "icone": "enviar",
+              "t": "Un fallo avisa en Telegram"
+            }
+          ],
+          "detalhe": "Tú decides la frecuencia (p. ej., de madrugada de lunes a viernes y un video largo el sábado). Si un día no hay tema, no se hace video, y un fallo avisa en Telegram."
+        }
+      ],
+      "volta": "Cada rechazo en la compuerta se convierte en una regla nueva",
+      "legenda": "Sin cola y sin compuerta, automatizar las redes sociales es publicar mal más rápido.",
+      "rolagem": true,
+      "rolagem_fim": {
+        "titulo": "La cadena completa",
+        "texto": "Las referencias y las reglas alimentan la base con fuentes; la base limita el guion; la compuerta decide qué sale; la agenda publica solo los días que hay tema. Cada rechazo se convierte en una regla nueva."
+      }
+    },
+    {
+      "tipo": "passos",
+      "titulo": "El reel en 7 etapas (r7e)",
+      "sub": "Haz clic en cada etapa. Ejemplo ilustrativo para el nicho inmobiliario.",
+      "passos": [
+        {
+          "titulo": "Gancho",
+          "sub": "El resultado en 2 s",
+          "texto": [
+            "La primera frase ya dice qué ganas. Nada de «Imagina que...»."
+          ],
+          "exemplo": {
+            "rot": "Ejemplo",
+            "texto": "Puede que estés pagando un alquiler por encima del precio de tu zona."
+          }
+        },
+        {
+          "titulo": "Deseo",
+          "sub": "Lo que quiere la persona",
+          "texto": [
+            "Muestra qué cambia en la vida de quien lo ve."
+          ],
+          "exemplo": {
+            "rot": "Ejemplo",
+            "texto": "Pagar lo justo y usar la diferencia en lo que importa."
+          }
+        },
+        {
+          "titulo": "Miedo",
+          "sub": "Lo que pierde",
+          "texto": [
+            "El costo de no hacer nada, sin exagerar."
+          ],
+          "exemplo": {
+            "rot": "Ejemplo",
+            "texto": "Cada mes sin revisar es dinero que no vuelve."
+          }
+        },
+        {
+          "titulo": "Facilidad",
+          "sub": "Es fácil",
+          "texto": [
+            "Muestra que el primer paso es pequeño."
+          ],
+          "exemplo": {
+            "rot": "Ejemplo",
+            "texto": "Toma cinco minutos y solo necesitas la dirección."
+          }
+        },
+        {
+          "titulo": "Descubrimiento",
+          "sub": "El nombre de la solución",
+          "texto": [
+            "Aquí va el nombre: la herramienta, el método, el curso."
+          ],
+          "exemplo": {
+            "rot": "Ejemplo",
+            "texto": "Usa la tabla de precios por barrio que dejé en el enlace."
+          }
+        },
+        {
+          "titulo": "Beneficio",
+          "sub": "La ganancia concreta",
+          "texto": [
+            "El resultado que se lleva la persona, otra vez y de forma más concreta."
+          ],
+          "exemplo": {
+            "rot": "Ejemplo",
+            "texto": "Llegas a la renovación del contrato con el número en la mano."
+          }
+        },
+        {
+          "titulo": "Comentario",
+          "sub": "comenta PALABRA",
+          "texto": [
+            "La invitación final, con una sola palabra."
+          ],
+          "exemplo": {
+            "rot": "Ejemplo",
+            "texto": "Comenta ALQUILER y te envío la tabla."
+          }
+        }
+      ]
+    },
+    {
+      "tipo": "codigo",
+      "titulo": "Los modelos de tu canal",
+      "sub": "Copia y completa para tu nicho.",
+      "blocos": [
+        {
+          "rot": "reel-r7e.md",
+          "icone": "arquivo",
+          "conteudo": "| # | Etapa | Tu frase |\n|---|---|---|\n| 1 | Gancho (el resultado en 2 s) | |\n| 2 | Deseo | |\n| 3 | Miedo | |\n| 4 | Facilidad | |\n| 5 | Descubrimiento (el nombre de la solución) | |\n| 6 | Beneficio | |\n| 7 | Comentario («comenta PALABRA») | |"
+        },
+        {
+          "rot": "regras.md",
+          "icone": "escudo",
+          "conteudo": "# Reglas del nicho: <tu nicho>\n\n## Qué cuenta como hecho\n- \n\n## Aviso obligatorio\n- Ej.: «no es una recomendación de inversión» / «no sustituye una consulta»\n\n## Nunca publico\n- \n\n## Reglas a partir de rechazos en la compuerta\n- "
+        },
+        {
+          "rot": "base.md",
+          "icone": "lista",
+          "conteudo": "| Número o hecho | Quién lo dijo | Video | Fragmento literal |\n|---|---|---|---|\n|  |  |  |  |"
+        }
+      ],
+      "saida": {
+        "selo": "real",
+        "abas": [
+          {
+            "rot": "Regla de oro",
+            "html": "<p>Todo número del guion debe estar en <code>base.md</code>, con el fragmento literal encontrado en la transcripción. Si falta alguno, se devuelve el guion.</p><p>Eso es exactamente lo que hace automáticamente <code>checar.py</code> de finviral.</p>"
+          },
+          {
+            "rot": "Los motores",
+            "html": "<ul><li><b>r7e</b>: reel en 7 etapas con compuertas de calidad.</li><li><b>promoavatar</b>: un video por público, 12 públicos, con una compuerta a mitad del proceso.</li><li><b>promoavatar3</b>: alcance, autoridad y promoción para el mismo público.</li><li><b>finviral, saudeviral, advviral</b>: el mismo motor para finanzas, salud y derecho.</li></ul>"
+          }
+        ]
+      }
+    },
+    {
+      "tipo": "pratica",
+      "titulo": "Práctica: los 6 ejercicios de la secuencia 4",
+      "sub": "Requisito previo: secuencias 1, 2 y 3.",
+      "exercicios": [
+        {
+          "id": "e1",
+          "titulo": "E1 · Un reel en 7 etapas, en papel",
+          "min": "20 min",
+          "texto": "Escribe un reel de 30 a 45 segundos de tu nicho con el modelo r7e.",
+          "pronto": "Lo lees en voz alta en menos de 45 s y la primera frase ya dice qué ganas."
+        },
+        {
+          "id": "e2",
+          "titulo": "E2 · Los 5 de tu nicho",
+          "min": "20 min",
+          "texto": "Elige 5 canales de referencia y escribe las reglas del nicho.",
+          "pronto": "Tienes canales.md y reglas.md de tu nicho."
+        },
+        {
+          "id": "e3",
+          "titulo": "E3 · La base con fuentes",
+          "min": "30 min",
+          "texto": "Transcribe un video de referencia y arma base.md con el número, quién lo dijo, el video y el fragmento literal.",
+          "pronto": "cada línea tiene el fragmento literal y encontraste cada uno en la transcripción."
+        },
+        {
+          "id": "e4",
+          "titulo": "E4 · Guion de 60 s con la fuente en pantalla",
+          "min": "30 min",
+          "texto": "Pídele al agente un guion a partir de la base: el número más contundente, tres hechos con quién los dijo, una advertencia y una invitación.",
+          "pronto": "todos los números del guion están en base.md."
+        },
+        {
+          "id": "e5",
+          "titulo": "E5 · La agenda",
+          "min": "20 min",
+          "texto": "Decide la frecuencia y escribe la programación (cron o timer de systemd).",
+          "pronto": "la programación está escrita y sabes qué pasa en un día sin tema."
+        },
+        {
+          "id": "e6",
+          "titulo": "E6 · La compuerta antes de publicar",
+          "min": "1 semana",
+          "texto": "Trabaja durante una semana con aprobación manual y anota cada rechazo como una regla.",
+          "pronto": "pasaste 3 días seguidos sin tener que rechazar nada.",
+          "dias": 7
+        }
+      ],
+      "fonte": "Ejercicios completos y el desafío extra (3 videos promoavatar para el mismo público): <a href=\"https://github.com/inematds/jornada-agentes/blob/main/exercicios/04-redes.md\" target=\"_blank\" rel=\"noopener\">jornada-agentes/exercicios/04-redes.md</a>."
+    },
+    {
+      "tipo": "video",
+      "titulo": "La secuencia 4 en video",
+      "sub": "r7e, promoavatar y el canal viral de tu nicho.",
+      "chave": "seq4-redes"
+    },
+    {
+      "tipo": "quiz",
+      "titulo": "Pon a prueba lo que aprendiste",
+      "sub": "La explicación aparece después de tu respuesta.",
+      "perguntas": [
+        {
+          "p": "El guion incluye un número que no está en base.md. ¿Qué haces?",
+          "opcoes": [
+            "Publicarlo, si el número parece correcto.",
+            "Cambiarlo por un número redondeado.",
+            "Devolver el guion: todo número debe estar en la base, con su fragmento literal.",
+            "Quitar la fuente de la pantalla."
+          ],
+          "certa": 2,
+          "explica": "La regla del E4: todos los números del guion están en base.md. Si alguno no está, se devuelve el guion.",
+          "cert": true,
+          "ref": "diagrama"
+        },
+        {
+          "p": "¿Cuál es la primera frase de un reel r7e?",
+          "opcoes": [
+            "Una presentación personal.",
+            "El beneficio, el resultado en 2 segundos.",
+            "El nombre de la herramienta.",
+            "La invitación a comentar."
+          ],
+          "certa": 1,
+          "explica": "El gancho es el resultado en 2 segundos. El nombre de la solución aparece recién en la etapa 5 (descubrimiento).",
+          "ref": "passos"
+        },
+        {
+          "p": "¿Cuándo es razonable quitar la compuerta de una etapa?",
+          "opcoes": [
+            "En la primera semana, para ahorrar tiempo.",
+            "Después de varios días seguidos sin tener que rechazar nada.",
+            "Nunca, la compuerta es obligatoria en todo.",
+            "Cuando el canal supere los mil suscriptores."
+          ],
+          "certa": 1,
+          "explica": "El E6 pide tres días seguidos sin rechazos. Solo entonces piensa en quitar la compuerta de alguna etapa.",
+          "ref": "pratica"
+        }
+      ]
+    },
+    {
+      "tipo": "links",
+      "titulo": "Para profundizar en el nivel 4",
+      "links": [
+        {
+          "t": "Curso completo del nivel 4: Redes en automático (8 clases)",
+          "href": "https://inematds.github.io/do-chat-ao-agente-redes-v72/",
+          "icone": "megafone"
+        },
+        {
+          "t": "r7e (reel7etapas)",
+          "href": "https://inematds.github.io/reel7etapas/guia/",
+          "icone": "video"
+        },
+        {
+          "t": "promoavatar",
+          "href": "https://inematds.github.io/promoavatar/guia/",
+          "icone": "megafone"
+        },
+        {
+          "t": "promoavatar3",
+          "href": "https://inematds.github.io/promoavatar3/guia/",
+          "icone": "megafone"
+        },
+        {
+          "t": "finviral",
+          "href": "https://inematds.github.io/finviral/guia/",
+          "icone": "grafico"
+        },
+        {
+          "t": "saudeviral",
+          "href": "https://inematds.github.io/saudeviral/guia/",
+          "icone": "escudo"
+        },
+        {
+          "t": "advviral",
+          "href": "https://inematds.github.io/advviral/guia/",
+          "icone": "lista"
+        }
+      ]
+    }
+  ],
+  "menu": "Redes"
+}

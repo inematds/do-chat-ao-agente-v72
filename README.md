@@ -4,6 +4,8 @@ Visão geral da formação [Do chat ao agente](https://eventos.inema.pro/do-chat
 
 **Abrir o curso:** https://inematds.github.io/do-chat-ao-agente-v72/
 
+**Outros idiomas:** [English](https://inematds.github.io/do-chat-ao-agente-v72/en/) · [Español](https://inematds.github.io/do-chat-ao-agente-v72/es/) — seletor PT · EN · ES no topo de cada página.
+
 Primeiro curso no formato **INEMA Learning v7.2**: layout de plataforma (barra lateral com capítulos e progresso, área central larga) com a didática v7 (objetivo em uma linha, diagrama clicável primeiro, texto curto, simulação onde ensina, modelos com botão copiar, prática com "pronto quando" e teste com resposta comentada).
 
 ## Como funciona
@@ -19,6 +21,8 @@ Primeiro curso no formato **INEMA Learning v7.2**: layout de plataforma (barra l
 ```bash
 python3 gerar.py && python3 validar.py --links
 ```
+
+EN e ES: `conteudo/en/` e `conteudo/es/` saem de `traduzir.py` (skill formato-curso-v72, Codex da assinatura) com cache em `i18n/<lang>.json`; `python3 gerar.py --lang en|es` monta `en/` e `es/`. Imagens com texto têm versão `-en`/`-es` (`capa`, `hero/jarvis`).
 
 HTML estático, sem build e sem backend. O progresso fica só no navegador de quem estuda.
 
