@@ -4,18 +4,18 @@
   "titulo": "Nivel 1: del chat a la terminal (OSWork)",
   "titulo_curto": "Terminal (OSWork)",
   "minutos": 12,
-  "lead": "La terminal es solo otra ventana. Con seis comandos recorres tus carpetas; con un AGENTS.md, el agente sabe quién eres y qué puede hacer; con Git puedes deshacer cualquier error.",
-  "objetivo": "preparar la carpeta de trabajo del agente con reglas, una red de seguridad y secretos fuera del texto.",
+  "lead": "La terminal es solo otra ventana. Con seis comandos te mueves por tus carpetas; con un AGENTS.md el agente sabe quién eres y qué puede hacer; con Git deshaces cualquier error.",
+  "objetivo": "armar la carpeta de trabajo del agente con reglas, red de seguridad y secretos fuera del texto.",
   "competencias": [
-    "estructurar-carpeta-agente",
-    "escribir-agents-md",
-    "versionar-con-git",
-    "proteger-secretos"
+    "estruturar-pasta-agente",
+    "escrever-agents-md",
+    "versionar-com-git",
+    "proteger-segredos"
   ],
   "aprende": [
     {
       "icone": "terminal",
-      "t": "Recorrer las carpetas desde la terminal"
+      "t": "Moverte por las carpetas desde la terminal"
     },
     {
       "icone": "arquivo",
@@ -46,7 +46,7 @@
               "t": "\"Crea un index.html sobre mí\""
             }
           ],
-          "detalhe": "Tú sigues tomando las decisiones: pides, revisas el resultado y lo aceptas o lo deshaces. Dar la tarea, revisar y decidir es gestión."
+          "detalhe": "Tú sigues siendo quien decide: pides, revisas el resultado y aceptas o deshaces. Dar la tarea, revisar y decidir es gestión."
         },
         {
           "icone": "terminal",
@@ -62,7 +62,7 @@
               "t": "claude o codex"
             }
           ],
-          "detalhe": "Es por donde llegas a la carpeta y llamas al agente. En Windows, cmd; en Mac y Linux, la Terminal."
+          "detalhe": "Es por donde llegas a la carpeta y llamas al agente. En Windows, el cmd; en Mac y Linux, la Terminal."
         },
         {
           "icone": "pasta",
@@ -90,7 +90,7 @@
               "sub": "historial para deshacer"
             }
           ],
-          "detalhe": "Todo lo que el agente necesita saber está aquí: las reglas en AGENTS.md, el trabajo en los archivos, las claves en .env (que Git ignora) y el historial en .git.",
+          "detalhe": "Todo lo que el agente necesita saber está aquí: las reglas en el AGENTS.md, el trabajo en los archivos, las claves en el .env (que Git ignora) y el historial en el .git.",
           "forte": true
         },
         {
@@ -111,32 +111,32 @@
               "t": "Dice qué cambió"
             }
           ],
-          "detalhe": "El agente lee el AGENTS.md antes de empezar, trabaja en los archivos de la carpeta y, si las reglas lo piden, dice qué cambió y cómo puedes revisarlo."
+          "detalhe": "El agente lee el AGENTS.md antes de empezar, trabaja en los archivos de la carpeta y, si la regla lo pide, dice qué cambió y cómo lo revisas."
         }
       ],
-      "volta": "¿No te gustó? git restore devuelve el archivo a la última versión guardada",
-      "legenda": "Los mismos archivos sirven para Claude Code y Codex: ambos leen el AGENTS.md.",
+      "volta": "¿No te gustó? git restore vuelve el archivo a la última versión guardada",
+      "legenda": "Los mismos archivos sirven para Claude Code y para Codex: los dos leen el AGENTS.md.",
       "rolagem": true,
       "rolagem_fim": {
         "titulo": "El ciclo completo",
-        "texto": "Tú pides, el agente trabaja dentro de la carpeta siguiendo el AGENTS.md y dice qué cambió. Tú revisas. Si te gustó, haces commit; si no, git restore."
+        "texto": "Pides, el agente trabaja dentro de la carpeta siguiendo el AGENTS.md y dice qué cambió. Tú revisas. ¿Te gustó? commit; ¿no te gustó? git restore."
       }
     },
     {
       "tipo": "passos",
       "titulo": "El ciclo de trabajo con el agente",
-      "sub": "Haz clic en cada etapa.",
+      "sub": "Haz clic en cada paso.",
       "passos": [
         {
           "titulo": "Pedir",
           "sub": "Una tarea clara",
           "texto": [
             "Dentro de la carpeta, llama a <code>claude</code> o <code>codex</code> y pide una sola cosa, con el resultado que esperas.",
-            "Empieza pidiéndole que lea el AGENTS.md: así seguirá tus reglas."
+            "Empieza pidiéndole que lea el AGENTS.md: así usa tus reglas."
           ],
           "exemplo": {
             "rot": "Pedido",
-            "texto": "Lee el AGENTS.md. Crea un index.html con una página sencilla sobre mí, usando lo que dice ahí."
+            "texto": "Lee el AGENTS.md. Crea un index.html con una página simple sobre mí, usando lo que está ahí."
           }
         },
         {
@@ -144,7 +144,7 @@
           "sub": "El agente trabaja",
           "texto": [
             "El agente crea y edita archivos en la carpeta. Puede pedir permiso antes de ejecutar comandos.",
-            "Tu papel aquí es leer lo que propone, no escribir por él."
+            "Tu papel aquí es leer lo que él propone, no escribir por él."
           ],
           "exemplo": {
             "rot": "Lo que aparece",
@@ -152,11 +152,11 @@
           }
         },
         {
-          "titulo": "Revisar",
+          "titulo": "Comprobar",
           "sub": "Abrir y mirar",
           "texto": [
-            "Abre el resultado (la página en el navegador, el resumen o el archivo) y compáralo con lo que pediste.",
-            "Pide al menos una corrección: ese hábito marca la diferencia entre usar y gestionar."
+            "Abre el resultado (la página en el navegador, el resumen, el archivo) y compáralo con lo que pediste.",
+            "Pide al menos una corrección: es el hábito que separa usar de gestionar."
           ],
           "exemplo": {
             "rot": "Corrección",
@@ -185,29 +185,29 @@
         {
           "rot": "Terminal · primera carpeta",
           "icone": "terminal",
-          "conteudo": "mkdir projetos\ncd projetos\nmkdir meu-primeiro-agente\ncd meu-primeiro-agente\ndir      # Windows (en Mac y Linux: ls)"
+          "conteudo": "mkdir projetos\ncd projetos\nmkdir meu-primeiro-agente\ncd meu-primeiro-agente\ndir      # Windows (no Mac e no Linux: ls)"
         },
         {
           "rot": "AGENTS.md",
           "icone": "arquivo",
-          "conteudo": "# Quién soy\n<tu nombre, tu profesión, para quién trabajas>\n\n# Reglas de este proyecto\n- Escribe en portugués, con frases cortas.\n- No borres archivos sin preguntar.\n- Antes de terminar, dime qué cambió y cómo lo reviso.\n- Nunca escribas claves ni contraseñas en un archivo de texto; van en .env.\n\n# Qué hay aquí\n- index.html: mi página"
+          "conteudo": "# Quién soy\n<tu nombre, tu profesión, para quién trabajas>\n\n# Reglas de este proyecto\n- Escribe en español, frases cortas.\n- No borres archivos sin preguntar.\n- Antes de terminar, di qué cambió y cómo lo reviso.\n- Nunca escribas claves ni contraseñas en un archivo de texto; ellas quedan en el .env.\n\n# Qué hay aquí\n- index.html: mi página"
         },
         {
-          "rot": "Terminal · Git y secretos fuera del texto",
+          "rot": "Terminal · Git y secreto fuera del texto",
           "icone": "git",
-          "conteudo": "git init\necho .env> .gitignore\ngit add .\ngit commit -m \"primeira versão\"\n\n# deshacer un cambio del agente:\ngit restore index.html\n\n# .env NO debe aparecer aquí:\ngit status"
+          "conteudo": "git init\necho .env> .gitignore\ngit add .\ngit commit -m \"primeira versão\"\n\n# desfazer uma mudança do agente:\ngit restore index.html\n\n# o .env NÃO pode aparecer aqui:\ngit status"
         }
       ],
       "saida": {
         "selo": "real",
         "abas": [
           {
-            "rot": "Cómo revisar",
-            "html": "<ol><li>Llegas a la carpeta solo desde la terminal y sabes decir en qué carpeta estás.</li><li>El AGENTS.md tiene al menos tres reglas escritas por ti.</li><li>La página se abre en el navegador y pediste al menos una corrección.</li><li><code>git status</code> no muestra el <code>.env</code>.</li></ol>"
+            "rot": "Cómo comprobarlo",
+            "html": "<ol><li>Llegas a la carpeta solo por el terminal y sabes decir en qué carpeta estás.</li><li>El AGENTS.md tiene al menos tres reglas escritas por ti.</li><li>La página abre en el navegador y pediste al menos una corrección.</li><li><code>git status</code> no muestra el <code>.env</code>.</li></ol>"
           },
           {
             "rot": "Errores comunes",
-            "html": "<ul><li><b>Saltarse Git</b>: el primer cambio malo del agente se convierte en trabajo manual extra.</li><li><b>Clave en AGENTS.md</b>: todo lo que está en texto puede terminar en GitHub. Las claves van solo en .env.</li><li><b>Pedido vago</b>: \"mejora la página\" genera un cambio que no sabes revisar. Pide un resultado que puedas ver.</li></ul>"
+            "html": "<ul><li><b>Saltarse Git</b>: el primer cambio malo del agente se convierte en retrabajo manual.</li><li><b>Clave en el AGENTS.md</b>: todo lo que está en texto puede terminar en GitHub. La clave solo va en el .env.</li><li><b>Pedido vago</b>: \"mejora la página\" genera un cambio que no sabes comprobar. Pide un resultado que se pueda ver.</li></ul>"
           }
         ]
       }
@@ -215,48 +215,48 @@
     {
       "tipo": "pratica",
       "titulo": "Práctica: los 6 ejercicios de la secuencia 1",
-      "sub": "Hazlos en orden. Pasa al siguiente solo cuando se cumpla «listo cuando».",
+      "sub": "Hazlos en orden. Solo pasa al siguiente cuando el \"listo cuando\" sea verdad.",
       "exercicios": [
         {
           "id": "e1",
-          "titulo": "E1 · Primera carpeta desde la terminal",
+          "titulo": "E1 · Primera carpeta por el terminal",
           "min": "10 min",
-          "texto": "Crea projetos/meu-primeiro-agente, entra y lista su contenido. Abre la misma carpeta en el Explorador (o Finder) y compara.",
-          "pronto": "llegas a la carpeta solo desde la terminal, sin el mouse, y sabes decir en qué carpeta estás."
+          "texto": "Crea projetos/meu-primeiro-agente, entra en ella y lista el contenido. Abre la misma carpeta en el Explorador (o Finder) y compara.",
+          "pronto": "llegas a la carpeta solo por el terminal, sin el mouse, y sabes decir en qué carpeta estás."
         },
         {
           "id": "e2",
           "titulo": "E2 · El manual del empleado",
           "min": "15 min",
-          "texto": "Crea el AGENTS.md con quién eres, las reglas del proyecto y qué hay en la carpeta.",
+          "texto": "Crea el AGENTS.md con quién eres, las reglas del proyecto y lo que hay en la carpeta.",
           "pronto": "el archivo existe y tiene al menos tres reglas tuyas, escritas por ti."
         },
         {
           "id": "e3",
           "titulo": "E3 · La primera tarea",
           "min": "15 min",
-          "texto": "Llama al agente y pídele que cree el index.html a partir del AGENTS.md. Ábrelo en el navegador y pide un cambio.",
-          "pronto": "la página se abre y le pediste al agente al menos una corrección."
+          "texto": "Llama al agente y pídele el index.html a partir del AGENTS.md. Ábrelo en el navegador y pide un cambio.",
+          "pronto": "la página abre y le pediste al agente al menos una corrección."
         },
         {
           "id": "e4",
           "titulo": "E4 · La red de seguridad",
           "min": "20 min",
-          "texto": "Ejecuta git init, add y commit. Pide un cambio grande y, si no te gusta, vuelve atrás con git restore.",
-          "pronto": "deshiciste un cambio del agente con un comando, sin entrar en pánico."
+          "texto": "git init, add y commit. Pide un cambio grande y, si no te gusta, vuelve atrás con git restore.",
+          "pronto": "deshiciste un cambio del agente con un comando, sin pánico."
         },
         {
           "id": "e5",
-          "titulo": "E5 · El secreto no va en el texto",
+          "titulo": "E5 · El secreto no entra en el texto",
           "min": "10 min",
-          "texto": "Crea un .env con una clave falsa y un .gitignore con la línea .env. Agrega la regla a AGENTS.md.",
+          "texto": "Crea un .env con una clave falsa y un .gitignore con la línea .env. Agrega la regla al AGENTS.md.",
           "pronto": "git status no muestra el .env."
         },
         {
           "id": "e6",
           "titulo": "E6 · El agente lee tus archivos",
           "min": "20 min",
-          "texto": "Pon tres textos tuyos en la carpeta y pide un resumen.md con 5 decisiones y 5 pendientes, citando el origen de cada una.",
+          "texto": "Pon tres textos tuyos en la carpeta y pide un resumo.md con 5 decisiones y 5 pendientes, citando el origen de cada una.",
           "pronto": "encontraste en el original al menos dos de las frases citadas."
         }
       ],
@@ -276,38 +276,38 @@
         {
           "p": "¿Dónde va la clave de una API en el proyecto?",
           "opcoes": [
-            "En AGENTS.md, para que el agente sepa cómo usarla.",
-            "En .env, que está en la lista de .gitignore.",
-            "En index.html, como comentario.",
-            "En un correo para ti."
+            "En un correo para ti mismo.",
+            "En el AGENTS.md, para que el agente sepa usarla.",
+            "En el index.html, comentada.",
+            "En el .env, que está listado en el .gitignore."
           ],
-          "certa": 1,
-          "explica": "La clave va solo en .env, y .env va en .gitignore. Así git status no muestra el archivo y no se sube a GitHub.",
+          "certa": 3,
+          "explica": "La clave solo va en el .env, y el .env en el .gitignore. Así el git status no muestra el archivo y no llega a GitHub.",
           "cert": true,
           "ref": "codigo"
         },
         {
-          "p": "El agente hizo un cambio grande que no aprobaste. ¿Qué hacer?",
+          "p": "El agente hizo un cambio grande que no aprobaste. ¿Qué haces?",
           "opcoes": [
-            "Borrar la carpeta y empezar de nuevo.",
+            "git restore en el archivo, volviendo a la última versión guardada.",
             "Pedirle al agente que intente recordar cómo era.",
-            "Usar git restore en el archivo para volver a la última versión guardada.",
-            "Copiar el archivo anterior desde una copia de seguridad manual."
+            "Borrar la carpeta y empezar de nuevo.",
+            "Copiar el archivo antiguo de un respaldo manual."
           ],
-          "certa": 2,
-          "explica": "Con un commit antes del cambio, git restore recupera el archivo con un comando. Por eso la regla: haz un commit antes de pedir un cambio grande.",
+          "certa": 0,
+          "explica": "Con un commit antes del cambio, git restore devuelve el archivo en un comando. Por eso la regla: commit antes de pedir un cambio grande.",
           "ref": "passos"
         },
         {
-          "p": "¿Para qué sirve AGENTS.md?",
+          "p": "¿Para qué sirve el AGENTS.md?",
           "opcoes": [
-            "Para listar los comandos de la terminal.",
-            "Para guardar contraseñas de forma segura.",
+            "Es obligatorio solo en Codex.",
             "Es el manual que el agente lee antes de trabajar: quién eres, las reglas y qué hay en la carpeta.",
-            "Es obligatorio solo en Codex."
+            "Para listar los comandos del terminal.",
+            "Para guardar contraseñas de forma segura."
           ],
-          "certa": 2,
-          "explica": "AGENTS.md es el manual del empleado. Claude Code y Codex leen el mismo archivo, así que las reglas valen para ambos.",
+          "certa": 1,
+          "explica": "El AGENTS.md es el manual del empleado. Claude Code y Codex leen el mismo archivo, así que las reglas valen para los dos.",
           "ref": "codigo"
         }
       ]
@@ -318,7 +318,7 @@
       "links": [
         {
           "t": "Curso completo del nivel 1: Terminal (8 clases)",
-          "href": "https://inematds.github.io/do-chat-ao-agente-terminal-v72/",
+          "href": "https://inematds.github.io/do-chat-ao-agente-terminal-v72/es/",
           "icone": "terminal"
         },
         {

@@ -276,12 +276,12 @@
         {
           "p": "Onde fica a chave de uma API no projeto?",
           "opcoes": [
+            "Num e-mail para você mesmo.",
             "No AGENTS.md, para o agente saber usar.",
-            "No .env, que está listado no .gitignore.",
             "No index.html, comentada.",
-            "Num e-mail para você mesmo."
+            "No .env, que está listado no .gitignore."
           ],
-          "certa": 1,
+          "certa": 3,
           "explica": "Chave só no .env, e o .env no .gitignore. Assim o git status não mostra o arquivo e ele não vai para o GitHub.",
           "cert": true,
           "ref": "codigo"
@@ -289,24 +289,24 @@
         {
           "p": "O agente fez uma mudança grande que você não aprovou. O que fazer?",
           "opcoes": [
-            "Apagar a pasta e começar de novo.",
-            "Pedir ao agente que tente lembrar como era.",
             "git restore no arquivo, voltando à última versão salva.",
+            "Pedir ao agente que tente lembrar como era.",
+            "Apagar a pasta e começar de novo.",
             "Copiar o arquivo antigo de um backup manual."
           ],
-          "certa": 2,
+          "certa": 0,
           "explica": "Com um commit antes da mudança, git restore volta o arquivo em um comando. Por isso a regra: commit antes de pedir mudança grande.",
           "ref": "passos"
         },
         {
           "p": "Para que serve o AGENTS.md?",
           "opcoes": [
-            "Para listar os comandos do terminal.",
-            "Para guardar senhas de forma segura.",
+            "É obrigatório só no Codex.",
             "É o manual que o agente lê antes de trabalhar: quem você é, as regras e o que tem na pasta.",
-            "É obrigatório só no Codex."
+            "Para listar os comandos do terminal.",
+            "Para guardar senhas de forma segura."
           ],
-          "certa": 2,
+          "certa": 1,
           "explica": "O AGENTS.md é o manual do funcionário. Claude Code e Codex leem o mesmo arquivo, então as regras valem para os dois.",
           "ref": "codigo"
         }

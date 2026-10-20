@@ -1,11 +1,11 @@
 {
   "slug": "redes",
   "num": 5,
-  "titulo": "Nivel 4: redes en automático, con fuentes en pantalla",
+  "titulo": "Nivel 4: redes en automático, con fuente en pantalla",
   "titulo_curto": "Redes en automático",
   "minutos": 14,
-  "lead": "r7e arma el reel en siete etapas activadas por disparadores. promoavatar hace videos con avatar para cada público. Los xviral revisan lo que publicaron los más grandes del nicho, verifican cada número y publican con la fuente en pantalla. El motor es el mismo: solo cambia el tema.",
-  "objetivo": "diseñar el canal de tu nicho con reglas, base con fuentes, guion verificado, agenda y compuerta antes de publicar.",
+  "lead": "El r7e arma el reel en siete etapas de disparador. El promoavatar hace videos con avatar para cada público. Los xviral miran lo que publicaron los más grandes del nicho, verifican cada número y publican con la fuente en pantalla. El motor es el mismo: solo cambia el tema.",
+  "objetivo": "diseñar el canal de tu nicho con reglas, base con fuente, guion verificado, agenda y compuerta antes de publicar.",
   "competencias": [
     "roteiro-r7e",
     "base-com-fonte",
@@ -33,8 +33,8 @@
   "secoes": [
     {
       "tipo": "diagrama",
-      "titulo": "La cadena de un canal con fuentes",
-      "sub": "Es lo que finviral, saudeviral y advviral hacen por su cuenta.",
+      "titulo": "La cinta de un canal con fuente",
+      "sub": "Es lo que hacen solos el finviral, el saudeviral y el advviral.",
       "nos": [
         {
           "icone": "lupa",
@@ -54,13 +54,13 @@
         },
         {
           "icone": "arquivo",
-          "titulo": "Base con fuentes",
+          "titulo": "Base con fuente",
           "sub": "base.md",
           "itens": [
             {
               "icone": "lista",
               "t": "Número o hecho",
-              "sub": "lo que aparece en pantalla"
+              "sub": "lo que va a la pantalla"
             },
             {
               "icone": "usuario",
@@ -73,7 +73,7 @@
               "sub": "encontrado en la transcripción"
             }
           ],
-          "detalhe": "A partir de la transcripción, cada número incluye quién lo dijo, el video y el fragmento literal. Tú verificas cada fragmento en la transcripción.",
+          "detalhe": "A partir de la transcripción, cada número entra con quién lo dijo, el video y el fragmento literal. Tú verificas cada fragmento en la transcripción.",
           "forte": true
         },
         {
@@ -83,14 +83,14 @@
           "itens": [
             {
               "icone": "grafico",
-              "t": "Empieza con el número más contundente"
+              "t": "Abre con el número más fuerte"
             },
             {
               "icone": "escudo",
               "t": "Aviso del nicho"
             }
           ],
-          "detalhe": "El agente escribe el guion solo con lo que está en la base. ¿Hay un número fuera de la base? El guion vuelve."
+          "detalhe": "El agente escribe el guion solo con lo que está en la base. ¿Un número fuera de la base? El guion vuelve."
         },
         {
           "icone": "portao",
@@ -99,10 +99,10 @@
           "itens": [
             {
               "icone": "x",
-              "t": "Un rechazo se convierte en regla"
+              "t": "Un rechazo se vuelve regla"
             }
           ],
-          "detalhe": "Antes de publicar, tú apruebas. Cada rechazo se convierte en una regla nueva en regras.md."
+          "detalhe": "Antes de publicar, tú apruebas. Cada rechazo se vuelve una regla nueva en regras.md."
         },
         {
           "icone": "calendario",
@@ -111,14 +111,14 @@
           "itens": [
             {
               "icone": "relogio",
-              "t": "Un día flojo no se convierte en video"
+              "t": "Un día flojo no se vuelve video"
             },
             {
               "icone": "enviar",
-              "t": "Un fallo avisa en Telegram"
+              "t": "Una falla avisa en Telegram"
             }
           ],
-          "detalhe": "Tú decides la frecuencia (p. ej., de madrugada de lunes a viernes y un video largo el sábado). Si un día no hay tema, no se hace video, y un fallo avisa en Telegram."
+          "detalhe": "La frecuencia la decides tú (ej.: de lunes a viernes de madrugada y uno largo el sábado). Un día sin tema no se vuelve video, y una falla avisa en Telegram."
         }
       ],
       "volta": "Cada rechazo en la compuerta se convierte en una regla nueva",
@@ -126,30 +126,30 @@
       "rolagem": true,
       "rolagem_fim": {
         "titulo": "La cadena completa",
-        "texto": "Las referencias y las reglas alimentan la base con fuentes; la base limita el guion; la compuerta decide qué sale; la agenda publica solo los días que hay tema. Cada rechazo se convierte en una regla nueva."
+        "texto": "Las referencias y las reglas alimentan la base con su fuente; la base limita el guion; la compuerta decide qué sale; la agenda publica solo en días con tema. Cada rechazo se convierte en una regla nueva."
       }
     },
     {
       "tipo": "passos",
       "titulo": "El reel en 7 etapas (r7e)",
-      "sub": "Haz clic en cada etapa. Ejemplo ilustrativo para el nicho inmobiliario.",
+      "sub": "Haz clic en cada etapa. Ejemplo ilustrativo para el nicho de bienes raíces.",
       "passos": [
         {
           "titulo": "Gancho",
           "sub": "El resultado en 2 s",
           "texto": [
-            "La primera frase ya dice qué ganas. Nada de «Imagina que...»."
+            "La primera frase ya dice la ganancia. Nada de \"Imagina que...\"."
           ],
           "exemplo": {
             "rot": "Ejemplo",
-            "texto": "Puede que estés pagando un alquiler por encima del precio de tu zona."
+            "texto": "Puede que estés pagando un alquiler por encima del valor de tu zona."
           }
         },
         {
           "titulo": "Deseo",
-          "sub": "Lo que quiere la persona",
+          "sub": "Lo que la persona quiere",
           "texto": [
-            "Muestra qué cambia en la vida de quien lo ve."
+            "Muestra qué cambia en la vida de quien mira."
           ],
           "exemplo": {
             "rot": "Ejemplo",
@@ -169,7 +169,7 @@
         },
         {
           "titulo": "Facilidad",
-          "sub": "Es fácil",
+          "sub": "Es simple",
           "texto": [
             "Muestra que el primer paso es pequeño."
           ],
@@ -182,7 +182,7 @@
           "titulo": "Descubrimiento",
           "sub": "El nombre de la solución",
           "texto": [
-            "Aquí va el nombre: la herramienta, el método, el curso."
+            "Aquí entra el nombre: la herramienta, el método, el curso."
           ],
           "exemplo": {
             "rot": "Ejemplo",
@@ -193,7 +193,7 @@
           "titulo": "Beneficio",
           "sub": "La ganancia concreta",
           "texto": [
-            "El resultado que se lleva la persona, otra vez y de forma más concreta."
+            "El resultado que la persona se lleva, otra vez y más concreto."
           ],
           "exemplo": {
             "rot": "Ejemplo",
@@ -208,7 +208,7 @@
           ],
           "exemplo": {
             "rot": "Ejemplo",
-            "texto": "Comenta ALQUILER y te envío la tabla."
+            "texto": "Comenta ALQUILER y te mando la tabla."
           }
         }
       ]
@@ -221,12 +221,12 @@
         {
           "rot": "reel-r7e.md",
           "icone": "arquivo",
-          "conteudo": "| # | Etapa | Tu frase |\n|---|---|---|\n| 1 | Gancho (el resultado en 2 s) | |\n| 2 | Deseo | |\n| 3 | Miedo | |\n| 4 | Facilidad | |\n| 5 | Descubrimiento (el nombre de la solución) | |\n| 6 | Beneficio | |\n| 7 | Comentario («comenta PALABRA») | |"
+          "conteudo": "| # | Etapa | Tu frase |\n|---|---|---|\n| 1 | Gancho (el resultado en 2 s) | |\n| 2 | Deseo | |\n| 3 | Miedo | |\n| 4 | Facilidad | |\n| 5 | Descubrimiento (el nombre de la solución) | |\n| 6 | Beneficio | |\n| 7 | Comentario (\"comenta PALABRA\") | |"
         },
         {
           "rot": "regras.md",
           "icone": "escudo",
-          "conteudo": "# Reglas del nicho: <tu nicho>\n\n## Qué cuenta como hecho\n- \n\n## Aviso obligatorio\n- Ej.: «no es una recomendación de inversión» / «no sustituye una consulta»\n\n## Nunca publico\n- \n\n## Reglas a partir de rechazos en la compuerta\n- "
+          "conteudo": "# Reglas del nicho: <tu nicho>\n\n## Qué cuenta como hecho\n- \n\n## Aviso obligatorio\n- Ej.: \"no es recomendación de inversión\" / \"no sustituye una consulta\"\n\n## Nunca publico\n- \n\n## Reglas que vienen de rechazos en la compuerta\n- "
         },
         {
           "rot": "base.md",
@@ -239,11 +239,11 @@
         "abas": [
           {
             "rot": "Regla de oro",
-            "html": "<p>Todo número del guion debe estar en <code>base.md</code>, con el fragmento literal encontrado en la transcripción. Si falta alguno, se devuelve el guion.</p><p>Eso es exactamente lo que hace automáticamente <code>checar.py</code> de finviral.</p>"
+            "html": "<p>Todo número del guion tiene que estar en la <code>base.md</code>, con el fragmento literal encontrado en la transcripción. Si alguno no está, el guion vuelve.</p><p>Es exactamente lo que hace solo el <code>checar.py</code> de finviral.</p>"
           },
           {
             "rot": "Los motores",
-            "html": "<ul><li><b>r7e</b>: reel en 7 etapas con compuertas de calidad.</li><li><b>promoavatar</b>: un video por público, 12 públicos, con una compuerta a mitad del proceso.</li><li><b>promoavatar3</b>: alcance, autoridad y promoción para el mismo público.</li><li><b>finviral, saudeviral, advviral</b>: el mismo motor para finanzas, salud y derecho.</li></ul>"
+            "html": "<ul><li><b>r7e</b>: reel en 7 etapas con compuertas de calidad.</li><li><b>promoavatar</b>: un video por público, 12 públicos, con compuerta en el medio.</li><li><b>promoavatar3</b>: alcance, autoridad y promocional para el mismo público.</li><li><b>finviral, saudeviral, advviral</b>: el mismo motor en finanzas, salud y derecho.</li></ul>"
           }
         ]
       }
@@ -257,29 +257,29 @@
           "id": "e1",
           "titulo": "E1 · Un reel en 7 etapas, en papel",
           "min": "20 min",
-          "texto": "Escribe un reel de 30 a 45 segundos de tu nicho con el modelo r7e.",
-          "pronto": "Lo lees en voz alta en menos de 45 s y la primera frase ya dice qué ganas."
+          "texto": "Escribe un reel de 30 a 45 segundos de tu nicho en el modelo r7e.",
+          "pronto": "lo lees en voz alta en menos de 45 s y la primera frase ya dice el beneficio."
         },
         {
           "id": "e2",
           "titulo": "E2 · Los 5 de tu nicho",
           "min": "20 min",
           "texto": "Elige 5 canales de referencia y escribe las reglas del nicho.",
-          "pronto": "Tienes canales.md y reglas.md de tu nicho."
+          "pronto": "tienes canais.md y regras.md de tu nicho."
         },
         {
           "id": "e3",
-          "titulo": "E3 · La base con fuentes",
+          "titulo": "E3 · La base con fuente",
           "min": "30 min",
-          "texto": "Transcribe un video de referencia y arma base.md con el número, quién lo dijo, el video y el fragmento literal.",
+          "texto": "Transcribe un video de referencia y arma la base.md con número, quién lo dijo, video y fragmento literal.",
           "pronto": "cada línea tiene el fragmento literal y encontraste cada uno en la transcripción."
         },
         {
           "id": "e4",
-          "titulo": "E4 · Guion de 60 s con la fuente en pantalla",
+          "titulo": "E4 · Guion de 60 s con fuente en pantalla",
           "min": "30 min",
-          "texto": "Pídele al agente un guion a partir de la base: el número más contundente, tres hechos con quién los dijo, una advertencia y una invitación.",
-          "pronto": "todos los números del guion están en base.md."
+          "texto": "Pídele al agente un guion a partir de la base: número más fuerte, tres hechos con quién lo dijo, aviso e invitación.",
+          "pronto": "todo número del guion está en la base.md."
         },
         {
           "id": "e5",
@@ -292,8 +292,8 @@
           "id": "e6",
           "titulo": "E6 · La compuerta antes de publicar",
           "min": "1 semana",
-          "texto": "Trabaja durante una semana con aprobación manual y anota cada rechazo como una regla.",
-          "pronto": "pasaste 3 días seguidos sin tener que rechazar nada.",
+          "texto": "Corre una semana con aprobación manual y anota cada rechazo como regla.",
+          "pronto": "pasaste 3 días seguidos sin necesitar rechazar.",
           "dias": 7
         }
       ],
@@ -311,15 +311,15 @@
       "sub": "La explicación aparece después de tu respuesta.",
       "perguntas": [
         {
-          "p": "El guion incluye un número que no está en base.md. ¿Qué haces?",
+          "p": "El guion trae un número que no está en la base.md. ¿Qué hacer?",
           "opcoes": [
-            "Publicarlo, si el número parece correcto.",
+            "Publicar, si el número parece correcto.",
             "Cambiarlo por un número redondeado.",
-            "Devolver el guion: todo número debe estar en la base, con su fragmento literal.",
+            "Devolver el guion: todo número tiene que estar en la base, con fragmento literal.",
             "Quitar la fuente de la pantalla."
           ],
           "certa": 2,
-          "explica": "La regla del E4: todos los números del guion están en base.md. Si alguno no está, se devuelve el guion.",
+          "explica": "La regla del E4: todo número del guion está en la base.md. Si no está, el guion vuelve.",
           "cert": true,
           "ref": "diagrama"
         },
@@ -327,24 +327,24 @@
           "p": "¿Cuál es la primera frase de un reel r7e?",
           "opcoes": [
             "Una presentación personal.",
-            "El beneficio, el resultado en 2 segundos.",
             "El nombre de la herramienta.",
+            "El beneficio, el resultado en 2 segundos.",
             "La invitación a comentar."
           ],
-          "certa": 1,
-          "explica": "El gancho es el resultado en 2 segundos. El nombre de la solución aparece recién en la etapa 5 (descubrimiento).",
+          "certa": 2,
+          "explica": "El gancho es el resultado en 2 segundos. El nombre de la solución solo aparece en la etapa 5 (descubrimiento).",
           "ref": "passos"
         },
         {
           "p": "¿Cuándo es razonable quitar la compuerta de una etapa?",
           "opcoes": [
-            "En la primera semana, para ahorrar tiempo.",
-            "Después de varios días seguidos sin tener que rechazar nada.",
+            "En la primera semana, para ganar tiempo.",
             "Nunca, la compuerta es obligatoria en todo.",
-            "Cuando el canal supere los mil suscriptores."
+            "Después de algunos días seguidos sin necesitar rechazar nada.",
+            "Cuando el canal pase de mil suscriptores."
           ],
-          "certa": 1,
-          "explica": "El E6 pide tres días seguidos sin rechazos. Solo entonces piensa en quitar la compuerta de alguna etapa.",
+          "certa": 2,
+          "explica": "El E6 pide tres días seguidos sin rechazo. Solo entonces piensa en quitar la compuerta de alguna etapa.",
           "ref": "pratica"
         }
       ]
@@ -355,7 +355,7 @@
       "links": [
         {
           "t": "Curso completo del nivel 4: Redes en automático (8 clases)",
-          "href": "https://inematds.github.io/do-chat-ao-agente-redes-v72/",
+          "href": "https://inematds.github.io/do-chat-ao-agente-redes-v72/es/",
           "icone": "megafone"
         },
         {

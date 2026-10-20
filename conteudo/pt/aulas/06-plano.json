@@ -117,6 +117,7 @@
         "semanas": "semanas",
         "travou": "## O que travou e a regra que criei",
         "h": "h por semana",
+        "ex1": "exercício",
         "exs": "exercícios"
       }
     },
@@ -153,11 +154,11 @@
           "p": "Qual é a ordem dos degraus?",
           "opcoes": [
             "Redes, filas, assistente, terminal.",
-            "Terminal, assistente, filas, redes.",
             "Assistente, terminal, redes, filas.",
+            "Terminal, assistente, filas, redes.",
             "Qualquer ordem, são independentes."
           ],
-          "certa": 1,
+          "certa": 2,
           "explica": "Terminal, assistente (Jarvis), filas e redes. Cada degrau usa o anterior.",
           "cert": true,
           "ref": "mapa"
@@ -165,12 +166,12 @@
         {
           "p": "O que o \"pronto quando\" garante?",
           "opcoes": [
-            "Que o exercício levou o tempo indicado.",
             "Um critério verificável para saber se pode avançar.",
-            "Que o agente não vai errar.",
-            "Que o certificado foi emitido."
+            "Que o exercício levou o tempo indicado.",
+            "Que o certificado foi emitido.",
+            "Que o agente não vai errar."
           ],
-          "certa": 1,
+          "certa": 0,
           "explica": "É o critério que você confere: só passe para o próximo exercício quando ele for verdade.",
           "ref": "pratica"
         },
@@ -189,12 +190,12 @@
         {
           "p": "Um fluxo vai publicar em nome da empresa toda madrugada. O que não pode faltar no começo?",
           "opcoes": [
-            "Um portão humano antes de publicar.",
             "Um modelo local.",
+            "Desligar os avisos de falha.",
             "Um reel com mais de 60 segundos.",
-            "Desligar os avisos de falha."
+            "Um portão humano antes de publicar."
           ],
-          "certa": 0,
+          "certa": 3,
           "explica": "Sem fila e sem portão, automatizar rede social vira postar errado mais rápido. O portão só sai depois de dias seguidos sem recusa.",
           "cert": true,
           "ref": "mapa"

@@ -4,11 +4,11 @@
   "titulo": "From chat to agent: the four steps",
   "titulo_curto": "The four steps",
   "minutos": 6,
-  "lead": "In chat, you guide everything, and when you close the window, the work stops. An agent reads your files, performs tasks, and keeps going while you do something else. The shift isn't about changing models: it's about changing where you work.",
-  "objetivo": "say which step you're at today and what concrete step comes next.",
+  "lead": "In chat, you drive the whole time, and when you close the window, the work stops. The agent reads your files, runs tasks, and keeps going while you do something else. The shift isn't switching models: it's changing where the work happens.",
+  "objetivo": "say which step you're on today and what the next concrete move is.",
   "competencias": [
-    "map-maturity",
-    "sequence-adoption"
+    "mapear-maturidade",
+    "sequenciar-adocao"
   ],
   "aprende": [
     {
@@ -17,7 +17,7 @@
     },
     {
       "icone": "camadas",
-      "t": "The four steps and the order they follow"
+      "t": "The four steps and the order between them"
     },
     {
       "icone": "alvo",
@@ -32,7 +32,7 @@
     {
       "tipo": "diagrama",
       "titulo": "Overview",
-      "sub": "Each step builds on the one before it. If you skip the first, you’ll get stuck on the next three.",
+      "sub": "Each step builds on the one before. If you skip the first, you get stuck on the other three.",
       "estilo": "escada",
       "nos": [
         {
@@ -52,11 +52,11 @@
             },
             {
               "icone": "git",
-              "t": "Git to undo changes",
-              "sub": "undo any mistake"
+              "t": "Git to undo",
+              "sub": "rolls back any mistake"
             }
           ],
-          "detalhe": "The agent (Claude Code or Codex) works inside one of your folders, reads a rulebook (AGENTS.md), and lets you undo any mistake with Git. This is the foundation for everything that comes next.",
+          "detalhe": "The agent (Claude Code or Codex) works inside a folder of yours, reads a rulebook (AGENTS.md), and you undo any mistake with Git. It's the foundation for everything that comes next.",
           "forte": true
         },
         {
@@ -74,15 +74,15 @@
             },
             {
               "icone": "usuario",
-              "t": "Your personality"
+              "t": "Your own personality"
             }
           ],
-          "detalhe": "With INTELECTO, you get your own Telegram assistant, with memory and a style you define, using a cloud or local model."
+          "detalhe": "With INTELECTO, an assistant of your own on Telegram, with memory and the style you define, using a cloud or local model."
         },
         {
           "icone": "fila",
           "titulo": "3 · Queues",
-          "sub": "Ten tasks, then go to sleep",
+          "sub": "Ten tasks and go to sleep",
           "itens": [
             {
               "icone": "fila",
@@ -97,16 +97,16 @@
               "t": "Human gate"
             }
           ],
-          "detalhe": "inemaccbot saves each request as a task, resumes where it left off, and stops at a gate when it needs your approval."
+          "detalhe": "inemaccbot saves each request as a task, resumes from where it stopped, and halts at a gate when it needs your approval."
         },
         {
           "icone": "megafone",
-          "titulo": "4 · Social media",
+          "titulo": "4 · Networks",
           "sub": "Channel for your niche",
           "itens": [
             {
               "icone": "video",
-              "t": "Reel in 7 steps"
+              "t": "7-step reel"
             },
             {
               "icone": "lupa",
@@ -117,68 +117,68 @@
               "t": "Schedule with a gate"
             }
           ],
-          "detalhe": "r7e, promoavatar, and the xviral tools (finviral, saudeviral, advviral) publishing regularly, with verified numbers and the source on screen."
+          "detalhe": "r7e, promoavatar, and the xviral channels (finviral, saudeviral, advviral) publishing regularly, with checked numbers and the source on screen."
         }
       ],
-      "volta": "Each step reuses the one before it: folder, rules, secrets, and gate",
-      "legenda": "No magic: there’s no “render while you sleep” if the system doesn’t run correctly.",
+      "volta": "Each step reuses the one before: folder, rules, secrets, and gate",
+      "legenda": "No miracles: there's no \"render while you sleep\" if the system doesn't run correctly.",
       "rolagem": true,
       "rolagem_fim": {
         "titulo": "All four together",
-        "texto": "Each step reuses the one before it: the terminal folder and rules, the .env with the keys, the queue that stores tasks, and the gate before anything important. That’s why the order is essential."
+        "texto": "Each step reuses the one before: the terminal's folder and rules, the .env with the keys, the queue that holds the tasks, and the gate before what matters. That's why the order isn't optional."
       }
     },
     {
       "tipo": "passos",
       "titulo": "Find your starting point",
-      "sub": "Click the situation that sounds most like you today.",
+      "sub": "Click the situation that looks most like yours today.",
       "passos": [
         {
           "titulo": "I only use chat",
           "sub": "ChatGPT, Claude, Gemini",
           "texto": [
-            "Start with step 1. Do <b>OSWork Quick</b>, then the six exercises in sequence 1.",
-            "First-week goal: get to your folder using only the terminal and watch the agent create a file inside it."
+            "Start at step 1. Do the <b>OSWork Quick</b> and then right away the six exercises of sequence 1.",
+            "Goal for the first week: get to your folder using only the terminal and watch the agent create a file inside it."
           ],
           "exemplo": {
             "rot": "First step",
-            "texto": "Open the terminal and create the projetos/meu-primeiro-agente folder."
+            "texto": "Open the terminal and create the folder projetos/meu-primeiro-agente."
           }
         },
         {
           "titulo": "I already use the terminal",
           "sub": "Claude Code or Codex",
           "texto": [
-            "You’re already at step 1. Check that you have AGENTS.md, Git, and .env in .gitignore; if so, move on to step 2.",
-            "Install your Jarvis with <b>INTELECTO</b> and take its course."
+            "You're already at step 1. Check that you have AGENTS.md, Git, and .env in .gitignore; if you do, move up to step 2.",
+            "Install your own Jarvis with <b>INTELECTO</b> and take its course."
           ],
           "exemplo": {
             "rot": "First step",
-            "texto": "Write meu-jarvis.md before installing anything."
+            "texto": "Write the meu-jarvis.md before installing anything."
           }
         },
         {
           "titulo": "I already have an assistant",
           "sub": "Running on Telegram",
           "texto": [
-            "Queue time. Before installing <b>inemaccbot</b>, run the 30-line homegrown queue to understand entrada, feito, and falhou.",
-            "Then list 10 repetitive tasks and mark where a gate is needed."
+            "Time for the queue. Before installing <b>inemaccbot</b>, run the homemade queue in 30 lines to understand entrada, feito, and falhou.",
+            "Then list 10 repetitive tasks and mark where you need a gate."
           ],
           "exemplo": {
             "rot": "First step",
-            "texto": "Fill in the table of 10 tasks, with at least two that have a gate."
+            "texto": "Fill in the table of 10 tasks, with at least two of them having a gate."
           }
         },
         {
           "titulo": "I already have a queue",
           "sub": "And I want to publish",
           "texto": [
-            "Step 4. Use <b>r7e</b> for the format and <b>finviral</b> as a model for your niche’s channel.",
-            "Write your niche rules before automating: without a queue and a gate, automating social media means posting the wrong thing faster."
+            "Step 4. Use <b>r7e</b> for the format and <b>finviral</b> as the template for your niche's channel.",
+            "Write the niche rules before automating: with no queue and no gate, automating social media just means posting the wrong thing faster."
           ],
           "exemplo": {
             "rot": "First step",
-            "texto": "Choose 5 reference channels and write canais.md and regras.md."
+            "texto": "Pick 5 reference channels and write canais.md and regras.md."
           }
         }
       ]
@@ -186,12 +186,12 @@
     {
       "tipo": "codigo",
       "titulo": "Your one-page diagnosis",
-      "sub": "Copy it, fill it in, and save it in your project folder. It becomes your learning roadmap.",
+      "sub": "Copy it, fill it in, and save it in your project folder. It becomes the map of your training.",
       "blocos": [
         {
           "rot": "diagnostico.md",
           "icone": "arquivo",
-          "conteudo": "# My diagnosis — From chat to agent\n\n## Where I am today\n- [ ] I only use chat\n- [ ] I use the terminal with Claude Code or Codex\n- [ ] I have my own assistant running\n- [ ] I have a task queue with a gate\n\n## What makes me lose time (3 items)\n1.\n2.\n3.\n\n## Next step and date\nStep:\nFirst exercise:\nBy (date):\n\n## How I’ll know it worked\n“Done when”:"
+          "conteudo": "# My diagnosis — From chat to agent\n\n## Where I am today\n- [ ] I only use the chat\n- [ ] I use the terminal with Claude Code or Codex\n- [ ] I have an assistant of my own running\n- [ ] I have a task queue with a gate\n\n## What makes me lose time (3 items)\n1.\n2.\n3.\n\n## Next step and date\nStep:\nFirst exercise:\nBy (date):\n\n## How I'll know it worked\n\"Done when\":"
         }
       ],
       "saida": {
@@ -199,11 +199,11 @@
         "abas": [
           {
             "rot": "Filled-in example",
-            "html": "<ul><li><b>Where I am:</b> I use Claude in the browser every day.</li><li><b>I lose time:</b> rewriting proposals, summarizing meetings, answering the same questions.</li><li><b>Next step:</b> 1 · Terminal. Exercise E1 by Friday.</li><li><b>Done when:</b> I can reach the folder using only the terminal and say which folder I’m in.</li></ul>"
+            "html": "<ul><li><b>Where I am:</b> I use Claude in the browser every day.</li><li><b>I lose time on:</b> rewriting proposals, summarizing meetings, answering the same questions.</li><li><b>Next step:</b> 1 · Terminal. Exercise E1 by Friday.</li><li><b>Done when:</b> I get to the folder using only the terminal and can tell which folder I'm in.</li></ul>"
           },
           {
             "rot": "Why write it down",
-            "html": "<p>Writing down your starting point helps you avoid the most common mistake: skipping step 1 because it seems simple. The diagnosis is also the first file the agent will read when you get to the terminal.</p>"
+            "html": "<p>Writing down your starting point prevents the most common mistake: skipping step 1 because it seems simple. The diagnosis is also the first file the agent will read when you get to the terminal.</p>"
           }
         ]
       }
@@ -214,40 +214,40 @@
       "sub": "The explanation appears after your answer.",
       "perguntas": [
         {
-          "p": "What’s the key difference between chat and an agent?",
+          "p": "What is the core difference between the chat and the agent?",
           "opcoes": [
-            "The agent uses a smarter model.",
-            "The agent works with your files and keeps going without you directing every step.",
             "The agent is always free.",
-            "Chat can’t write code."
+            "The agent works on your files and keeps going without you directing every step.",
+            "The chat can't write code.",
+            "The agent uses a smarter model."
           ],
           "certa": 1,
-          "explica": "The shift isn’t about switching models; it’s about changing where you work. The agent reads your folder, runs tasks, and keeps working when you close the window.",
+          "explica": "The shift isn't switching models: it's changing where the work happens. The agent reads your folder, runs tasks, and keeps working when you close the window.",
           "ref": "diagrama"
         },
         {
-          "p": "Why shouldn’t you skip sequence 1?",
+          "p": "Why shouldn't you skip sequence 1?",
           "opcoes": [
-            "Because the terminal is only required on Windows.",
             "Because folders, the terminal, AGENTS.md, and secrets kept out of the text are the foundation for the other three.",
+            "Because the terminal is only required on Windows.",
             "Because Jarvis only runs after a month of use.",
-            "Because the course requires a specific order to issue a certificate."
+            "Because the course requires a set order to issue a certificate."
           ],
-          "certa": 1,
-          "explica": "If you skip sequence 1, you’ll get stuck in the other three. Assistants, queues, and social media all use folders, rules, .env, and Git all the time.",
+          "certa": 0,
+          "explica": "Anyone who skips sequence 1 gets stuck in the other three. Assistant, queue, and social media use folders, rules, .env, and Git all the time.",
           "cert": true,
           "ref": "diagrama"
         },
         {
-          "p": "You already use Claude Code in your folder, have AGENTS.md, and use Git. What’s the next step?",
+          "p": "You already use Claude Code in your folder, and you have AGENTS.md and Git. What's the next step?",
           "opcoes": [
-            "Automate social media.",
+            "Automate the social media.",
             "Install the queue before the assistant.",
-            "Design and install your Jarvis (step 2).",
-            "Go back to chat to practice prompts."
+            "Design and install your own Jarvis (step 2).",
+            "Go back to the chat to practice prompts."
           ],
           "certa": 2,
-          "explica": "With step 1 in place, the next step is your own assistant: write meu-jarvis.md and install INTELECTO.",
+          "explica": "With step 1 solid, the next one is your own assistant: design the meu-jarvis.md and install INTELECTO.",
           "ref": "passos"
         }
       ]

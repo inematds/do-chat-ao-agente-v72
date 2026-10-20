@@ -9,6 +9,7 @@ Campos de texto aceitam <b>, <code>, <a> e <br>; o resto é escapado na origem (
 """
 import argparse, html, json, pathlib, re, sys
 
+VERSAO = "7.14.19"    # versão do motor (CHANGELOG.md da skill formato-curso-v72)
 RAIZ = pathlib.Path(__file__).resolve().parent
 PREFIXO = "../../"  # caminho até a raiz a partir da página em geração (v7.2: foto do "Você" no diagrama)
 FOTO_VOCE = "assets/img/voce.jpg"
@@ -22,6 +23,11 @@ HREFLANG = {"pt": "pt-BR", "en": "en", "es": "es"}
 def ativo(prefixo):
     """Caminho até a RAIZ do repo (assets/), a partir da página: em en/ e es/ sobe um nível a mais."""
     return prefixo + ("" if LANG == "pt" else "../")
+
+
+def href_lang(o):
+    """7.14.19: link com versão por idioma — {"href": PT, "href_en": …, "href_es": …}; sem a chave do idioma, o href PT."""
+    return o.get(f"href_{LANG}") or o["href"]
 
 
 def img_idioma(rel):
@@ -144,7 +150,7 @@ def figura_rolagem(figura, passos, leg, ui, dica=True):
                   f'<h3>{p["titulo"]}</h3><p>{p["texto"]}</p></li>' for i, p in enumerate(passos))
     p0 = passos[0]
     nav = "".join(f'<button type="button" class="sc-ir" data-ir="{i}" title="{attr(re.sub("<[^>]+>", "", p["titulo"]))}">'
-                  f'<b>{i + 1}</b><span>{p.get("curto", p["titulo"])}</span></button>' for i, p in enumerate(passos))
+                  f'<b>{i + 1}</b><span>{re.sub(rf"^{i + 1}\s*·\s*", "", p.get("curto", p["titulo"]))}</span></button>' for i, p in enumerate(passos))
     cap = (f'<div class="sc-cap" aria-hidden="true"><span class="sc-n">1/{len(passos)}</span>'
            f'<h3>{p0["titulo"]}</h3><p>{p0["texto"]}</p></div>')
     return (f'<div class="scrolly dg-bloco"><div class="sc-fig"><div class="painel">{figura}'
@@ -226,10 +232,16 @@ def sec_pratica(s, ui, slug):
 
 def sec_video(s, ui, curso, prefixo):
     v = curso["videos"][s["chave"]]
-    return (f'<div class="video"><video controls preload="metadata" playsinline poster="{ativo(prefixo)}{v["poster"]}">'
-            f'<source src="{v["mp4"]}" type="video/mp4"/>'
-            f'<track kind="subtitles" srclang="pt" label="Português" src="{ativo(prefixo)}{v["vtt"]}" default/></video>'
-            f'<div class="video-leg"><span><b>{v["titulo"]}</b> · {v["duracao"]}</span><a href="{v["pagina"]}" target="_blank" rel="noopener">{ui["video_pagina"]} →</a></div></div>')
+    # 7.6.7: versão do vídeo por idioma — videos.<chave>.idiomas.<lang>.{mp4, vtt}; sem ela, o vídeo PT com legenda PT
+    loc = v.get("idiomas", {}).get(LANG, {})
+    lg = LANG if loc.get("vtt") else "pt"
+    rot_leg = {"pt": "Português", "en": "English", "es": "Español"}.get(lg, lg)
+    # 7.10.12: vídeo vertical (short/reel) com "formato": "9:16" — player estreito e centrado, não pillarbox 16:9
+    vert = " vertical" if v.get("formato") == "9:16" else ""
+    return (f'<div class="video{vert}"><video controls preload="metadata" playsinline poster="{ativo(prefixo)}{img_idioma(v["poster"])}">'
+            f'<source src="{loc.get("mp4", v["mp4"])}" type="video/mp4"/>'
+            f'<track kind="subtitles" srclang="{lg}" label="{rot_leg}" src="{ativo(prefixo)}{loc.get("vtt", v["vtt"])}" default/></video>'
+            f'<div class="video-leg"><span><b>{v["titulo"]}</b> · {loc.get("duracao", v["duracao"])}</span><a href="{loc.get("pagina", v["pagina"])}" target="_blank" rel="noopener">{ui["video_pagina"]} →</a></div></div>')
 
 
 def sec_simfila(s, ui):
@@ -243,6 +255,155 @@ def sec_simfila(s, ui):
             f'data-msg="{attr(json.dumps(s["msg"], ensure_ascii=False))}"><div class="sim-cols">{cols}</div>'
             f'<div class="sim-acoes">{acoes}</div><div class="sim-log" aria-live="polite"></div>'
             f'<p class="dg-legenda">{s["legenda"]}</p></div>')
+
+
+ST_UI = {  # 7.14.19: textos do simterm; ficam em curso.json → ui e podem ser trocados/traduzidos lá
+    "st_missoes": "Missões", "st_digite": "Digite o comando e tecle Enter", "st_dica": "Mostrar o comando",
+    "st_zerar": "Recomeçar", "st_missao": "Missão {n} de {t}:", "st_cumpridas": "Missões cumpridas.", "st_pronto": "Pronto.",
+    "st_onde": "Isso mostrou onde você está. Agora faça o que a missão {n} pede.",
+    "st_errado": "Esse não é o comando da missão {n}. Releia o pedido ou toque em <b>{dica}</b>."}
+PT_AULAS = {}  # slug → aula PT: no simterm, comandos e saídas vêm SEMPRE do PT (o aluno digita o mesmo comando em qualquer idioma)
+
+
+def sec_simterm(s, ui, pt):
+    """7.14.19 (vindo do curso do-chat-ao-agente-terminal-v72): terminal simulado. O aluno digita o comando de cada
+    missão e vê a resposta, sem risco. Comportamento em assets/v72-simterm.js. Texto visível vem do JSON/ui (traduzível);
+    `pt` é a mesma seção no PT: dela saem inicio, sufixo, sistema e, por missão, aceita, vai e mostra."""
+    u = {k: ui.get(k, v) for k, v in ST_UI.items()}
+    dados = {k: s.get(k) for k in ("erro", "fim")}
+    dados.update({k: pt.get(k) for k in ("inicio", "sistema")})
+    dados["sufixo"] = pt.get("sufixo", ">")
+    missoes = []
+    for m, mp in zip(s["missoes"], pt["missoes"]):
+        m = dict(m)
+        for k in ("aceita", "vai", "mostra"):
+            if k in mp: m[k] = mp[k]
+            else: m.pop(k, None)
+        missoes.append(m)
+    dados["missoes"] = missoes
+    dados["txt"] = {k: u[k] for k in ("st_missao", "st_cumpridas", "st_pronto", "st_onde", "st_errado", "st_dica")}
+    lis = "".join(f'<li data-i="{i}"><span class="st-n">{i + 1}</span><span>{m["pede"]}</span></li>' for i, m in enumerate(missoes))
+    return (f'<div class="painel simterm" data-term="{attr(json.dumps(dados, ensure_ascii=False))}">'
+            f'<div class="st-grade"><div class="st-missoes"><p class="st-tit">{ic("alvo")}{u["st_missoes"]}</p><ol>{lis}</ol>'
+            f'</div>'
+            f'<div class="st-janela"><div class="st-barra"><i></i><i></i><i></i><span>{s.get("janela", "Terminal")}</span></div>'
+            f'<pre class="st-tela" aria-live="polite"></pre><p class="st-agora"></p>'
+            f'<form class="st-linha"><label class="st-prompt"></label><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" '
+            f'aria-label="{attr(u["st_digite"])}" placeholder="{attr(u["st_digite"])}"/></form></div></div>'
+            f'<div class="st-fb" aria-live="polite"></div>'
+            f'<div class="sim-acoes"><button type="button" class="btn neutro st-dica">{ic("lupa")}{u["st_dica"]}</button>'
+            f'<button type="button" class="btn neutro st-zerar">{u["st_zerar"]}</button></div>'
+            f'<p class="dg-legenda">{s["legenda"]}</p></div>')
+
+
+def sec_simportao(s, ui):
+    """7.14.19 (vindo do curso do-chat-ao-agente-filas-v72): fluxo de várias fases que para no portão humano
+    (aprovar, reprovar com correção ou rodar sem portão). Comportamento em assets/v72-simportao.js. O portão é a fase 2
+    (índice 1). Texto visível vem do JSON: fases, rot, rascunho, corrigido, msg; `arquivo` = rótulo do texto gerado."""
+    r = s["rot"]
+    fases = "".join(f'<li class="sp-fase" data-i="{i}">{ic("portao" if i == 1 else "alvo")}<span>{f}</span></li>'
+                    for i, f in enumerate(s["fases"]))
+    acoes = (f'<button type="button" class="btn cheio" data-acao="rodar">{ic("play")}{r["rodar"]}</button>'
+             f'<button type="button" class="btn neutro" data-acao="aprovar" disabled>{ic("check")}{r["aprovar"]}</button>'
+             f'<button type="button" class="btn neutro" data-acao="reprovar" disabled>{ic("caneta")}{r["reprovar"]}</button>'
+             f'<button type="button" class="btn neutro" data-acao="sempor">{r["sempor"]}</button>'
+             f'<button type="button" class="btn neutro" data-acao="zerar">{r["zerar"]}</button>')
+    dados = attr(json.dumps({"rascunho": s["rascunho"], "corrigido": s["corrigido"], "msg": s["msg"]}, ensure_ascii=False))
+    return (f'<div class="painel simportao" data-sim="{dados}"><ol class="sp-fases">{fases}</ol>'
+            f'<div class="sp-texto" hidden><span class="sp-rot">{ic("arquivo")}{s.get("arquivo", "rascunho.md")}</span><p class="sp-corpo"></p></div>'
+            f'<div class="sim-acoes">{acoes}</div><div class="sim-log" aria-live="polite"></div>'
+            f'<p class="dg-legenda">{s["legenda"]}</p></div>')
+
+
+CONV_UI = {  # 7.5.1: textos da simconversa; ficam em curso.json → ui e podem ser trocados/traduzidos lá
+    "conv_dica": "Escolha a sua resposta. O comentário aparece logo depois e a conversa segue conforme a escolha.",
+    "conv_voce": "Você", "conv_escolha": "Sua resposta", "conv_boa": "Boa escolha", "conv_meio": "Dá para melhorar",
+    "conv_ruim": "Escolha fraca", "conv_fim": "Fim da conversa", "conv_placar": "Você fez {p} de {m} pontos possíveis.",
+    "conv_licao": "Lição:", "conv_recomecar": "Recomeçar a conversa", "conv_feita": "Seu melhor placar: {p} de {m} pontos.",
+}
+
+
+def sec_simconversa(s, ui, conv_id):
+    """7.5.1: conversa com cliente simulado. O cliente fala, o aluno escolhe 1 de 2–4 respostas, vê o comentário,
+    o caminho segue conforme a escolha e termina com placar e lição. Comportamento em assets/v72-conversa.js."""
+    txt = {k: ui.get(k, v) for k, v in CONV_UI.items()}
+    p = s["personagem"]
+    dados = json.dumps({"inicio": s["inicio"], "falas": s["falas"], "licao": s.get("licao", ""), "nome": p["nome"], "txt": txt},
+                       ensure_ascii=False).replace("</", "<\\/")
+    papel = f'<small>{p["papel"]}</small>' if p.get("papel") else ""
+    return (f'<div class="conv" data-conv="{attr(conv_id)}"><div class="conv-cab"><span class="conv-av">{ic("usuario")}</span>'
+            f'<span class="conv-quem"><b>{p["nome"]}</b>{papel}</span><span class="conv-pts" aria-hidden="true"></span></div>'
+            f'<p class="conv-dica">{txt["conv_dica"]}</p><ol class="conv-log" aria-live="polite"></ol>'
+            f'<div class="conv-ops" role="group" aria-label="{attr(txt["conv_escolha"])}"></div><div class="conv-fim" hidden></div>'
+            f'<script type="application/json" class="conv-dados">{dados}</script></div>')
+
+
+CONF_UI = {  # 7.9.12: textos do conferidor; ficam em curso.json → ui (mesmos padrões de UI em conferir.py)
+    "conf_vazio": "Cole o texto ou carregue o arquivo antes de conferir.",
+    "conf_falta": "Ainda não. O que falta:",
+    "conf_campo": "Falta a linha {c}: com a descrição (pelo menos {x} letras).",
+    "conf_planos": "Achei {n} planos numerados; o pedido é de {x} a {y}. Comece cada plano pelo número (1 | ...).",
+    "conf_no_plano": "Plano {i}: falta {g}.",
+    "conf_um_so": "Plano {i}: {n} escolhas de {g}; fique com uma só.",
+    "conf_variedade": "Só {n} tipo(s) diferente(s) de {g} nos planos; varie para pelo menos {x}.",
+    "conf_sem_duracao": "Plano {i}: falta a duração em segundos (ex.: 4 s).",
+    "conf_duracao": "Os planos somam {s} s; o pedido é de {x} a {y} s.",
+    "conf_termo": "Falta citar {g}.",
+    "conf_mais": "… e mais {n}.",
+    "conf_rot": "Cole aqui o seu arquivo (ou carregue o .txt):",
+    "conf_conferir": "Conferir", "conf_exemplo": "Exemplo que passa", "conf_errado": "Exemplo com erro",
+    "conf_carregar": "Carregar .txt", "conf_baixar": "Baixar o arquivo", "conf_limpar": "Limpar",
+    # 7.12.15: modo vídeo (regra "video"): o navegador lê duração e tamanho do arquivo, sem enviar nada
+    "conf_video_dur": "O vídeo tem {s} s; o pedido é de {x} a {y} s.",
+    "conf_video_prop": "O vídeo é {w}×{h} ({p}); o pedido é {q}.",
+    "conf_video_larg": "O vídeo tem {w} px de largura; o mínimo é {x} px.",
+    "conf_video_ler": "Não consegui ler este vídeo. Exporte em MP4 (H.264) ou WebM e tente de novo.",
+    "conf_video_rot": "Escolha o seu vídeo. Ele é lido aqui no navegador: nada é enviado.",
+    "conf_video_escolher": "Escolher o vídeo", "conf_video_lendo": "Lendo o vídeo…",
+}
+
+
+def sec_conferidor_video(s, ui, conf_id, prefixo, txt):
+    """7.12.15: modo vídeo — o aluno escolhe o arquivo (input file) e a página lê duração, largura e altura
+    (loadedmetadata), sem enviar nada. Os exemplos são clipes do repo (video_ok, video_erro), em WebM para
+    tocar também no Chromium sem codecs proprietários. "pronto quando" cita a resposta (ex.: "OK: 8,0 s · 1920×1080 · 16:9")."""
+    dados = json.dumps({"regras": s["regras"], "ok": s["ok"], "video": True,
+                        "video_ok": ativo(prefixo) + s["video_ok"], "video_erro": ativo(prefixo) + s["video_erro"],
+                        "txt": txt}, ensure_ascii=False).replace("</", "<\\/")
+    tid = f"cf-{conf_id}"
+    return (f'<div class="confer cf-video" data-conf="{attr(conf_id)}" data-ok-prefixo="{attr(re.split(r"[{:]", s["ok"])[0])}">'
+            f'<div class="cf-cab"><span class="cf-arquivo">{ic("video")}{esc(s.get("arquivo", "video.mp4"))}</span>'
+            f'<span class="cf-exs"><button type="button" class="btn neutro" data-cf-ex="ok">{ic("check")}{txt["conf_exemplo"]}</button>'
+            f'<button type="button" class="btn neutro" data-cf-ex="errado">{ic("x")}{txt["conf_errado"]}</button></span></div>'
+            f'<p class="cf-rot">{s.get("rot", txt["conf_video_rot"])}</p>'
+            f'<div class="cf-acoes"><label class="btn cheio cf-arq-rot" for="{tid}">{ic("carregar")}{txt["conf_video_escolher"]}</label>'
+            f'<input type="file" id="{tid}" class="sr cf-arq" accept="video/*,.mp4,.webm,.mov,.mkv"/></div>'
+            f'<div class="cf-res" aria-live="polite" hidden></div>'
+            f'<script type="application/json" class="cf-dados">{dados}</script></div>')
+
+
+def sec_conferidor(s, ui, conf_id, prefixo=""):
+    """7.9.12: o aluno cola (ou carrega) o arquivo que escreveu e a página confere pelas regras da seção
+    (campos, planos, cada_plano, duracao, termos). "pronto quando" cita a resposta literal ("OK: ...").
+    Comportamento em assets/v72-conferidor.js; o mesmo motor em Python no conferir.py (opção de terminal)."""
+    txt = {k: ui.get(k, v) for k, v in CONF_UI.items()}
+    if any(r.get("tipo") == "video" for r in s["regras"]):
+        return sec_conferidor_video(s, ui, conf_id, prefixo, txt)
+    dados = json.dumps({"regras": s["regras"], "ok": s["ok"], "exemplo": s["exemplo"], "exemplo_errado": s["exemplo_errado"],
+                        "arquivo": s.get("arquivo", "arquivo.txt"), "txt": txt}, ensure_ascii=False).replace("</", "<\\/")
+    tid = f"cf-{conf_id}"
+    return (f'<div class="confer" data-conf="{attr(conf_id)}" data-ok-prefixo="{attr(re.split(r"[{:]", s["ok"])[0])}">'
+            f'<div class="cf-cab"><span class="cf-arquivo">{ic("arquivo")}{esc(s.get("arquivo", "arquivo.txt"))}</span>'
+            f'<span class="cf-exs"><button type="button" class="btn neutro" data-cf-ex="ok">{ic("check")}{txt["conf_exemplo"]}</button>'
+            f'<button type="button" class="btn neutro" data-cf-ex="errado">{ic("x")}{txt["conf_errado"]}</button></span></div>'
+            f'<label class="cf-rot" for="{tid}">{s.get("rot", txt["conf_rot"])}</label>'
+            f'<textarea id="{tid}" spellcheck="false" autocomplete="off" rows="10" placeholder="{attr(s.get("modelo", ""))}"></textarea>'
+            f'<div class="cf-acoes"><button type="button" class="btn cheio cf-ir">{ic("check")}{txt["conf_conferir"]}</button>'
+            f'<label class="btn neutro cf-arq-rot">{ic("carregar")}{txt["conf_carregar"]}<input type="file" class="sr cf-arq" accept=".txt,.md,text/plain"/></label>'
+            f'<button type="button" class="btn neutro cf-baixar">{ic("baixar")}{txt["conf_baixar"]}</button>'
+            f'<button type="button" class="btn neutro cf-limpar">{txt["conf_limpar"]}</button></div>'
+            f'<div class="cf-res" aria-live="polite" hidden></div>'
+            f'<script type="application/json" class="cf-dados">{dados}</script></div>')
 
 
 def sec_quiz(s, ui, refs):
@@ -312,8 +473,9 @@ def sec_links(s, ui):
 
 
 # ---------- página ----------
-def cabeca(titulo, desc, prefixo, lang, canon, curso_id, pag=""):
+def cabeca(titulo, desc, prefixo, lang, canon, curso_id, pag="", extra_css=()):
     at = ativo(prefixo)
+    extra = "".join(f'\n<link rel="stylesheet" href="{at}assets/{c}"/>' for c in extra_css)
     alternos = "".join(f'<link rel="alternate" hreflang="{HREFLANG[l]}" href="{url_idioma(l, pag)}"/>' for l in IDIOMAS) if len(IDIOMAS) > 1 else ""
     return f"""<!DOCTYPE html>
 <html lang="{lang}">
@@ -331,7 +493,8 @@ def cabeca(titulo, desc, prefixo, lang, canon, curso_id, pag=""):
 <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Sora:wght@600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="{at}assets/v71.css"/>
-<link rel="stylesheet" href="{at}assets/v72.css"/>
+<link rel="stylesheet" href="{at}assets/v72.css"/>{extra}
+<meta name="generator" content="INEMA Learning {VERSAO}"/>
 <script>try{{if(JSON.parse(localStorage.getItem("{curso_id}:tema"))==="papel")document.documentElement.setAttribute("data-tema","papel")}}catch(e){{}}</script>
 </head>"""
 
@@ -405,14 +568,14 @@ def lado(curso, aulas, ui, prefixo, atual):
         itens.append(f'<li><a href="{prefixo}aulas/{a["slug"]}/index.html" data-slug="{a["slug"]}" class="{cls.strip()}"{cur}><span class="st" aria-hidden="true"></span>'
                      f'<span>{a["num"]}. {a["titulo_curto"]}<small>{a["minutos"]} min</small></span></a></li>')
     card = curso["lado_card"]
-    return (f'<aside class="lado" id="lado" aria-label="{attr(ui["aulas"])}"><a class="voltar" href="{curso["volta"]["href"]}">{ic("voltar")}{curso["volta"]["t"]}</a>'
+    return (f'<aside class="lado" id="lado" aria-label="{attr(ui["aulas"])}"><a class="voltar" href="{href_lang(curso["volta"])}">{ic("voltar")}{curso["volta"]["t"]}</a>'
             f'<p class="curso-nome">{curso["nome"]}</p><p class="curso-sub">{curso["sub"]}</p>'
             f'<div class="ind"><span class="ind-rot">{ui["ind_estudo"]}</span><span class="prog-txt"><span data-pct>0</span>%</span></div>'
             f'<div class="prog" aria-hidden="true"><i></i></div>'
             f'<div class="ind"><span class="ind-rot">{ui["ind_pratica"]}</span><span class="prog-txt"><span data-prat>0</span>/{total_ex(aulas)}</span></div>'
             f'<div class="prog pratica" aria-hidden="true"><i></i></div><p class="ind-nota">{ui["ind_nota"]}</p>'
             f'<ol class="lista-aulas">{"".join(itens)}</ol>{estudo(aulas, ui)}'
-            f'<div class="lado-card">{card["rot"]}<b>{card["t"]}</b>{card["texto"]}<br/><a href="{card["href"]}" target="_blank" rel="noopener">{card["link"]} →</a></div></aside>')
+            f'<div class="lado-card">{card["rot"]}<b>{card["t"]}</b>{card["texto"]}<br/><a href="{href_lang(card)}" target="_blank" rel="noopener">{card["link"]} →</a></div></aside>')
 
 
 def rodape(curso):
@@ -430,6 +593,8 @@ def pagina_aula(curso, aulas, a, idx, ui, lang):
         k += 1
         refs.setdefault(x["tipo"], (f"s{k}", re.sub("<[^>]+>", "", x["titulo"])))
     num = 0
+    pt_terms = [x for x in PT_AULAS.get(a["slug"], a)["secoes"] if x["tipo"] == "simterm"]  # 7.14.19
+    n_term = 0
     for s in a["secoes"]:
         t = s["tipo"]
         if t == "links":
@@ -443,6 +608,10 @@ def pagina_aula(curso, aulas, a, idx, ui, lang):
         elif t == "pratica": corpo = sec_pratica(s, ui, a["slug"])
         elif t == "video": corpo = sec_video(s, ui, curso, prefixo)
         elif t == "simfila": corpo = sec_simfila(s, ui)
+        elif t == "simconversa": corpo = sec_simconversa(s, ui, f'{a["slug"]}-s{num}')
+        elif t == "simterm": corpo = sec_simterm(s, ui, pt_terms[n_term]); n_term += 1
+        elif t == "simportao": corpo = sec_simportao(s, ui)
+        elif t == "conferidor": corpo = sec_conferidor(s, ui, f'{a["slug"]}-s{num}', prefixo)
         elif t == "quiz": corpo = sec_quiz(s, ui, refs)
         elif t == "gerador": corpo = sec_gerador(s, ui, aulas)
         elif t == "texto": corpo = sec_texto(s, ui)
@@ -468,7 +637,13 @@ def pagina_aula(curso, aulas, a, idx, ui, lang):
                f'<button type="button" class="btn neutro concluir" aria-pressed="false">{ic("check")}{ui["marcar_concluida"]}</button>{btn_prox_cheio}</div>')
     canon = f'{curso["url"]}aulas/{a["slug"]}/'
     titulo = f'{a["titulo"]} · {curso["nome"]} · INEMA'
-    return (cabeca(titulo, a["lead"], prefixo, lang, canon, id_curso(curso), f'aulas/{a["slug"]}/')
+    # 7.5.1: arquivos de tipos opcionais entram só na aula que usa o tipo (curso antigo não precisa deles)
+    tipos = {x["tipo"] for x in a["secoes"]}
+    extra = [n for t, n in (("simconversa", "v72-conversa"), ("conferidor", "v72-conferidor"),
+                            ("simterm", "v72-simterm"), ("simportao", "v72-simportao")) if t in tipos]
+    css_extra = [f"{n}.css" for n in extra]
+    js_extra = "".join(f'<script src="{ativo(prefixo)}assets/{n}.js"></script>' for n in extra)
+    return (cabeca(titulo, a["lead"], prefixo, lang, canon, id_curso(curso), f'aulas/{a["slug"]}/', css_extra)
             + f'<body data-curso="{id_curso(curso)}" data-aula="{a["slug"]}" data-total="{len(aulas)}" data-total-ex="{total_ex(aulas)}">'
             + topo(curso, aulas, ui, prefixo, a["slug"])
             + '<div class="casca">' + lado(curso, aulas, ui, prefixo, a["slug"])
@@ -478,7 +653,7 @@ def pagina_aula(curso, aulas, a, idx, ui, lang):
             + f'<a class="comecar" href="#s1">{ui.get("comecar", "Começar a aula")} {ic("seta")}</a></div>{fig}</div>'
             + f'<div class="nesta2"><h2>{ui.get("nesta_vai", "Nesta aula você vai")}</h2><ol>{aprende}</ol><p class="objetivo"><b>{ui["objetivo"]}</b> {a["objetivo"]}</p></div>'
             + "".join(secs) + nav_fim + rodape(curso)
-            + f'</div></main></div><script src="{ativo(prefixo)}assets/v71.js"></script><script src="{ativo(prefixo)}assets/v72.js"></script></body></html>\n')
+            + f'</div></main></div><script src="{ativo(prefixo)}assets/v71.js"></script><script src="{ativo(prefixo)}assets/v72.js"></script>{js_extra}</body></html>\n')
 
 
 def pagina_inicio(curso, aulas, ui, lang):
@@ -498,7 +673,10 @@ def pagina_inicio(curso, aulas, ui, lang):
     if p.get("cursos"):
         cs = p["cursos"]
         def href(c):
-            return c["href"] + (f"{LANG}/" if LANG != "pt" and c.get("href_idioma") else "")
+            # 7.8.12: idempotente — o traduzir.py 7.8.11 já grava <href><lang>/ em conteudo/<lang>/
+            if LANG == "pt" or not c.get("href_idioma") or c["href"].endswith(f"/{LANG}/"):
+                return c["href"]
+            return c["href"] + f"{LANG}/"
         cursos = (f'<section class="secao" id="cursos"><div class="sec-cab"><div><h2>{cs["titulo"]}</h2><p>{cs["sub"]}</p></div></div><ol class="ini-cursos">'
                   + "".join(f'<li><a class="ini-curso" href="{attr(href(c))}">'
                             f'<span class="ia-img"><img src="{ativo(prefixo)}{img_idioma(c["img"])}" alt="" loading="lazy" width="1400" height="788"/></span>'
@@ -532,14 +710,16 @@ def main():
     curso = json.loads((base / "curso.json").read_text())
     ui = curso["ui"]
     aulas = [json.loads(f.read_text()) for f in sorted((base / "aulas").glob("*.json"))]
-    saida = RAIZ if args.lang == "pt" else RAIZ / args.lang
+    for f in sorted((RAIZ / "conteudo" / "pt" / "aulas").glob("*.json")):  # 7.14.19: simterm usa comandos do PT
+        x = json.loads(f.read_text()); PT_AULAS[x["slug"]] = x
+    saida =RAIZ if args.lang == "pt" else RAIZ / args.lang
     erros = 0
     for i, a in enumerate(aulas):
         d = saida / "aulas" / a["slug"]
         d.mkdir(parents=True, exist_ok=True)
         (d / "index.html").write_text(pagina_aula(curso, aulas, a, i, ui, curso["lang"]))
     (saida / "index.html").write_text(pagina_inicio(curso, aulas, ui, curso["lang"]))
-    print(f"{len(aulas)} aulas + index geradas ({args.lang}), {erros} erros")
+    print(f"{len(aulas)} aulas + index geradas ({args.lang}, motor {VERSAO}), {erros} erros")
 
 
 if __name__ == "__main__":

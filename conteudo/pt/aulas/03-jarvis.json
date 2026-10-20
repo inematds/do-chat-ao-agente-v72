@@ -264,12 +264,12 @@
         {
           "p": "Por que escrever o meu-jarvis.md antes de instalar?",
           "opcoes": [
+            "Para economizar tokens do modelo.",
             "Porque a instalação não funciona sem ele.",
-            "Porque ele define nome, jeito, limites e o que lembrar, e responde às perguntas da instalação.",
             "Porque o Telegram exige uma descrição.",
-            "Para economizar tokens do modelo."
+            "Porque ele define nome, jeito, limites e o que lembrar, e responde às perguntas da instalação."
           ],
-          "certa": 1,
+          "certa": 3,
           "explica": "O desenho vem antes: com nome, jeito, o que fazer e o que nunca fazer escritos, você responde à configuração guiada sem improvisar e tem como avaliar se o assistente está certo.",
           "cert": true,
           "ref": "passos"
@@ -277,24 +277,24 @@
         {
           "p": "O assistente não lembrou o que você contou ontem. Qual o primeiro passo?",
           "opcoes": [
-            "Trocar de modelo.",
-            "Desinstalar e instalar de novo.",
             "Ver no curso como a memória é guardada e ajustar.",
+            "Desinstalar e instalar de novo.",
+            "Trocar de modelo.",
             "Repetir os fatos todo dia."
           ],
-          "certa": 2,
+          "certa": 0,
           "explica": "O exercício E4 diz exatamente isso: se não lembrar, veja no curso do INTELECTO como a memória é guardada e ajuste.",
           "ref": "passos"
         },
         {
           "p": "Quando faz sentido um modelo local (Ollama)?",
           "opcoes": [
-            "Sempre, porque é mais inteligente.",
-            "Quando o seu computador aguenta e os seus números de tempo, qualidade e custo mostram que vale.",
             "Nunca, o Telegram não aceita.",
-            "Só para rotinas de madrugada."
+            "Só para rotinas de madrugada.",
+            "Sempre, porque é mais inteligente.",
+            "Quando o seu computador aguenta e os seus números de tempo, qualidade e custo mostram que vale."
           ],
-          "certa": 1,
+          "certa": 3,
           "explica": "A escolha é medida: mesma pergunta nos dois, tabela com tempo, qualidade e custo, e decisão com os seus números.",
           "ref": "codigo"
         }

@@ -327,11 +327,11 @@
           "p": "Qual é a primeira frase de um reel r7e?",
           "opcoes": [
             "Uma apresentação pessoal.",
-            "O ganho, o resultado em 2 segundos.",
             "O nome da ferramenta.",
+            "O ganho, o resultado em 2 segundos.",
             "O convite para comentar."
           ],
-          "certa": 1,
+          "certa": 2,
           "explica": "Gancho é o resultado em 2 segundos. O nome da solução só aparece na etapa 5 (descoberta).",
           "ref": "passos"
         },
@@ -339,11 +339,11 @@
           "p": "Quando é razoável tirar o portão de uma etapa?",
           "opcoes": [
             "Na primeira semana, para ganhar tempo.",
-            "Depois de alguns dias seguidos sem precisar recusar nada.",
             "Nunca, o portão é obrigatório em tudo.",
+            "Depois de alguns dias seguidos sem precisar recusar nada.",
             "Quando o canal passar de mil inscritos."
           ],
-          "certa": 1,
+          "certa": 2,
           "explica": "O E6 pede três dias seguidos sem recusa. Só então pense em tirar o portão de alguma etapa.",
           "ref": "pratica"
         }

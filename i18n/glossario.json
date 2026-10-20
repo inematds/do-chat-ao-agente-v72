@@ -1,0 +1,13 @@
+{
+  "en": {
+    "aula": "lesson (never \"class\")",
+    "nomes de arquivo, pastas e gatilhos do bot (canais.md, meu-jarvis.md, regras.md, base.md, transcrever:, fila/entrada…)": "keep exactly as in Portuguese — never translate file names, folder names or bot triggers, also inside <code>",
+    "Dez tarefas e vá dormir": "Ten tasks and go to sleep"
+  },
+  "es": {
+    "aula": "clase (nunca \"lección\")",
+    "nomes de arquivo, pastas e gatilhos do bot (canais.md, meu-jarvis.md, regras.md, base.md, transcrever:, fila/entrada…)": "mantener exactamente en portugués — nunca traducir nombres de archivo, carpetas ni disparadores del bot, también dentro de <code>",
+    "Dez tarefas e vá dormir": "Diez tareas y vete a dormir",
+    "fila / Filas (de tarefas)": "cola / Colas"
+  }
+}

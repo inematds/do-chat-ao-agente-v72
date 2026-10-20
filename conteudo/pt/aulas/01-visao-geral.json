@@ -216,10 +216,10 @@
         {
           "p": "Qual é a diferença central entre o chat e o agente?",
           "opcoes": [
-            "O agente usa um modelo mais inteligente.",
-            "O agente trabalha nos seus arquivos e continua sem você dirigir cada passo.",
             "O agente é sempre gratuito.",
-            "O chat não consegue escrever código."
+            "O agente trabalha nos seus arquivos e continua sem você dirigir cada passo.",
+            "O chat não consegue escrever código.",
+            "O agente usa um modelo mais inteligente."
           ],
           "certa": 1,
           "explica": "A virada não é trocar de modelo: é mudar de lugar. O agente lê a sua pasta, executa tarefas e segue trabalhando quando você fecha a janela.",
@@ -228,12 +228,12 @@
         {
           "p": "Por que não vale pular a sequência 1?",
           "opcoes": [
-            "Porque o terminal é obrigatório só no Windows.",
             "Porque pastas, terminal, AGENTS.md e segredos fora do texto são a base das outras três.",
+            "Porque o terminal é obrigatório só no Windows.",
             "Porque o Jarvis só roda depois de um mês de uso.",
             "Porque o curso exige ordem para emitir certificado."
           ],
-          "certa": 1,
+          "certa": 0,
           "explica": "Quem pula a sequência 1 empaca nas outras três. Assistente, fila e redes usam pasta, regras, .env e Git o tempo todo.",
           "cert": true,
           "ref": "diagrama"
